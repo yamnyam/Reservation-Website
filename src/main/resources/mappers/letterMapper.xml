@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="net.gondr.mapper.LetterMapper">
+	<insert id="create">
+		insert into letter(let_title, let_content, let_image) 
+		values (#{let_title}, #{let_content}, #{let_image})
+	</insert>
+	
+	<select id="read" resultMap="letterMap">
+		select let_no, let_title, let_content, let_date, acc_no, let_image
+		from letter
+		where letter_no = #{letter_no}
+	</select>
+	
+	<resultMap type="LetterVO" id="letterMap">
+		<result property="let_no" column = "let_no"/>
+		<result property="let_title" column = "let_title"/>
+		<result property="let_content" column = "let_content"/>
+		<result property="let_date" column = "let_date"/>
+		<result property="acc_no" column = "acc_no"/>
+		<result property="let_image" column = "let_image"/>
+	</resultMap>
+	
+	<update id="update">
+		update letter set let_title= #{let_title}, let_content = #{let_content}, let_image = #{let_image}
+		where let_no = #{let_no}
+	</update>
+	
+	<delete id="delete">
+		delete from letter where let_no = #{let_no}
+	</delete>
+	
+	
+	<select id="listAll" resultMap="letterMap">
+		<![CDATA[
+			select let_no, let_title, let_content, let_date, acc_no, let_image
+			from letter where let_no > 0
+			order by let_no desc, let_date desc
+		]]>
+	</select>
+</mapper>
