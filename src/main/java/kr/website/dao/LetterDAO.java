@@ -1,6 +1,8 @@
-package kr.website.letter;
+package kr.website.dao;
 
 import java.util.List;
+
+import kr.website.vo.LetterVO;
 
 public interface LetterDAO {
 	public void create(LetterVO vo) throws Exception;

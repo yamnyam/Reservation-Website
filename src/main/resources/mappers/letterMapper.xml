@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="net.gondr.mapper.LetterMapper">
+<mapper namespace="kr.website.mapper.LetterMapper">
 	<insert id="create">
 		insert into letter(let_title, let_content, let_image) 
 		values (#{let_title}, #{let_content}, #{let_image})
