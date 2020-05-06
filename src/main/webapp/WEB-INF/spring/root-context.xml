@@ -37,6 +37,7 @@
 	</bean>
 	
 	<!-- bean 검색 장소 지정 -->
-	<context:component-scan base-package = "kr.website">
-	</context:component-scan>
+	<context:component-scan base-package = "kr.website.dao"/>
+	<context:component-scan base-package = "kr.website.service"/>
+	<context:component-scan base-package = "kr.website.vo"/>
 </beans>

@@ -31,10 +31,10 @@ public class LetterServiceTest {
 		bs.regist(vo);
 	}
 	
-	@Test
+	/*@Test
 	public void testRead() throws Exception {
 		logger.info(bs.read(2).toString());
-	}
+	}*/
 	
 	@Test
 	public void testGetList() throws Exception {

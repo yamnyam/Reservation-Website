@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.website.mappers.memberMapper">
+   
+    <!-- 회원 가입 -->
+    <insert id="signup">
+     insert into ACCOUNT(acc_id, acc_pw, acc_name, acc_date)
+      values(#{acc_id}, #{acc_pw}, #{acc_name}, #{acc_date})   
+    </insert>
+	
+	<select id = "loginCheck" resultType = "String">
+		SELECT acc_name FROM ACCOUNT
+		WHERE acc_id = #{acc_id} AND acc_pw = #{acc_pw}
+	</select>
+	
+	<select id = "viewMember" resultType = "kr.website.vo.MemberVO">
+		SELECT acc_name, acc_id, acc_date FROM ACCOUNT
+		WHERE acc_id = #{acc_id} AND acc_pw = #{acc_pw}
+	</select>	
+</mapper>
