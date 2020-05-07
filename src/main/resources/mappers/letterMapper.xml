@@ -15,7 +15,7 @@
 		where letter_no = #{letter_no}
 	</select>
 	
-	<resultMap type="LetterVO" id="letterMap">
+	<resultMap type="letterVO" id="letterMap">
 		<result property="let_no" column = "let_no"/>
 		<result property="let_title" column = "let_title"/>
 		<result property="let_content" column = "let_content"/>

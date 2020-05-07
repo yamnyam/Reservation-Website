@@ -27,21 +27,21 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	// 회원 로그인 체크
 	@Override
-	public boolean loginCheck(MemberVO vo) {
-		String name = sql.selectOne("member.loginCheck", vo);
+	public boolean loginCheck(MemberVO vo) throws Exception {
+		String name = sql.selectOne(namespace + ".loginCheck", vo);
 		return (name == null) ? false : true;
 		
 	}
 	
 	// 회원 로그인 정보
 	@Override
-	public MemberVO viewMember(MemberVO vo) {
-		return sql.selectOne("member.viewMember", vo);
+	public MemberVO getMemberInfo(MemberVO vo) throws Exception {
+		return sql.selectOne(namespace + ".getMemberInfo", vo);
 	}
 	
 	// 회원 로그아웃
 	@Override
-	public void logout(HttpSession session) {
+	public void logout(HttpSession session) throws Exception {
 		
 	}
 

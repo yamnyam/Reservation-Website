@@ -7,17 +7,34 @@
    
     <!-- 회원 가입 -->
     <insert id="signup">
-     insert into ACCOUNT(acc_id, acc_pw, acc_name, acc_date)
-      values(#{acc_id}, #{acc_pw}, #{acc_name}, #{acc_date})   
+    	INSERT 
+    	  INTO ACCOUNT
+    		   (
+    			acc_id
+    			, acc_pw
+    			, acc_name
+    			, acc_level
+    		   )
+        VALUES (
+        		#{acc_id}
+        		, #{acc_pw}
+        		, #{acc_name}
+        		, #{acc_level}
+    		   )
     </insert>
 	
-	<select id = "loginCheck" resultType = "String">
-		SELECT acc_name FROM ACCOUNT
-		WHERE acc_id = #{acc_id} AND acc_pw = #{acc_pw}
+	<select id="loginCheck" resultType="String">
+		SELECT acc_name 
+		  FROM ACCOUNT
+		 WHERE acc_id = #{acc_id} 
+		   AND acc_pw = #{acc_pw}
 	</select>
 	
-	<select id = "viewMember" resultType = "kr.website.vo.MemberVO">
-		SELECT acc_name, acc_id, acc_date FROM ACCOUNT
-		WHERE acc_id = #{acc_id} AND acc_pw = #{acc_pw}
+	<select id="getMemberInfo" resultType="memberVO">
+		SELECT acc_name
+		       , acc_id 
+		  FROM ACCOUNT
+		 WHERE acc_id = #{acc_id} 
+		   AND acc_pw = #{acc_pw}
 	</select>	
 </mapper>

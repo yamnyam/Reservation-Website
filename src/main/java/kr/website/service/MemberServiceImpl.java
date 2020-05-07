@@ -22,19 +22,22 @@ public class MemberServiceImpl implements MemberService {
 	
 	// 회원 로그인 체크
 	@Override
-	public boolean loginCheck(MemberVO vo, HttpSession session) {
+	public boolean loginCheck(MemberVO vo, HttpSession session) throws Exception {
 		boolean result = dao.loginCheck(vo);
-		if(result) { // true일 경우 세션에 등록
-			MemberVO vo2 = dao.viewMember(vo);
+		
+		// true일 경우 세션에 등록
+		if (result) { 
+			MemberVO member = dao.getMemberInfo(vo);
 			//세션 변수 등록
-			session.setAttribute("acc_id", vo2.getAcc_id());
-			session.setAttribute("acc_name", vo2.getAcc_name());
+			session.setAttribute("acc_id", member.getAcc_id());
+			session.setAttribute("acc_name", member.getAcc_name());
 		}
+		
 		return result;
 	}
 	
 	@Override
-	public void logout(HttpSession session) {
+	public void logout(HttpSession session) throws Exception {
 		// 세션 정보를 초기화 시킴
 		session.invalidate();
 	}
