@@ -20,6 +20,12 @@ public class MemberServiceImpl implements MemberService {
 		dao.register(vo);
 	}
 	
+	// 회원가입 중복 로그인 체크
+	@Override
+	public int idCheck(MemberVO vo) throws Exception {
+		return dao.idCheck(vo);
+	}
+	
 	// 회원 로그인 체크
 	@Override
 	public boolean loginCheck(MemberVO vo, HttpSession session) throws Exception {
@@ -28,6 +34,8 @@ public class MemberServiceImpl implements MemberService {
 		// true일 경우 세션에 등록
 		if (result) { 
 			MemberVO member = dao.getMemberInfo(vo);
+			//
+			dao.updateLogin(vo);
 			//세션 변수 등록
 			session.setAttribute("acc_id", member.getAcc_id());
 			session.setAttribute("acc_name", member.getAcc_name());

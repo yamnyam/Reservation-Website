@@ -14,12 +14,14 @@
     			, acc_pw
     			, acc_name
     			, acc_level
+    			, acc_count
     		   )
         VALUES (
         		#{acc_id}
         		, #{acc_pw}
         		, #{acc_name}
         		, #{acc_level}
+        		, 0
     		   )
     </insert>
 	
@@ -36,5 +38,18 @@
 		  FROM ACCOUNT
 		 WHERE acc_id = #{acc_id} 
 		   AND acc_pw = #{acc_pw}
+	</select>
+	
+	<update id="loginUpdate">
+		UPDATE ACCOUNT
+		   SET acc_count = acc_count + 1
+		 WHERE acc_id = #{acc_id}
+		   AND acc_pw = #{acc_pw}
+	</update>
+	
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(*)
+		  FROM ACCOUNT
+		 WHERE acc_id = #{acc_id}
 	</select>	
 </mapper>

@@ -69,9 +69,20 @@ public class MemberController {
 	
 	// 회원가입 등록
 	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public String Register(MemberVO vo) throws Exception {
+	public ModelAndView Register(MemberVO vo) throws Exception {
 		Logger.info("get register");
-		service.register(vo);
-		return "main";
+		ModelAndView mav = new ModelAndView();
+		int id_count = service.idCheck(vo);
+		if (id_count == 1) {
+			mav.addObject("url", "/member/signup");
+			mav.addObject("msg", "존재하는 아이디가 있습니다.");
+			mav.setViewName("/common/msgAlert");
+			return mav;
+		} else {
+			service.register(vo);
+		}
+		
+		mav.setViewName("main");
+		return mav;
 	}
 }

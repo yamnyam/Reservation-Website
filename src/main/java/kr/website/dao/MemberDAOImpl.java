@@ -25,6 +25,12 @@ public class MemberDAOImpl implements MemberDAO {
 		
 	}
 	
+	// 회원 가입 중복 로그인 체크
+	@Override
+	public int idCheck(MemberVO vo) throws Exception {
+		return sql.selectOne(namespace + ".idCheck", vo);
+	}
+	
 	// 회원 로그인 체크
 	@Override
 	public boolean loginCheck(MemberVO vo) throws Exception {
@@ -37,6 +43,12 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public MemberVO getMemberInfo(MemberVO vo) throws Exception {
 		return sql.selectOne(namespace + ".getMemberInfo", vo);
+	}
+	
+	// 회원 로그인 Count
+	@Override
+	public void updateLogin(MemberVO vo) throws Exception{
+		sql.update(namespace + ".loginUpdate", vo);
 	}
 	
 	// 회원 로그아웃
