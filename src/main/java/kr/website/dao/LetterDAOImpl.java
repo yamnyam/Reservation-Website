@@ -1,5 +1,6 @@
 package kr.website.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,32 +15,53 @@ import kr.website.vo.LetterVO;
 public class LetterDAOImpl implements LetterDAO {
 	
 	@Inject
-	private SqlSession session;
+	private SqlSession sql;
 	
-	private static String namespace = "kr.website.mapper.LetterMapper";
+	private static String namespace = "kr.website.mapper.letterMapper";
 	
 	@Override
-	public void create(LetterVO vo) throws Exception {
-		session.insert(namespace + ".create", vo); 
+	public void write(LetterVO vo) throws Exception {
+		sql.insert(namespace + ".write", vo); 
 	}
 
 	@Override
-	public LetterVO read(int bno) throws Exception {
-		return session.selectOne(namespace + ".read", bno);
+	public LetterVO view(int no) throws Exception {
+		return sql.selectOne(namespace + ".view", no);
 	}
 
 	@Override
-	public void update(LetterVO vo) throws Exception {
-		session.update(namespace + ".update", vo);
+	public void modify(LetterVO vo) throws Exception {
+		sql.update(namespace + ".update", vo);
 	}
 
 	@Override
-	public void delete(int bno) throws Exception {
-		session.delete(namespace + ".delete", bno);
+	public void delete(int no) throws Exception {
+		sql.delete(namespace + ".delete", no);
 	}
 
 	@Override
-	public List<LetterVO> listAll() throws Exception {
-		return session.selectList(namespace + ".listAll");
+	public List<LetterVO> list() throws Exception {
+		return sql.selectList(namespace + ".list");
+	}
+	
+	@Override
+	public int count() throws Exception{
+		return sql.selectOne(namespace + ".count");
+	}
+	
+	@Override
+	public List<LetterVO> listPage(int displayPost, int postNum) throws Exception {
+		
+		 HashMap data = new HashMap();
+		  
+		 data.put("displayPost", displayPost);
+		 data.put("postNum", postNum);
+		
+		return sql.selectList(namespace + ".listPage", data);
+	}
+	
+	@Override
+	public void updateViewCnt(int let_no) throws Exception {
+		sql.update(namespace + ".updateViewCnt", let_no);
 	}
 }

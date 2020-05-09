@@ -7,22 +7,9 @@ public class LetterVO {
 	private String let_title;
 	private String let_content;
 	private Date let_date;
-	private int acc_no;
-	private String let_image; 
-	
-	@Override
-	public String toString() {
-		return "LetterVO[let_no=" + let_no + ", let_content=" + let_content + ", let_date=" + let_date + ", acc_no=" + 
-				acc_no + ", let_image=" + let_image + "]";
-	}
-	
-	public String getLet_title() {
-		return let_title;
-	}
-
-	public void setLet_title(String let_title) {
-		this.let_title = let_title;
-	}
+	private int let_no_acc;
+	private String photo;
+	private int let_viewCnt;
 
 	public int getLet_no() {
 		return let_no;
@@ -47,21 +34,36 @@ public class LetterVO {
 	public void setLet_date(Date let_date) {
 		this.let_date = let_date;
 	}
-	
-	public int getAcc_no() {
-		return acc_no;
-	}
-	
-	public void setAcc_no(int acc_no) {
-		this.acc_no = acc_no;
-	}
-	
-	public String getLet_image() {
-		return let_image;
-	}
-	
-	public void setLet_image(String let_image) {
-		this.let_image = let_image;
+
+	public int getLet_no_acc() {
+		return let_no_acc;
 	}
 
+	public void setLet_no_acc(int let_no_acc) {
+		this.let_no_acc = let_no_acc;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getLet_title() {
+		return let_title;
+	}
+
+	public void setLet_title(String let_title) {
+		this.let_title = let_title;
+	}
+
+	public int getLet_viewCnt() {
+		return let_viewCnt;
+	}
+
+	public void setLet_viewCnt(int let_viewCnt) {
+		this.let_viewCnt = let_viewCnt;
+	}
 }

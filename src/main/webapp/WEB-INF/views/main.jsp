@@ -68,7 +68,7 @@
 		        <li><a href="#"><!-- <img src="#"> --><span>HOME</span></a></li>
 		        <li><a href="#"><!-- <img src="#"> --><span>내주변맛집</span></a></li>
 		        <li><a href="#"><!-- <img src="#"> --><span>해시태그</span></a></li>
-		        <li><a href="#"><!-- <img src="#"> --><span>예약</span></a></li>
+		        <li><a href="/letter/listPage?num=1"><!-- <img src="#"> --><span>마음의 편지</span></a></li>
     		</ul>
    			<!-- <ul>
 		        <li onclick="location.href='#'" style="background-color: 123"><img src="이미지넣은경로" alt="기능1"></li>

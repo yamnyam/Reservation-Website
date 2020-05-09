@@ -3,6 +3,7 @@ package kr.website.service;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -16,27 +17,54 @@ public class LetterServiceImpl implements LetterService {
 	private LetterDAO dao;
 	
 	@Override
-	public void regist(LetterVO vo) throws Exception {
-		dao.create(vo);
+	public void write(LetterVO vo) throws Exception {
+		dao.write(vo);
 	}
 	
 	@Override
-	public LetterVO read(int bno) throws Exception {
-		return dao.read(bno);
+	public LetterVO view(int no) throws Exception {
+		return dao.view(no);
 	}
 	
 	@Override
 	public void modify(LetterVO vo) throws Exception {
-		dao.update(vo);
+		dao.modify(vo);
 	}
 	
 	@Override
-	public void remove(int bno) throws Exception {
-		dao.delete(bno);
+	public void delete(int no) throws Exception {
+		dao.delete(no);
 	}
 	
 	@Override
-	public List<LetterVO> listAll() throws Exception {
-		return dao.listAll();
+	public List<LetterVO> list() throws Exception {
+		return dao.list();
+	}
+	
+	@Override
+	public int count() throws Exception {
+		return dao.count();
+	}
+	
+	@Override
+	public List listPage(int displayPost, int postNum) throws Exception {
+	 return dao.listPage(displayPost, postNum);
+	}
+	
+	@Override
+	public void updateViewCnt(int let_no, HttpSession session) throws Exception {
+		long update_time = 0;
+		
+		if(session.getAttribute("update_time" + let_no) != null) {
+			update_time = (long)session.getAttribute("update_time" + let_no);
+		}
+		
+		long current_time = System.currentTimeMillis();
+		
+		if(current_time - update_time > 5*1000) {
+			dao.updateViewCnt(let_no);
+			
+			session.setAttribute("update_time" + let_no, current_time);
+		}
 	}
 }

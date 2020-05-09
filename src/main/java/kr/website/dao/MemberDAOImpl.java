@@ -51,6 +51,11 @@ public class MemberDAOImpl implements MemberDAO {
 		sql.update(namespace + ".loginUpdate", vo);
 	}
 	
+	@Override
+	public void dateLogin(MemberVO vo) throws Exception{
+		sql.update(namespace + ".dateUpdate", vo);
+	}
+	
 	// 회원 로그아웃
 	@Override
 	public void logout(HttpSession session) throws Exception {

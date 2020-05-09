@@ -15,6 +15,7 @@
     			, acc_name
     			, acc_level
     			, acc_count
+    			, acc_date
     		   )
         VALUES (
         		#{acc_id}
@@ -22,6 +23,7 @@
         		, #{acc_name}
         		, #{acc_level}
         		, 0
+        		, now()
     		   )
     </insert>
 	
@@ -42,9 +44,16 @@
 	
 	<update id="loginUpdate">
 		UPDATE ACCOUNT
-		   SET acc_count = acc_count + 1
+		   SET acc_count = acc_count + 1 
 		 WHERE acc_id = #{acc_id}
 		   AND acc_pw = #{acc_pw}
+	</update>
+	
+	<update id="dateUpdate">
+		UPDATE ACCOUNT
+		   SET acc_date = now()
+		 WHERE acc_id = #{acc_id}
+		   AND acc_pw = #{acc_pw}  
 	</update>
 	
 	<select id="idCheck" resultType="int">

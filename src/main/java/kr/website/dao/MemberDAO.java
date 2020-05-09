@@ -21,6 +21,9 @@ public interface MemberDAO {
 	// 회원 로그인 Count
 	public void updateLogin(MemberVO vo) throws Exception;
 	
+	// 회원 로그인 updateDate
+	public void dateLogin(MemberVO vo) throws Exception;
+	
 	// 회원 로그아웃
 	public void logout(HttpSession session) throws Exception;
 }

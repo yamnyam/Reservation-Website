@@ -5,14 +5,28 @@ import java.util.List;
 import kr.website.vo.LetterVO;
 
 public interface LetterDAO {
-	public void create(LetterVO vo) throws Exception;
-	//글 작성하기
-	public LetterVO read(int bno) throws Exception;
-	//글 읽어오기
-	public void update(LetterVO vo) throws Exception;
-	//글 수정하기
-	public void delete(int bno) throws Exception;
-	//글 삭제하기
-	public List<LetterVO> listAll() throws Exception;
-	//글 목록 가져오기
+	
+	// 게시물 작성
+	public void write(LetterVO vo) throws Exception;
+	
+	// 게시물 조회
+	public LetterVO view(int no) throws Exception;
+	
+	// 게시물 수정
+	public void modify(LetterVO vo) throws Exception;
+	
+	// 게시물 삭제
+	public void delete(int no) throws Exception;
+	
+	// 게시물 목록
+	public List<LetterVO> list() throws Exception;
+	
+	// 게시물 총 갯수
+	public int count() throws Exception;
+	
+	// 게시물 목록 + 페이징
+	public List listPage(int displayPost, int postNum) throws Exception;
+	
+	// 게시물 조회수 증가
+	public void updateViewCnt(int let_no) throws Exception;
 }

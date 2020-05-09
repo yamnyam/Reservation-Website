@@ -34,8 +34,10 @@ public class MemberServiceImpl implements MemberService {
 		// true일 경우 세션에 등록
 		if (result) { 
 			MemberVO member = dao.getMemberInfo(vo);
-			//
+			// 로그인 할 시 acc_count 값  + 1, 날짜 업데이트
 			dao.updateLogin(vo);
+			dao.dateLogin(vo);
+			
 			//세션 변수 등록
 			session.setAttribute("acc_id", member.getAcc_id());
 			session.setAttribute("acc_name", member.getAcc_name());
