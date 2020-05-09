@@ -29,6 +29,7 @@
 		</script>
 	</head>
 	<body>
+		<h2>게시물 보기</h2>
 		<form name="form" method="post">
 			<div>
 				작성일자 : <fmt:formatDate value="${view.let_date}" pattern="yyyy-MM-dd a HH:mm:ss" />
@@ -45,7 +46,7 @@
 			
 			<div style="width:650px;">
 				<button type="button" id="btnUpdate">수정</button>
-				<button type="submit" id="btnDelete">삭제</button>
+				<button type="button" id="btnDelete">삭제</button>
 			</div>
 		</form>
 		

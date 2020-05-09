@@ -6,6 +6,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>list</title>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#btnWrite").click(function(){
+					location.href = "/letter/write";
+				});
+			});
+		</script>
 	</head>
 	<body>
 	<h2>게시글 목록</h2>
