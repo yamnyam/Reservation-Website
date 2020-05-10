@@ -23,7 +23,7 @@
 				)
 	</insert>
 	
-	<select id="view" resultType="LetterVO">
+	<select id="view" resultType="letterVO">
 		SELECT let_no, let_title, let_content, let_date, let_viewCnt
 		  FROM letter
 		 WHERE let_no = #{let_no}

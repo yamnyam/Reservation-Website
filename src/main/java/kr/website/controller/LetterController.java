@@ -68,16 +68,18 @@ public class LetterController {
 		
 		model.addAttribute("view", vo);
 		
-		return "letter/view";
+		return "/letter/view";
 	}
 	
 	// 게시글 수정
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public void modify(@RequestParam("let_no") int no, Model model) throws Exception{
+	public String modify(@RequestParam("let_no") int no, Model model) throws Exception{
 		
 		LetterVO vo = service.view(no);
 		
 		model.addAttribute("view", vo);
+		
+		return "/letter/modify";
 
 	}
 	

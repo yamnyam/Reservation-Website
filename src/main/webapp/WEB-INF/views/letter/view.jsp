@@ -9,7 +9,7 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$("#btnDelete").click(function(){
-					var delConfirm = confirm("삭제하시겠습니까?")
+					var delConfirm = confirm("삭제하시겠습니까?");
 					if(delConfirm){
 						document.form.action = "/letter/delete?let_no=${view.let_no}";
 						alert("삭제되었습니다.");
@@ -18,14 +18,12 @@
 						alert("삭제가 취소되었습니다.");
 					}
 				});
+				
+				$("#btnUpdate").click(function(){
+					location.href = "/letter/modify?let_no=${view.let_no}";
+				});
 			});
 			
-			$(document).ready(function(){
-				$("#btnUpdate").click(function(){
-					document.form.action = "/letter/modify?let_no=${view.let_no}";
-					document.form.submit();
-				});
-			})
 		</script>
 	</head>
 	<body>
@@ -49,11 +47,6 @@
 				<button type="button" id="btnDelete">삭제</button>
 			</div>
 		</form>
-		
-		<div>
-			<a href="/letter/modify?let_no=${view.let_no}">게시물 수정</a>, <a href="/letter/delete?let_no=${view.let_no}">게시물 삭제</a>
-		</div>
-
 		<ul>
 			<li>
 				<a href="/letter/listPage?num=1">게시물 목록</a>
