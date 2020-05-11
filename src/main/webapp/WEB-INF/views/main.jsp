@@ -11,6 +11,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/resources/css/main.css" />
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a"></script>
+		<script src="/resources/js/jquery.min.js"></script>
+		<script src="/resources/js/jquery.scrolly.min.js"></script>
+		<script src="/resources/js/skel.min.js"></script>
+		<script src="/resources/js/util.js"></script>
+		<script src="/resources/js/main.js"></script>
+		<script src="/resources/js/kakao.js"></script>
+		<script>
+			Kakao.init('efac78643eb016816e0a0d506200b05a');
+
+        	// SDK 초기화 여부를 판단합니다.
+       		console.log(Kakao.isInitialized());
+       		Kakao.Auth.createLoginButton({
+       		  container: '#kakao-login-btn',
+       		  size: 'small',
+       		  success: function(response) {
+       		    console.log(response);
+       		  },
+       		  fail: function(error) {
+       		    console.log(error);
+       		  },
+       		});
+		</script>
+		
 	</head>
 	<body>
 
@@ -135,10 +158,7 @@
 				
 				<p style="border-top: 1px solid #ededed"></p>
 				<!-- for문닫 -->
-			<!-- Footer -->
-				
-				
-			</div>	
+			<!-- Footer -->	
 			<!-- Footer -->
 		</div>
 		
@@ -146,36 +166,14 @@
 		<div id="bottom_bar">
 			<div id="bottom_bar">
     			<ul>
-			        <li onclick="location.href='#'"><img src="/resources/images/bar_home.png" alt="기능1">HOME</li>
-			        <li onclick="location.href='#'"><img src="/resources/images/bar_food.png" alt="기능2">내주변맛집</li>
-			        <li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="기능3">해시태그</li>
-			        <li onclick="location.href='#'"><img src="/resources/images/bar_food2.png" alt="기능4">ㅁㄹ</li>
+			        <li onclick="location.href='/'"><img src="/resources/images/bar_home.png" alt="HOME">HOME</li>
+			        <li onclick="location.href='#'"><img src="/resources/images/bar_food.png" alt="내주변맛집">내주변맛집</li>
+			        <li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="해시태그">해시태그</li>
+			        <li onclick="location.href='#'"><img src="/resources/images/bar_food2.png" alt="미정">ㅁㄹ</li>
 			    </ul>
 			</div>
-			
+		</div>	
 			
 		<!-- Scripts -->
-		<script src="/resources/js/jquery.min.js"></script>
-		<script src="/resources/js/jquery.scrolly.min.js"></script>
-		<script src="/resources/js/skel.min.js"></script>
-		<script src="/resources/js/util.js"></script>
-		<script src="/resources/js/main.js"></script>
-		<script src="/resources/js/kakao.js"></script>
-		<script>
-			Kakao.init('efac78643eb016816e0a0d506200b05a');
-
-        	// SDK 초기화 여부를 판단합니다.
-       		console.log(Kakao.isInitialized());
-       		Kakao.Auth.createLoginButton({
-       		  container: '#kakao-login-btn',
-       		  size: 'small',
-       		  success: function(response) {
-       		    console.log(response);
-       		  },
-       		  fail: function(error) {
-       		    console.log(error);
-       		  },
-       		});
-		</script>
-	</body>
+		</body>
 </html>
