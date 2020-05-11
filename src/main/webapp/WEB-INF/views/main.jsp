@@ -19,7 +19,7 @@
 			<nav class="left">
 				<a href="#menu"><span>Menu</span></a>
 			</nav>
-			<a href="/" class="logo">보통밥집</a>
+			<a href="/" class="logo"><img src="/resources/images/home.png"></a>
 			<nav class="right">	
 				<% if (id == null || id == "") { %>
 					<a href="/member/login" class="button alt">Login</a>
