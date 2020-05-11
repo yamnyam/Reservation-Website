@@ -1,17 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>게시물 수정</title>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$("#btnCancel").click(function(){
 					var cancel = confirm("취소하시겠습니까?");
 					if(cancel){
-						document.form.action = "/letter/listPage?num=1";
+						document.form.action = "/letter/list?num=1";
 						alert("취소되었습니다.");
  						document.form.submit();
 					}
@@ -36,7 +35,7 @@
 		
 		<ul>
 			<li>
-				<a href="/letter/listPage?num=1">게시물 목록</a>
+				<a href="/letter/list?num=1">게시물 목록</a>
 			</li>
 		</ul>
 	</body>

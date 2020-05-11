@@ -1,12 +1,12 @@
-package kr.website.service;
+package kr.website.member.service;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
-import kr.website.dao.MemberDAO;
-import kr.website.vo.MemberVO;
+import kr.website.member.dao.MemberDAO;
+import kr.website.member.vo.MemberVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -39,6 +39,7 @@ public class MemberServiceImpl implements MemberService {
 			dao.dateLogin(vo);
 			
 			//세션 변수 등록
+			session.setAttribute("acc_no", member.getAcc_no());
 			session.setAttribute("acc_id", member.getAcc_id());
 			session.setAttribute("acc_name", member.getAcc_name());
 		}

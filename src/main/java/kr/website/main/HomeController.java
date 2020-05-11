@@ -1,4 +1,4 @@
-package kr.website.reservation;
+package kr.website.main;
 
 import java.text.DateFormat;
 import java.util.Date;

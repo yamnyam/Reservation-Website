@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>Signup</title>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript">
 			//TODO 1 기본적인 입력값 체크
 			//TODO 2 비밀번호 확인값 체크

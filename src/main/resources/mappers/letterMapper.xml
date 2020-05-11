@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="kr.website.mapper.letterMapper">
+<mapper namespace="letter">
 
 	<insert id="write">
 		INSERT 
 		  INTO letter
-		  		(
-		  		 let_title
-		  		 , let_content
-		  		 , let_date 
-		  		 , let_viewCnt
-		  		) 
-		VALUES 
-				(
-				 #{let_title}
-				 , #{let_content}
-				 , NOW()
-				 , 0
-				)
+		  	   (
+				let_title
+		  		, let_content
+		  		, let_date 
+		  		, let_no_acc
+		  		, let_viewCnt 
+		  	   ) 
+		VALUES (
+				#{let_title}
+				, #{let_content}
+				, #{let_no_acc}
+				, NOW()
+				, 0
+			   )
 	</insert>
 	
 	<select id="view" resultType="letterVO">
@@ -40,12 +39,6 @@
 		 WHERE let_no = #{let_no}
 	</delete>
 	
-	
-	<select id="list" resultType="letterVO">
-			SELECT let_no, let_title, let_content, let_date, let_no_acc, let_photo
-			  FROM letter 
-	</select>
-	
 	<!-- 게시물 총 갯수 -->
 	<select id="count" resultType="int">
 		SELECT COUNT(let_no)
@@ -53,10 +46,16 @@
 	</select>
 	
 	<!-- 게시물 목록 + 페이징 -->
-	<select id="listPage" resultType="letterVO">
-		SELECT let_no, let_title, let_content, let_date, let_no_acc, let_photo, let_viewCnt
+	<select id="list" resultType="letterVO">
+		SELECT let_no
+			   , let_title
+			   , let_content
+			   , let_date
+			   , let_no_acc
+			   , let_photo
+			   , let_viewCnt
 		  FROM letter
-	  ORDER BY let_no ASC
+	  ORDER BY let_no DESC
 		 LIMIT #{displayPost}, #{postNum}
 	</select>
 	

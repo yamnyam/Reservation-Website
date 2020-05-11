@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-	String id = (String)session.getAttribute("acc_id");
-%>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,6 +8,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/resources/css/main.css" />
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a"></script>
+		<script type="text/javascript">
+			function listLetter() {
+				var acc_no = <%= no %>;
+				console.log("acc_no >>>>>>>> ", acc_no);
+				if(acc_no == "" || acc_no == null){
+					alert("로그인한 후 이용가능합니다.");
+					return;
+				}
+				
+				location.herf = "/letter/list?acc_no=" + acc_no;
+			}
+		</script>
 	</head>
 	<body>
 
@@ -21,7 +30,7 @@
 			</nav>
 			<a href="/" class="logo">보통밥집</a>
 			<nav class="right">	
-				<% if (id == null || id == "") { %>
+				<% if (no == null || no == "") { %>
 					<a href="/member/login" class="button alt">Login</a>
 				<% } else { %>
 					<a href="/member/logout" class="button alt">Logout</a>
@@ -144,6 +153,7 @@
 		
 		<!-- Bottom_bar -->
 		<div id="bottom_bar">
+<<<<<<< Updated upstream
 			<div id="bottom_bar">
     			<ul>
 			        <li onclick="location.href='#'"><img src="/resources/images/bar_home.png" alt="기능1">HOME</li>
@@ -153,6 +163,21 @@
 			    </ul>
 			</div>
 			
+=======
+			<ul>
+		        <li><a href="#"><!-- <img src="#"> --><span>HOME</span></a></li>
+		        <li><a href="#"><!-- <img src="#"> --><span>내주변맛집</span></a></li>
+		        <li><a href="#"><!-- <img src="#"> --><span>해시태그</span></a></li>
+		        <li><a href="#" onclick="listLetter();return false;"><!-- <img src="#"> --><span>마음의 편지</span></a></li>
+    		</ul>
+   			<!-- <ul>
+		        <li onclick="location.href='#'" style="background-color: 123"><img src="이미지넣은경로" alt="기능1"></li>
+		        <li onclick="location.href='#'" style="background-color: 456"><img src="이미지넣은경로" alt="기능2"></li>
+		        <li onclick="location.href='#'" style="background-color: 789"><img src="이미지넣은경로" alt="기능3"></li>
+		        <li onclick="location.href='#'" style="background-color: abc"><img src="이미지넣은경로" alt="기능4"></li>
+		    </ul> -->
+		</div>
+>>>>>>> Stashed changes
 			
 		<!-- Scripts -->
 		<script src="/resources/js/jquery.min.js"></script>

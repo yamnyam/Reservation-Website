@@ -1,4 +1,4 @@
-package kr.website.vo;
+package kr.website.member.vo;
 
 import java.util.Date;
 

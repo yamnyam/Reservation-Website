@@ -1,8 +1,8 @@
-package kr.website.service;
+package kr.website.member.service;
 
 import javax.servlet.http.HttpSession;
 
-import kr.website.vo.MemberVO;
+import kr.website.member.vo.MemberVO;
 
 public interface MemberService {
 	

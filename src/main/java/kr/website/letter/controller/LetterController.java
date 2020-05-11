@@ -1,4 +1,4 @@
-package kr.website.controller;
+package kr.website.letter.controller;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.website.service.LetterService;
-import kr.website.vo.LetterVO;
+import kr.website.letter.service.LetterService;
+import kr.website.letter.vo.LetterVO;
 
 @Controller
 @RequestMapping("/letter/*")
@@ -25,22 +25,7 @@ public class LetterController {
 	@Inject
 	private LetterService service;
 	
-	// 게시글 목록
-	@RequestMapping(value = "list")
-	public String list(Model model) throws Exception {
-		
-		Logger.info("Letter");
-		
-		List<LetterVO> list = null;
-		
-		list = service.list();
-		
-		model.addAttribute("list", list);
-		
-		return "/letter/list";
-	}
-	
-	// 게시글 작성
+	// 게시글 작성 화면 호출
 	@RequestMapping(value = "write", method=RequestMethod.GET)
 	public String write() throws Exception {
 		
@@ -49,13 +34,13 @@ public class LetterController {
 		return "/letter/write";
 	}
 	
-	// 게시글 작성 후
+	// 게시글 작성
 	@RequestMapping(value="write", method=RequestMethod.POST)
 	public String postWrite(LetterVO vo) throws Exception {
 		
 		service.write(vo);
 		
-		return "redirect:/letter/listPage?num=1";
+		return "redirect:/letter/list?num=1";
 	}
 	
 	// 게시글 조회
@@ -98,21 +83,21 @@ public class LetterController {
 		
 		service.delete(no);
 		
-		return "redirect:/letter/listPage?num=1";
+		return "redirect:/letter/list?num=1";
 	}
 	
-	// 게시글 총 갯수
-	@RequestMapping(value = "/listpage")
-	public void getListPage(Model model) throws Exception{
-		
-		List<LetterVO> list = null;
-		list = service.list();
-		model.addAttribute("list", list);
-	}
+//	// 게시글 총 갯수
+//	@RequestMapping(value = "/list")
+//	public void getlist(Model model) throws Exception{
+//		
+//		List<LetterVO> list = null;
+//		list = service.list();
+//		model.addAttribute("list", list);
+//	}
 
 	// 게시글 목록 + 페이징
-	@RequestMapping(value = "/listPage")
-	public void getListPage(Model model, @RequestParam("num") int num) throws Exception {
+	@RequestMapping(value = "/list")
+	public void getlist(Model model, @RequestParam("num") int num) throws Exception {
 		
 		int count = service.count(); // 게시글 총 갯수
 		int postNum = 10; // 한 페이지에 출력할 게시글 갯수
@@ -131,7 +116,7 @@ public class LetterController {
 		boolean next = endPageNum * pageNum_cnt >= count ? false : true;
 		
 		List<LetterVO> list = null;
-		list = service.listPage(displayPost, postNum);
+		list = service.list(displayPost, postNum);
 		model.addAttribute("list", list);
 		model.addAttribute("pageNum", pageNum);
 		
@@ -146,4 +131,7 @@ public class LetterController {
 		// 현재 페이지
 		model.addAttribute("select", num);
 	}
+	
+	// 로그인 후 글쓰기 기능
+	
 }
