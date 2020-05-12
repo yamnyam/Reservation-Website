@@ -33,7 +33,6 @@
        		  },
        		});
 		</script>
-		
 	</head>
 	<body>
 
@@ -158,22 +157,25 @@
 				
 				<p style="border-top: 1px solid #ededed"></p>
 				<!-- for문닫 -->
-			<!-- Footer -->	
+			<!-- Footer -->
+				
+				
+				
 			<!-- Footer -->
 		</div>
 		
 		<!-- Bottom_bar -->
-		<div id="bottom_bar">
 			<div id="bottom_bar">
-    			<ul>
+	   			<ul>
 			        <li onclick="location.href='/'"><img src="/resources/images/bar_home.png" alt="HOME">HOME</li>
 			        <li onclick="location.href='#'"><img src="/resources/images/bar_food.png" alt="내주변맛집">내주변맛집</li>
 			        <li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="해시태그">해시태그</li>
 			        <li onclick="location.href='#'"><img src="/resources/images/bar_food2.png" alt="미정">ㅁㄹ</li>
 			    </ul>
 			</div>
-		</div>	
+		
 			
-		<!-- Scripts -->
-		</body>
+		
+		
+	</body>
 </html>

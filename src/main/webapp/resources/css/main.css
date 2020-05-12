@@ -61,11 +61,12 @@
 	#wrap {
 		padding: 15px;
 	}
-	
+
 	#wrap_ {
 		position: relative;
 		min-height: 100%;
 	}
+
 
 /* Header */
 
@@ -86,8 +87,7 @@
 		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.075);
 		text-align: center;
 	}
-	
-	
+
 		#header .logo {
 			color: #f6755e;
 			font-family: "Pacifico", cursive;
@@ -149,7 +149,8 @@
 					#header nav a[href="#menu"]:before {
 						margin: 0 0.5em 0 0;
 					}
-		
+					
+						
 	#header_{
 		-moz-align-items: center;
 		-webkit-align-items: center;
@@ -223,7 +224,6 @@
 	    background-color: #a2a2a2;
 	    -webkit-appearance: none;
 }
-	
 	}
 		
 		/* Search-box */
