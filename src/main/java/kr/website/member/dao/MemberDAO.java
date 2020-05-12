@@ -1,8 +1,8 @@
-package kr.website.dao;
+package kr.website.member.dao;
 
 import javax.servlet.http.HttpSession;
 
-import kr.website.vo.MemberVO;
+import kr.website.member.vo.MemberVO;
 
 public interface MemberDAO {
 	

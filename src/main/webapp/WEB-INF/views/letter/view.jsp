@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>게시물 조회</title>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$("#btnDelete").click(function(){
@@ -49,7 +48,7 @@
 		</form>
 		<ul>
 			<li>
-				<a href="/letter/listPage?num=1">게시물 목록</a>
+				<a href="/letter/list?num=1">게시물 목록</a>
 			</li>
 		</ul>
 	</body>

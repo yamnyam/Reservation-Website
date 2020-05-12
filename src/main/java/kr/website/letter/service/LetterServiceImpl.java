@@ -1,4 +1,4 @@
-package kr.website.service;
+package kr.website.letter.service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
-import kr.website.dao.LetterDAO;
-import kr.website.vo.LetterVO;
+import kr.website.letter.dao.LetterDAO;
+import kr.website.letter.vo.LetterVO;
 
 @Service
 public class LetterServiceImpl implements LetterService {
@@ -37,18 +37,13 @@ public class LetterServiceImpl implements LetterService {
 	}
 	
 	@Override
-	public List<LetterVO> list() throws Exception {
-		return dao.list();
-	}
-	
-	@Override
 	public int count() throws Exception {
 		return dao.count();
 	}
 	
 	@Override
-	public List listPage(int displayPost, int postNum) throws Exception {
-	 return dao.listPage(displayPost, postNum);
+	public List<LetterVO> list(int displayPost, int postNum) throws Exception {
+	 return dao.list(displayPost, postNum);
 	}
 	
 	@Override

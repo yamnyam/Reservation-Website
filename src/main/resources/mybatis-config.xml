@@ -3,7 +3,7 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="kr.website.vo.MemberVO" alias="memberVO"/>
-		<typeAlias type="kr.website.vo.LetterVO" alias="letterVO"/>
+		<typeAlias type="kr.website.member.vo.MemberVO" alias="memberVO"/>
+		<typeAlias type="kr.website.letter.vo.LetterVO" alias="letterVO"/>
 	</typeAliases>
 </configuration>

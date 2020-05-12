@@ -1,4 +1,4 @@
-package kr.website.dao;
+package kr.website.member.dao;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
-import kr.website.vo.MemberVO;
+import kr.website.member.vo.MemberVO;
 
 @Service
 public class MemberDAOImpl implements MemberDAO {
@@ -15,26 +15,23 @@ public class MemberDAOImpl implements MemberDAO {
 	@Inject
 	private SqlSession sql;
 	
-	// Mapper
-	private static String namespace = "kr.website.mappers.memberMapper";
-	
 	// 회원 가입
 	@Override
 	public void register(MemberVO vo) throws Exception {
-		sql.insert(namespace + ".signup", vo);
+		sql.insert("member.signup", vo);
 		
 	}
 	
 	// 회원 가입 중복 로그인 체크
 	@Override
 	public int idCheck(MemberVO vo) throws Exception {
-		return sql.selectOne(namespace + ".idCheck", vo);
+		return sql.selectOne("member.idCheck", vo);
 	}
 	
 	// 회원 로그인 체크
 	@Override
 	public boolean loginCheck(MemberVO vo) throws Exception {
-		String name = sql.selectOne(namespace + ".loginCheck", vo);
+		String name = sql.selectOne("member.loginCheck", vo);
 		return (name == null) ? false : true;
 		
 	}
@@ -42,18 +39,18 @@ public class MemberDAOImpl implements MemberDAO {
 	// 회원 로그인 정보
 	@Override
 	public MemberVO getMemberInfo(MemberVO vo) throws Exception {
-		return sql.selectOne(namespace + ".getMemberInfo", vo);
+		return sql.selectOne("member.getMemberInfo", vo);
 	}
 	
 	// 회원 로그인 Count
 	@Override
 	public void updateLogin(MemberVO vo) throws Exception{
-		sql.update(namespace + ".loginUpdate", vo);
+		sql.update("member.loginUpdate", vo);
 	}
 	
 	@Override
 	public void dateLogin(MemberVO vo) throws Exception{
-		sql.update(namespace + ".dateUpdate", vo);
+		sql.update("member.dateUpdate", vo);
 	}
 	
 	// 회원 로그아웃

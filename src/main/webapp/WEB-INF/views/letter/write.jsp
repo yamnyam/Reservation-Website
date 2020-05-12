@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>게시글 작성</title>
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function(){	
 			$("#btnSave").click(function(){
@@ -33,6 +32,7 @@
 			<div>
 				내용<textarea name="let_content" id="let_content" rows="4" cols="80" placeholder="내용을 입력해주세요."></textarea>
 			</div>
+			
 			<div style="width:650px; text-align: center;">
 				<button type="button" id="btnSave">확인</button>
 				<button type="reset">취소</button>
@@ -44,7 +44,7 @@
 		
 		<ul>
 			<li>
-				<a href="/letter/listPage?num=1">게시물 목록</a>
+				<a href="/letter/list?num=1">게시물 목록</a>
 			</li>
 		</ul>
 	</body>
