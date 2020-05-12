@@ -24,7 +24,7 @@ public interface LetterService {
 	public int count() throws Exception;
 	
 	// 게시물 목록 + 페이징
-	public List<LetterVO> list(int displayPost, int postNum) throws Exception;
+	public List<LetterVO> list(LetterVO vo) throws Exception;
 	
 	// 게시물 조회수 증가
 	public void updateViewCnt(int let_no, HttpSession session) throws Exception;

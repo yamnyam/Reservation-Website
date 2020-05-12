@@ -9,8 +9,8 @@
 		  	   (
 				let_title
 		  		, let_content
-		  		, let_date 
 		  		, let_no_acc
+		  		, let_date 
 		  		, let_viewCnt 
 		  	   ) 
 		VALUES (
@@ -43,6 +43,7 @@
 	<select id="count" resultType="int">
 		SELECT COUNT(let_no)
 		  FROM letter
+		 WHERE let_no_acc = #{let_no_acc} 
 	</select>
 	
 	<!-- 게시물 목록 + 페이징 -->
@@ -55,6 +56,7 @@
 			   , let_photo
 			   , let_viewCnt
 		  FROM letter
+		 WHERE let_no_acc = #{let_no_acc} 
 	  ORDER BY let_no DESC
 		 LIMIT #{displayPost}, #{postNum}
 	</select>
