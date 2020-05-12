@@ -19,7 +19,7 @@ public interface LetterDAO {
 	public void delete(int no) throws Exception;
 	
 	// 게시물 총 갯수
-	public int count() throws Exception;
+	public int count(LetterVO vo) throws Exception;
 	
 	// 게시물 목록 + 페이징
 	public List<LetterVO> list(LetterVO vo) throws Exception;

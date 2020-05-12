@@ -38,8 +38,8 @@ public class LetterDAOImpl implements LetterDAO {
 	}
 	
 	@Override
-	public int count() throws Exception{
-		return sql.selectOne("letter.count");
+	public int count(LetterVO vo) throws Exception{
+		return sql.selectOne("letter.count", vo);
 	}
 	
 	@Override

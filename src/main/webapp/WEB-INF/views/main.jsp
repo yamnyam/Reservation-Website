@@ -15,7 +15,9 @@
 					return;
 				}
 				
-				location.href = "/letter/list?let_no_acc=" + acc_no + "&num=1";
+				var form = $("#letterForm");
+				form.submit();
+				
 			}
 		</script>
 	</head>
@@ -182,5 +184,10 @@
        		  },
        		});
 		</script>
+		
+		<!-- 마음의 편지 Form -->
+		<form id="letterForm" action="/letter/list" method="post">
+			<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" />
+		</form>
 	</body>
 </html>

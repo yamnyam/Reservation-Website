@@ -8,7 +8,7 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$("#btnWrite").click(function(){
-					location.href = "/letter/write";
+					location.href = "/letter/writeView";
 				});
 			});
 		</script>
@@ -44,7 +44,7 @@
 					<tr>
 						<td colspan="5">
 							<c:if test="${prev}">
-								<a href="/letter/list?let_no_acc=${let_no_acc} &num=${startPageNum - 1}">[이전]</a>
+								<a href="/letter/list?let_no_acc=${let_no_acc}&num=${startPageNum - 1}">[이전]</a>
 							</c:if>
 						
 							<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
@@ -59,7 +59,7 @@
 							</c:forEach>
 							
 							<c:if test="${next}">
-									<a href="/letter/list?let_no_acc=${let_no_acc}&num=${endPageNum + 1}">[다음]</a>
+								<a href="/letter/list?let_no_acc=${let_no_acc}&num=${endPageNum + 1}">[다음]</a>
 							</c:if> 	
 						</td>
 					</tr>
@@ -72,8 +72,9 @@
 			</tr>
 
 		</table>
-		<% if (no != null && no != "") { %>
-			<button type="button" id="btnWrite">글쓰기</button>	
-		<% } %>
+<!-- 		<form id="letterForm" method="post"> -->
+<%-- 			<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" /> --%>
+<!-- 		</form>	 -->
+		<button type="button" id="btnWrite">글쓰기</button>
 	</body>
 </html>

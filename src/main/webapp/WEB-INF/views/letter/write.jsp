@@ -44,7 +44,7 @@
 		
 		<ul>
 			<li>
-				<a href="/letter/list?num=1">게시물 목록</a>
+				<a href="/letter/list">게시물 목록</a>
 			</li>
 		</ul>
 	</body>

@@ -37,8 +37,8 @@ public class LetterServiceImpl implements LetterService {
 	}
 	
 	@Override
-	public int count() throws Exception {
-		return dao.count();
+	public int count(LetterVO vo) throws Exception {
+		return dao.count(vo);
 	}
 	
 	@Override
