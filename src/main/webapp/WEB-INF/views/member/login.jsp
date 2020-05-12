@@ -79,18 +79,6 @@
 					<div class="btn_login"><input type="submit" title="로그인" alt="로그인" value="로그인" class="btn_global" id="login"></div>
 					<div class="btn_login"><input type="button" title="회원가입" alt="회원가입" value="회원가입" class="btn_global" id="join" onclick="location.href='/member/signup'"></div>
 					<div class="btn_login"><a><img src="/resources/images/kakao_login_btn_medium_wide.png" style="width: 100%;"></a></div>
-					<!-- <p>
-				  		<label for="acc_id">ID</label>
-				  		<input type="text" id="acc_id" name="acc_id" />
-				 	</p>
-				 	<p>
-				  		<label for="acc_pw">PW</label>
-				  		<input type="password" id="acc_pw" name="acc_pw"/>
-				 	</p>
-					<p>
-						<input type="button" id="loginBtn" value="로그인" />
-						<input type="button" value="회원가입" onclick="location.href='/member/signup'"/>
-					</p> -->
 				</form>
 			</div>
 		</div>
