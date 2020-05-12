@@ -220,6 +220,25 @@
 	    background-color: #a2a2a2;
 	    -webkit-appearance: none;
 	}
+	#loginForm .level_code {
+		display: block;
+	    width: 100%;
+	    padding-right: 7px;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	#loginForm .sel{
+		background: #fff;
+		width: 100%;
+	    height: 32px;
+	    font-size: 16px;
+	    line-height: 16px;
+	    color: #000;
+	    border: none;
+	    border-radius: 0;
+	    -webkit-appearance: none;
+	    padding: 7px 0 2px;
+	}
 		
 		/* Search-box */
 		
@@ -479,7 +498,7 @@
 		align-items: center;
 		background: #fff;
 		cursor: default;
-		height: 400px;
+		height: 50%;
 		left: 0;
 		line-height: 60px;
 		position: relative;

@@ -87,35 +87,21 @@
 						</span>
 					</div>
 					<div class="error" role="alert" id="err_empty_pw_check" style="display: none;">비밀번호를 입력해주세요.</div>
+					<div class="input_row">
+						<span class="input_box">
+							<input class="input" type="text" id="acc_name" name="acc_name" placeholder="이름" maxlength="20">
+						</span>
+					</div>
+					<div class="input_row">
+						<div class="level_code">
+							<select class="sel" id="acc_level" name="acc_level">
+	                               	<option value="" selected="">누구</option>
+	                        	    <option value="1">밥집사장</option>
+	                      			<option value="2">손님</option>
+	                        </select>
+						</div>
+					</div>
 					<div class="btn_login"><input type="submit" title="가입하기" alt="가입하기" value="가입하기" class="btn_global" id="join"></div>
-					<!-- <form id="signupForm" action="/member/register" method="post">
-			<p>
-		  		<label for="acc_id">ID</label>
-		  		<input type="text" id="acc_id" name="acc_id" />
-		 	</p>
-		 	<p>
-		  		<label for="acc_pw">PW</label>
-		  		<input type="password" id="acc_pw" name="acc_pw"/>
-		  	</p>
-		  	<p>
-		  		<label for="acc_pw_check">PW 확인</label>
-		  		<input type="password" id="acc_pw_check" name="acc_pw_check"/>
-		  	</p>
-		  	<p>
-		  		<label for="acc_name">Name</label>
-		  		<input type="text" id="acc_name" name="acc_name" />
-		  	</p>
-		  	<p>
-				<input type="radio" id="acc_level" name="acc_level" value="1" />밥집사장
-				<input type="radio" id="acc_level" name="acc_level" value="2" />손님
-		  	</p>
-		  	<p>
-		  		<input type="button" id="regBtn" value="가입완료" />
-		  	</p>
-	  	</form>
-	  	<p>
-	  		<a href="/">처음으로</a>
-	  	</p> -->
 				</form>
 			</div>
 		</div>

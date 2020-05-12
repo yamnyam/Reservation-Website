@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>보통밥집</title>
+		<title>보통밥집 : 내주변 밥집</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/resources/css/main.css" />
@@ -79,7 +79,7 @@
 			</div>
 		
 			<!-- One -->
-			<div id ="map"></div>
+			<div id = "map"></div>
 			<script>
 				var container = document.getElementById('map');
 				var options = {
@@ -89,7 +89,14 @@
 		
 				var map = new kakao.maps.Map(container, options);
 			</script>
-			
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 			<div class="contents">
 					<div class="contents_info">
 					 	<ul>
