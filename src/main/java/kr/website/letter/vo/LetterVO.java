@@ -2,7 +2,9 @@ package kr.website.letter.vo;
 
 import java.util.Date;
 
-public class LetterVO {
+import kr.website.common.vo.PageVO;
+
+public class LetterVO extends PageVO {
 	private int let_no;
 	private String let_title;
 	private String let_content;

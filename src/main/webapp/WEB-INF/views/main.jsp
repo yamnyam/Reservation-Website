@@ -31,15 +31,13 @@
        		});
 		</script>
 		<script type="text/javascript">
-			function listLetter() {
-				var acc_no = <%= no %>;
-				console.log("acc_no >>>>>>>> ", acc_no);
-				if(acc_no == "" || acc_no == null){
+			function listLetter(acc_no) {
+				if(acc_no == undefined){
 					alert("로그인한 후 이용가능합니다.");
 					return;
 				}
 				
-				location.herf = "/letter/list?acc_no=" + acc_no;
+				location.href = "/letter/list?let_no_acc=" + acc_no + "&num=1";
 			}
 		</script>
 	</head>
@@ -91,80 +89,79 @@
 			</script>
 			
 			<div class="contents">
-					<div class="contents_info">
-					 	<ul>
-						 	<li>보통밥집  *4.9</li>
-						 	<li>3,000원 대</li>
-						 	<li>010-1234-1234</li>
-						 	<li>죽전동 어딘가</li>
-						  	<li></li>
-					 	</ul>
-					</div>
-					<div class="contents_img_box">
-					   	<img src="/resources/images/ban.jpg">
-					</div>
+				<div class="contents_info">
+				 	<ul>
+					 	<li>보통밥집  *4.9</li>
+					 	<li>3,000원 대</li>
+					 	<li>010-1234-1234</li>
+					 	<li>죽전동 어딘가</li>
+					  	<li></li>
+				 	</ul>
 				</div>
-				<div class="contents">
-					<div class="contents_info">
-					 	<!-- <ul>
-						 	<li>상호</li>
-						 	<li>대표메뉴가격</li>
-						 	<li>전화번호</li>
-						 	<li>위치</li>
-					 	</ul> -->
-					</div>
-					<div class="contents_img_box">
-					   	<img src="/resources/images/ban.jpg">
-					</div>
+				<div class="contents_img_box">
+				   	<img src="/resources/images/ban.jpg">
 				</div>
-				<div class="contents">
-					<div class="contents_info">
-					 	<!-- <ul>
-						 	<li>상호</li>
-						 	<li>대표메뉴가격</li>
-						 	<li>전화번호</li>
-						 	<li>위치</li>
-					 	</ul> -->
-					</div>
-					<div class="contents_img_box">
-					   	<img src="/resources/images/ban.jpg">
-					</div>
+			</div>
+			<div class="contents">
+				<div class="contents_info">
+				 	<!-- <ul>
+					 	<li>상호</li>
+					 	<li>대표메뉴가격</li>
+					 	<li>전화번호</li>
+					 	<li>위치</li>
+				 	</ul> -->
 				</div>
-				<div class="contents">
-					<div class="contents_info">
-					 	<!-- <ul>
-						 	<li>상호</li>
-						 	<li>대표메뉴가격</li>
-						 	<li>전화번호</li>
-						 	<li>위치</li>
-					 	</ul> -->
-					</div>
-					<div class="contents_img_box">
-					   	<img src="/resources/images/ban.jpg">
-					</div>
+				<div class="contents_img_box">
+				   	<img src="/resources/images/ban.jpg">
 				</div>
-				<div class="contents">
-					<div class="contents_info">
-					 	<!-- <ul>
-						 	<li>상호</li>
-						 	<li>대표메뉴가격</li>
-						 	<li>전화번호</li>
-						 	<li>위치</li>
-					 	</ul> -->
-					</div>
-					<div class="contents_img_box">
-					   	<img src="/resources/images/ban.jpg">
-					</div>
+			</div>
+			<div class="contents">
+				<div class="contents_info">
+				 	<!-- <ul>
+					 	<li>상호</li>
+					 	<li>대표메뉴가격</li>
+					 	<li>전화번호</li>
+					 	<li>위치</li>
+				 	</ul> -->
 				</div>
-				
-				<p style="border-top: 1px solid #ededed"></p>
-				<!-- for문닫 -->
-			<!-- Footer -->
-				
-				
-				
-			<!-- Footer -->
-		</div>
+				<div class="contents_img_box">
+				   	<img src="/resources/images/ban.jpg">
+				</div>
+			</div>
+			<div class="contents">
+				<div class="contents_info">
+				 	<!-- <ul>
+					 	<li>상호</li>
+					 	<li>대표메뉴가격</li>
+					 	<li>전화번호</li>
+					 	<li>위치</li>
+				 	</ul> -->
+				</div>
+				<div class="contents_img_box">
+				   	<img src="/resources/images/ban.jpg">
+				</div>
+			</div>
+			<div class="contents">
+				<div class="contents_info">
+				 	<!-- <ul>
+					 	<li>상호</li>
+					 	<li>대표메뉴가격</li>
+					 	<li>전화번호</li>
+					 	<li>위치</li>
+				 	</ul> -->
+				</div>
+				<div class="contents_img_box">
+				   	<img src="/resources/images/ban.jpg">
+				</div>
+			</div>
+			
+			<p style="border-top: 1px solid #ededed"></p>
+			<!-- for문닫 -->
+		<!-- Footer -->
+			
+			
+		</div>	
+		<!-- Footer -->
 		
 		<!-- Bottom_bar -->
 
@@ -173,10 +170,10 @@
 				<li onclick="location.href='/'"><img src="/resources/images/bar_home.png" alt="HOME">HOME</li>
 				<li onclick="location.href='#'"><img src="/resources/images/bar_food.png" alt="내주변맛집">내주변맛집</li>
 				<li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="해시태그">해시태그</li>
-				<li onclick="listLetter();return false;"><img src="/resources/images/bar_food2.png" alt="미정">ㅁㄹ</li>
-			</ul>
+				<li onclick="javascript:listLetter(<%= no %>)"><img src="/resources/images/bar_food2.png" alt="기능4">마음의편지</li>
+			    </ul>
+			</div>
 		</div>
-		
 		
 	</body>
 </html>

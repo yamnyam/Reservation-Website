@@ -18,6 +18,7 @@
 					alert("내용을 입력하세요.");
 					return;
 				}
+				document.form.action="/letter/write";
 				document.form.submit();
 			});
 		})
@@ -25,21 +26,20 @@
 	</head>
 	<body>
 		<h2>게시글 작성</h2>
-		<form name="form" action="/letter/write" method="post">
+		<form name="form" method="post">
 			<div>
 				제목<input name="let_title" id="let_title" size="80" placeholder="제목을 입력해주세요.">
 			</div>
 			<div>
 				내용<textarea name="let_content" id="let_content" rows="4" cols="80" placeholder="내용을 입력해주세요."></textarea>
 			</div>
-			
+			<div>
+				<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
+			</div>
 			<div style="width:650px; text-align: center;">
 				<button type="button" id="btnSave">확인</button>
 				<button type="reset">취소</button>
 			</div>
-			
-			<button type="submit">작성</button>
-			
 		</form>
 		
 		<ul>

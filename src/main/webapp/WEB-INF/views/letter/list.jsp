@@ -22,48 +22,56 @@
 				<th>작성일</th>
 				<th>조회수</th>
 			</tr>
-			
-			<c:forEach items="${list}" var="list">
-				<tr>
-					<td>${list.let_no}</td>
-					<td>
-						<a href="/letter/view?let_no=${list.let_no}">${list.let_title}</a>
-					</td>
-					<td>
-						<fmt:formatDate value="${list.let_date}" pattern="yyyy-MM-dd HH:mm:ss" />
-					</td>
-					<td>${list.let_viewCnt}</td>
-				</tr>
-			</c:forEach>
-			<tr>
-				<td colspan="5">
-					<c:if test="${prev}">
-						<a href="/letter/list?num=${startPageNum - 1}">[이전]</a>
-					</c:if>
-				
-					<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
-						<c:choose>	
-							<c:when test="${select != num}">
-								<a href="/letter/list?num=${num}">${num}</a>
-							</c:when>
-							<c:otherwise>
-								<span style="color:red">${num}</span>
-							</c:otherwise>	 
-						</c:choose>
+			<c:choose>
+				<c:when test="${fn:length(list) == 0}">
+					<tr>
+						<td colspan="5">등록하신 글이 없습니다.</td>
+					</tr>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${list}" var="list">
+						<tr>
+							<td>${list.let_no}</td>
+							<td>
+								<a href="/letter/view?let_no=${list.let_no}">${list.let_title}</a>
+							</td>
+							<td>
+								<fmt:formatDate value="${list.let_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+							</td>
+							<td>${list.let_viewCnt}</td>
+						</tr>
 					</c:forEach>
-					
-					<c:if test="${next}">
-							<a href="/letter/list?num=${endPageNum + 1}">[다음]</a>
-					</c:if>
-				</td>
-			</tr>
+					<tr>
+						<td colspan="5">
+							<c:if test="${prev}">
+								<a href="/letter/list?let_no_acc=${let_no_acc} &num=${startPageNum - 1}">[이전]</a>
+							</c:if>
+						
+							<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+								<c:choose>	
+									<c:when test="${select != num}">
+										<a href="/letter/list?num=${num}">${num}</a>
+									</c:when>
+									<c:otherwise>
+										<span style="color:red">${num}</span>
+									</c:otherwise>	 
+								</c:choose>
+							</c:forEach>
+							
+							<c:if test="${next}">
+									<a href="/letter/list?let_no_acc=${let_no_acc}&num=${endPageNum + 1}">[다음]</a>
+							</c:if> 	
+						</td>
+					</tr>
+				</c:otherwise>
+			</c:choose>
 			<tr>
 				<td colspan="5">
 					<a href="/">처음으로</a>
 				</td>
-			</tr>	
+			</tr>
+
 		</table>
-		
 		<% if (no != null && no != "") { %>
 			<button type="button" id="btnWrite">글쓰기</button>	
 		<% } %>

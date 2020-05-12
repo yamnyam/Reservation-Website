@@ -42,8 +42,8 @@ public class LetterServiceImpl implements LetterService {
 	}
 	
 	@Override
-	public List<LetterVO> list(int displayPost, int postNum) throws Exception {
-	 return dao.list(displayPost, postNum);
+	public List<LetterVO> list(LetterVO vo) throws Exception {
+	 return dao.list(vo);
 	}
 	
 	@Override

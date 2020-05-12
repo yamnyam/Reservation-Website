@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.website.common.vo.PageVO;
 import kr.website.letter.service.LetterService;
 import kr.website.letter.vo.LetterVO;
 
@@ -40,7 +41,7 @@ public class LetterController {
 		
 		service.write(vo);
 		
-		return "redirect:/letter/list?num=1";
+		return "redirect:/letter/list?let_no_acc=" + vo.getLet_no_acc() + "&num=1";
 	}
 	
 	// 게시글 조회
@@ -79,11 +80,12 @@ public class LetterController {
 	
 	// 게시글 삭제
 	@RequestMapping(value = "/delete")
-	public String delete(@RequestParam("let_no") int no) throws Exception{
+	public String delete(LetterVO vo) throws Exception{
 		
+		int no = vo.getLet_no();
 		service.delete(no);
 		
-		return "redirect:/letter/list?num=1";
+		return "redirect:/letter/list?let_no_acc=" + vo.getLet_no_acc() + "&num=1";
 	}
 	
 //	// 게시글 총 갯수
@@ -97,15 +99,23 @@ public class LetterController {
 
 	// 게시글 목록 + 페이징
 	@RequestMapping(value = "/list")
-	public void getlist(Model model, @RequestParam("num") int num) throws Exception {
+	public void getlist(Model model, LetterVO vo) throws Exception {
 		
-		int count = service.count(); // 게시글 총 갯수
+		int num = vo.getNum();
+		int let_no_acc = vo.getLet_no_acc();
 		int postNum = 10; // 한 페이지에 출력할 게시글 갯수
-		int pageNum = (int)Math.ceil((double)count/postNum); // 하단 페이징 번호{(게시물 총 갯수 / 한 페이지에 출력할 갯수)의 올림}
 		int displayPost = (num - 1) * postNum; // 출력할 게시글
 		int pageNum_cnt = 10; // 한 번에 표시할 페이징 번호의 갯수
 		int endPageNum = (int)(Math.ceil((double)num / (double)pageNum_cnt) * pageNum_cnt); // 표시되는 페이지 번호 중 마지막 번호
 		int startPageNum = endPageNum - (pageNum_cnt - 1);
+		
+		vo.setDisplayPost(displayPost);
+		vo.setPostNum(postNum);
+
+		List<LetterVO> list = null;
+		list = service.list(vo);
+		int count = service.count(); // 게시글 총 갯수
+		int pageNum = (int)Math.ceil((double)count/postNum); // 하단 페이징 번호{(게시물 총 갯수 / 한 페이지에 출력할 갯수)의 올림}
 		int endPageNum_tmp = (int)(Math.ceil((double)count / (double)pageNum_cnt));
 		
 		if(endPageNum > endPageNum_tmp) {
@@ -115,10 +125,9 @@ public class LetterController {
 		boolean prev = startPageNum == 1 ? false : true;
 		boolean next = endPageNum * pageNum_cnt >= count ? false : true;
 		
-		List<LetterVO> list = null;
-		list = service.list(displayPost, postNum);
 		model.addAttribute("list", list);
 		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("let_no_acc", let_no_acc);
 		
 		// 시작 및 끝 번호
 		model.addAttribute("startPageNum", startPageNum);
@@ -131,7 +140,4 @@ public class LetterController {
 		// 현재 페이지
 		model.addAttribute("select", num);
 	}
-	
-	// 로그인 후 글쓰기 기능
-	
 }

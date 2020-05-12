@@ -40,7 +40,9 @@
 			<div>
 				내용 : ${view.let_content} 
 			</div>
-			
+			<div>
+				<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
+			</div>
 			<div style="width:650px;">
 				<button type="button" id="btnUpdate">수정</button>
 				<button type="button" id="btnDelete">삭제</button>

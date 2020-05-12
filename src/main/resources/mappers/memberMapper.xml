@@ -33,7 +33,8 @@
 	</select>
 	
 	<select id="getMemberInfo" resultType="memberVO">
-		SELECT acc_name
+		SELECT acc_no
+			   , acc_name
 		       , acc_id 
 		  FROM ACCOUNT
 		 WHERE acc_id = #{acc_id} 

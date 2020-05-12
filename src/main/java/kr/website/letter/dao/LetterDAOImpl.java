@@ -43,14 +43,8 @@ public class LetterDAOImpl implements LetterDAO {
 	}
 	
 	@Override
-	public List<LetterVO> list(int displayPost, int postNum) throws Exception {
-		
-		 HashMap<String, Integer> data = new HashMap<String, Integer>();
-		  
-		 data.put("displayPost", displayPost);
-		 data.put("postNum", postNum);
-		
-		return sql.selectList("letter.list", data);
+	public List<LetterVO> list(LetterVO vo) throws Exception {
+		return sql.selectList("letter.list", vo);
 	}
 	
 	@Override
