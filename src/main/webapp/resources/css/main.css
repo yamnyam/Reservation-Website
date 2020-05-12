@@ -89,13 +89,9 @@
 	}
 
 		#header .logo {
-			color: #f6755e;
-			font-family: "Pacifico", cursive;
-			font-size: 2em;
-			letter-spacing: 2px;
-			text-decoration: none;
 			display: inline-block;
-			
+			height: 33px;
+    		padding: 10px 0;
 		}
 
 		#header nav {
