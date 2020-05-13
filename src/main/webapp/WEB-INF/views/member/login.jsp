@@ -3,14 +3,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
 		<title>Login</title>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$("#loginBtn").click(function(){
 					var id = $("#acc_id").val();
 					var pw = $("#acc_pw").val();
-					var form = $("#loginForm");
+					var formData = $("#loginForm").serialize();
 					
 					if (id == "" || id == null) {
 						alert("아이디를 입력해주세요.");
@@ -22,26 +21,34 @@
 						return;
 					}
 					
-					form.submit();
+					ajaxPostAction("/member/logincheck", formData);
 				});
 			});
 		</script>
 	</head>
 	<body>	
-		<form id="loginForm" action="/member/logincheck" method="post">
-			<p>
-		  		<label for="acc_id">ID</label>
-		  		<input type="text" id="acc_id" name="acc_id" />
-		 	</p>
-		 	<p>
-		  		<label for="acc_pw">PW</label>
-		  		<input type="password" id="acc_pw" name="acc_pw"/>
-		 	</p>
-			<p>
-				<input type="button" id="loginBtn" value="로그인" />
-				<input type="button" value="회원가입" onclick="location.href='/member/signup'"/>
-			</p>
+		<form id="loginForm">
+			<table>
+				<tr>
+					<td>ID</td>
+					<td><input type="text" id="acc_id" name="acc_id" /></td>
+				</tr>
+				<tr>
+					<td>PW</td>
+					<td><input type="password" id="acc_pw" name="acc_pw" /></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="button" id="loginBtn" value="로그인" />
+						<input type="button" value="회원가입" onclick="location.href='/member/signup'"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<a href="/">처음으로</a>
+					</td>
+				</tr>
+			</table>
 		</form>
-		<p><a href="/">처음으로</a></p>
 	</body>
 </html>

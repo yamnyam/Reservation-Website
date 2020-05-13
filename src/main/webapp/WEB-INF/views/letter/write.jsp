@@ -6,46 +6,60 @@
 		<meta charset="UTF-8">
 		<title>게시글 작성</title>
 		<script type="text/javascript">
-		$(document).ready(function(){	
-			$("#btnSave").click(function(){
-				var title = $("#let_title").val();
-				var content = $("#let_content").val();
-				if(title == "" || title == null){
-					alert("제목을 입력하세요.");
-					return;
-				}
-				if(content == "" || content == null){
-					alert("내용을 입력하세요.");
-					return;
-				}
-				document.form.action="/letter/write";
-				document.form.submit();
-			});
-		})
+			$(document).ready(function(){	
+				$("#btnSave").click(function(){
+					var title = $("#let_title").val();
+					var content = $("#let_content").val();
+					var formData = $("#writeForm").serialize();
+					
+					if(title == "" || title == null){
+						alert("제목을 입력하세요.");
+						return;
+					}
+					
+					if(content == "" || content == null){
+						alert("내용을 입력하세요.");
+						return;
+					}
+					
+					ajaxPostAction("/letter/write", formData);
+				});
+				
+				$("#btnList").click(function(){
+					var form = document.getElementById('writeForm');
+					form.action = "/letter/list";
+					form.method = "post";
+					form.submit();
+				});
+			})
 		</script>
 	</head>
 	<body>
 		<h2>게시글 작성</h2>
-		<form name="form" method="post">
-			<div>
-				제목<input name="let_title" id="let_title" size="80" placeholder="제목을 입력해주세요.">
-			</div>
-			<div>
-				내용<textarea name="let_content" id="let_content" rows="4" cols="80" placeholder="내용을 입력해주세요."></textarea>
-			</div>
-			<div>
-				<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
-			</div>
-			<div style="width:650px; text-align: center;">
-				<button type="button" id="btnSave">확인</button>
-				<button type="reset">취소</button>
-			</div>
+		<form id="writeForm">
+			<table>
+				<tr>
+					<td>제목</td>
+					<td><input name="let_title" id="let_title" size="80" placeholder="제목을 입력해주세요." /></td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td><textarea name="let_content" id="let_content" rows="4" cols="80" placeholder="내용을 입력해주세요."></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
+						<button type="reset">취소</button>
+						<button type="button" id="btnSave">확인</button>
+						<button type="button" id="btnList">목록</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<a href="/">처음으로</a>
+					</td>
+				</tr>
+			</table>		
 		</form>
-		
-		<ul>
-			<li>
-				<a href="/letter/list">게시물 목록</a>
-			</li>
-		</ul>
 	</body>
 </html>

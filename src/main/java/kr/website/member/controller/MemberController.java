@@ -3,12 +3,14 @@ package kr.website.member.controller;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.website.member.service.MemberService;
@@ -16,6 +18,7 @@ import kr.website.member.vo.MemberVO;
 
 @Controller
 @RequestMapping(value = "/member/*")
+@SuppressWarnings("unchecked")
 public class MemberController {
 
 	private static final Logger Logger =  LoggerFactory.getLogger(MemberController.class);
@@ -31,22 +34,22 @@ public class MemberController {
 	}
 	
 	// 로그인 처리
-	@RequestMapping(value = "logincheck", method = RequestMethod.POST)
-	public ModelAndView logincheck(@ModelAttribute MemberVO vo, HttpSession session) throws Exception {
+	@RequestMapping(value="logincheck", method=RequestMethod.POST)
+	@ResponseBody
+	public String logincheck(@ModelAttribute MemberVO vo, HttpSession session) throws Exception {
 		boolean result = service.loginCheck(vo, session);
-		ModelAndView mav = new ModelAndView();
-		
-		if(result == true) { // 로그인 성공
-			mav.addObject("url", "/");
-			mav.addObject("msg", "정상적으로 로그인되었습니다.");
-		} else { // 로그인 실패
-			mav.addObject("url", "/member/login");
-			mav.addObject("msg", "가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
-		}
-		
-		mav.setViewName("/common/msgAlert");
-		return mav;
-		
+	    JSONArray array = new JSONArray();
+	    
+	    // true: 로그인 성공 | false: 로그인  실패
+	    if (result == true) {
+	    	array.add("정상적으로 로그인되었습니다.");
+	    	array.add("/");
+	    } else {
+	    	array.add("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
+	    	array.add("/member/login");	    	
+	    }
+	    
+	    return array.toJSONString();
 	}
 	
 	// 로그아웃 처리
@@ -62,26 +65,25 @@ public class MemberController {
 	// 회원가입 화면 호출
 	@RequestMapping(value = "signup")
 	public String getRegister() throws Exception {
-		Logger.info("get register");
 		return "/member/signup";
 	}
 	
 	// 회원가입 등록
-	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public ModelAndView Register(MemberVO vo) throws Exception {
-		Logger.info("get register");
-		ModelAndView mav = new ModelAndView();
-		int id_count = service.idCheck(vo);
-		if (id_count == 1) {
-			mav.addObject("url", "/member/signup");
-			mav.addObject("msg", "존재하는 아이디가 있습니다.");
-			mav.setViewName("/common/msgAlert");
-			return mav;
-		} else {
-			service.register(vo);
-		}
-		
-		mav.setViewName("main");
-		return mav;
+	@RequestMapping(value="register", method=RequestMethod.POST)
+	@ResponseBody
+	public String Register(MemberVO vo) throws Exception {
+		JSONArray array = new JSONArray();
+	    int id_count = service.idCheck(vo);
+	    
+	    // 1: 중복아이디 존재
+	    if (id_count == 1) {
+	    	array.add("이미 등록된 아이디입니다.");
+	    	array.add("/member/signup");
+	    } else {
+	    	service.register(vo);
+	    	array.add("정상적으로 회원가입되었습니다.");
+	    	array.add("/");	    	
+	    }
+	    return array.toJSONString();
 	}
 }

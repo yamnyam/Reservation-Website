@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -12,12 +14,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.website.letter.service.LetterService;
 import kr.website.letter.vo.LetterVO;
 
 @Controller
 @RequestMapping("/letter/*")
+@SuppressWarnings("unchecked")
 public class LetterController {
 	
 	private static final Logger Logger = LoggerFactory.getLogger(LetterController.class);
@@ -28,19 +32,25 @@ public class LetterController {
 	// 게시글 작성 화면 호출
 	@RequestMapping(value="writeView")
 	public String write() throws Exception {
+		Logger.info("writeView");
 		return "/letter/write";
 	}
 	
 	// 게시글 작성
-	@RequestMapping(value="write", method = RequestMethod.POST)
-	public String postWrite(Model model, LetterVO vo) throws Exception {
-		
+	@RequestMapping(value="write", method=RequestMethod.POST)
+	@ResponseBody
+	public String write(Model model, LetterVO vo) throws Exception {
 		service.write(vo);
 		
-		model.addAttribute("let_no_acc", vo.getLet_no_acc());
-		model.addAttribute("num", 1);
-		
-		return "redirect:/letter/list";
+	    JSONObject params = new JSONObject();
+	    params.put("let_no_acc", vo.getLet_no_acc());
+	    
+	    JSONArray array = new JSONArray();
+	    array.add("게시글이 정상적으로 등록되었습니다.");
+	    array.add("/letter/list");
+	    array.add(params);
+	    
+	    return array.toJSONString();
 	}
 	
 	// 게시글 조회
@@ -104,7 +114,7 @@ public class LetterController {
 
 		List<LetterVO> list = null;
 		list = service.list(vo);
-		int count = service.count (vo); // 게시글 총 갯수
+		int count = service.count(vo); // 게시글 총 갯수
 		int pageNum = (int)Math.ceil((double)count/postNum); // 하단 페이징 번호{(게시물 총 갯수 / 한 페이지에 출력할 갯수)의 올림}
 		int endPageNum_tmp = (int)(Math.ceil((double)count / (double)pageNum_cnt));
 		

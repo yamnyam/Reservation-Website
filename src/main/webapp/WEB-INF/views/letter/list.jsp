@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
 		<title>list</title>
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -15,7 +14,13 @@
 	</head>
 	<body>
 		<h2>게시글 목록</h2>
-		<table border="1" width="600px">
+		<table border="1" style="wdith:600px">
+			<colgroup>
+				<col width="10%" />
+				<col width="*" />
+				<col width="20%" />
+				<col width="10%" />
+			</colgroup>
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
@@ -25,7 +30,7 @@
 			<c:choose>
 				<c:when test="${fn:length(list) == 0}">
 					<tr>
-						<td colspan="5">등록하신 글이 없습니다.</td>
+						<td colspan="4">등록하신 글이 없습니다.</td>
 					</tr>
 				</c:when>
 				<c:otherwise>
@@ -42,7 +47,7 @@
 						</tr>
 					</c:forEach>
 					<tr>
-						<td colspan="5">
+						<td colspan="4">
 							<c:if test="${prev}">
 								<a href="/letter/list?let_no_acc=${let_no_acc}&num=${startPageNum - 1}">[이전]</a>
 							</c:if>
@@ -66,15 +71,11 @@
 				</c:otherwise>
 			</c:choose>
 			<tr>
-				<td colspan="5">
+				<td colspan="4">
+					<button type="button" id="btnWrite">글쓰기</button>
 					<a href="/">처음으로</a>
 				</td>
 			</tr>
-
 		</table>
-<!-- 		<form id="letterForm" method="post"> -->
-<%-- 			<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" /> --%>
-<!-- 		</form>	 -->
-		<button type="button" id="btnWrite">글쓰기</button>
 	</body>
 </html>
