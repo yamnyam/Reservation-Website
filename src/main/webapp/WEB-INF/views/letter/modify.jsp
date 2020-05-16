@@ -10,7 +10,7 @@
 				$("#btnCancel").click(function(){
 					var cancel = confirm("취소하시겠습니까?");
 					if(cancel){
-						document.form.action = "/letter/list?num=1";
+						document.form.action = "/letter/list";
 						alert("취소되었습니다.");
  						document.form.submit();
 					}
@@ -27,6 +27,7 @@
 			<div>
 				내용<textarea name="let_content" rows="4" cols="80">${view.let_content}</textarea>
 			</div>
+				<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
 			<div style="width:650px; text-align: center;">
 				<button type="submit">완료</button>
 				<button type="button" id="btnCancel">취소</button>
