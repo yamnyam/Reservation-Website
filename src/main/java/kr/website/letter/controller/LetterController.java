@@ -88,13 +88,13 @@ public class LetterController {
 	}
 	
 	// 게시글 삭제
-	@RequestMapping(value = "/delete")
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(LetterVO vo) throws Exception{
 		
 		int no = vo.getLet_no();
 		service.delete(no);
 		
-		return "redirect:/letter/list?let_no_acc=" + vo.getLet_no_acc() + "&num=1";
+		return "/letter/list";
 	}
 
 	// 게시글 목록 + 페이징

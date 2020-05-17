@@ -15,6 +15,11 @@
  						document.form.submit();
 					}
 				});
+				
+				$("#btnList").click(function(){
+					document.form.action = "/letter/list";
+					document.form.submit();
+				});
 			});
 		</script>
 	</head>
@@ -31,13 +36,8 @@
 			<div style="width:650px; text-align: center;">
 				<button type="submit">완료</button>
 				<button type="button" id="btnCancel">취소</button>
+				<button type="button" id="btnList">게시글 목록</button>
 			</div>
 		</form>
-		
-		<ul>
-			<li>
-				<a href="/letter/list?num=1">게시물 목록</a>
-			</li>
-		</ul>
 	</body>
 </html>

@@ -31,6 +31,17 @@
 					form.method = "post";
 					form.submit();
 				});
+				
+				$("#btnCancel").click(function(){
+					var cancel = confirm("취소하시겠습니까?");
+					if(cancel){
+						alert("취소되었습니다.");
+						var form = document.getElementById('writeForm');
+						form.action = "/letter/list";
+						form.method = "post";
+						form.submit();
+					}
+				});
 			})
 		</script>
 	</head>
@@ -49,7 +60,7 @@
 				<tr>
 					<td colspan="2">
 						<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
-						<button type="reset">취소</button>
+						<button type="button" id="btnCancel">취소</button>
 						<button type="button" id="btnSave">확인</button>
 						<button type="button" id="btnList">목록</button>
 					</td>
