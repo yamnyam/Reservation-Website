@@ -4,11 +4,12 @@
 <mapper namespace="foodlist">
 
 	<select id="list" resultType="foodListVO">
-		SELECT sto_name
-			   , sto_tell
+		SELECT sto_no
+			   , sto_name
+			   , sto_tel
 			   , sto_loc
 		  FROM STORE
-		 WHERE sto_no = #{sto_no} 
+<!-- 		 WHERE sto_no = #{sto_no}  -->
 	</select>
 	
 </mapper>

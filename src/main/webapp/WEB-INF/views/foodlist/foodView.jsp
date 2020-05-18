@@ -97,72 +97,22 @@
 			<br>
 			<br>
 			<br>
-			<div class="contents">
-					<div class="contents_info">
-					 	<ul>
-						 	<li>보통밥집  *4.9</li>
-						 	<li>3,000원 대</li>
-						 	<li>010-1234-1234</li>
-						 	<li>죽전동 어딘가</li>
-						  	<li></li>
-					 	</ul>
-					</div>
-					<div class="contents_img_box">
-					   	<img src="/resources/images/ban.jpg">
-					</div>
-				</div>
-				<div class="contents">
-					<div class="contents_info">
-					 	<!-- <ul>
-						 	<li>상호</li>
-						 	<li>대표메뉴가격</li>
-						 	<li>전화번호</li>
-						 	<li>위치</li>
-					 	</ul> -->
-					</div>
-					<div class="contents_img_box">
-					   	<img src="/resources/images/ban.jpg">
-					</div>
-				</div>
-				<div class="contents">
-					<div class="contents_info">
-					 	<!-- <ul>
-						 	<li>상호</li>
-						 	<li>대표메뉴가격</li>
-						 	<li>전화번호</li>
-						 	<li>위치</li>
-					 	</ul> -->
-					</div>
-					<div class="contents_img_box">
-					   	<img src="/resources/images/ban.jpg">
-					</div>
-				</div>
-				<div class="contents">
-					<div class="contents_info">
-					 	<!-- <ul>
-						 	<li>상호</li>
-						 	<li>대표메뉴가격</li>
-						 	<li>전화번호</li>
-						 	<li>위치</li>
-					 	</ul> -->
-					</div>
-					<div class="contents_img_box">
-					   	<img src="/resources/images/ban.jpg">
-					</div>
-				</div>
-				<div class="contents">
-					<div class="contents_info">
-					 	<!-- <ul>
-						 	<li>상호</li>
-						 	<li>대표메뉴가격</li>
-						 	<li>전화번호</li>
-						 	<li>위치</li>
-					 	</ul> -->
-					</div>
-					<div class="contents_img_box">
-					   	<img src="/resources/images/ban.jpg">
-					</div>
-				</div>
+				<c:forEach items="${view}" var="view">
+				 	<div class="contents">
+						<div class="contents_info">
+						 	<ul>
+							 	<li>${view.sto_name}</li>
+							 	<li>평균 가격: 아직 미정</li>
+							 	<li>${view.sto_tel}</li>
+							 	<li>${view.sto_loc}</li>
+							  	<li></li>
+						 	</ul>
+						 </div>
+						 <div class="contents_img_box">
+					   			<img src="/resources/images/ban.png">
+						 </div>
+					</div>	
+				</c:forEach>
 				
 				<p style="border-top: 1px solid #ededed"></p>
 				<!-- for문닫 -->
