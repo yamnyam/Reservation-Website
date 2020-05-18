@@ -25,7 +25,9 @@
 					var pw_check = $("#acc_pw_check").val();
 					var name = $("#acc_name").val();
 					var acc_level = $('input[name=acc_level]:checked').val();
-					var formData = $("#signupForm").serialize();
+					var sto_name = $("#sto_name").val();
+					var sto_tel = $("#sto_tel").val();
+					var sto_loc = $("#sto_loc").val();
 					
 					if (id == "" || id == null) {
 						alert("아이디를 입력해주세요.");
@@ -56,11 +58,41 @@
 						alert("회원 구분을 선택해주세요.");
 						return;
 					}
+					if (acc_level == "1"){
+						if(sto_name == "" || sto_name == null){
+							alert("매장 이름을 입력해주세요.");
+							return;
+						}
+						if(sto_tel == "" || sto_tel == null){
+							alert("매장 전화번호를 입력해주세요.");
+							return;
+						}
+						if(sto_loc == "" || sto_loc == null){
+							alert("매장 주소를 입력해주세요.");
+							return;
+						}
+					}
+					
+					var formData = $("#signupForm").serialize();
 					
 					ajaxPostAction("/member/register", formData);
 				});
 			});
-		</script>
+			
+			function accChange(){
+				if(document.getElementById("acc_level").value=="2"){
+					document.getElementById("input_row_lev1").style.display="none";
+					document.getElementById("input_row_lev2").style.display="none";
+					document.getElementById("input_row_lev3").style.display="none";
+				}
+				else if(document.getElementById("acc_level").value=="1"){
+					document.getElementById("input_row_lev1").style.display="block";
+					document.getElementById("input_row_lev2").style.display="block";
+					document.getElementById("input_row_lev3").style.display="block";
+					
+				}
+			};
+</script>
 	</head>
 	<body>
 		
@@ -100,13 +132,31 @@
 					</div>
 					<div class="input_row">
 						<div class="level_code">
-							<select class="sel" id="acc_level" name="acc_level">
+							<select class="sel" id="acc_level" name="acc_level" onchange="accChange()">
 	                               	<option value="" selected="">누구</option>
 	                        	    <option value="1">밥집사장</option>
 	                      			<option value="2">손님</option>
 	                        </select>
 						</div>
 					</div>
+					<div class="input_row_lev" id="input_row_lev1">
+						<span class="input_box">
+							<input class="input" type="text" id="sto_name" name="sto_name" placeholder="맛집명" maxlength="35">
+						</span>
+					</div>
+					<div class="input_row_lev" id="input_row_lev2">
+						<span class="input_box">
+							<input class="input" type="text" id="sto_tel" name="sto_tel" placeholder="전화번호" maxlength="35">
+						</span>
+					</div>
+					<div class="input_row_lev" id="input_row_lev3">
+						<span class="input_box">
+							<input class="input" type="text" id="sto_loc" name="sto_loc" placeholder="주소" maxlength="100">
+							<input type="hidden" id="sto_gps" name="sto_gps" value="">
+						</span>
+					</div>
+					
+					
 					<div class="btn_login"><input type="button" title="가입하기" alt="가입하기" value="가입하기" class="btn_global" id="regBtn"></div>
 				</form>
 			</div>

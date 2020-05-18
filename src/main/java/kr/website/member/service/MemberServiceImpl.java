@@ -18,6 +18,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void register(MemberVO vo) throws Exception {
 		dao.register(vo);
+		
 	}
 	
 	// 회원가입 중복 로그인 체크

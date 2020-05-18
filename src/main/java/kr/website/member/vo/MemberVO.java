@@ -10,6 +10,11 @@ public class MemberVO {
 	private int acc_level;
 	private int acc_count;
 	private Date acc_date;
+	
+	private String sto_name;
+	private String sto_tel;
+	private String sto_loc;
+	
 	public int getAcc_no() {
 		return acc_no;
 	}
@@ -52,4 +57,27 @@ public class MemberVO {
 	public void setAcc_date(Date acc_date) {
 		this.acc_date = acc_date;
 	}
+	
+	
+	
+	
+	public String getSto_name() {
+		return sto_name;
+	}
+	public void setSto_name(String sto_name) {
+		this.sto_name = sto_name;
+	}
+	public String getSto_tel() {
+		return sto_tel;
+	}
+	public void setSto_tel(String sto_tel) {
+		this.sto_tel = sto_tel;
+	}
+	public String getSto_loc() {
+		return sto_loc;
+	}
+	public void setSto_loc(String sto_loc) {
+		this.sto_loc = sto_loc;
+	}
+
 }
