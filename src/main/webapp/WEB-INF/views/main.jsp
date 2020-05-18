@@ -91,91 +91,10 @@
 					<input type="submit" value=" " class="btn-search">
 				</div>
 			</div>
+			<img class="mainimg" src="/resources/images/main.jpg">
 		
-			<!-- One -->
-			<div id ="map"></div>
-			<script>
-				var container = document.getElementById('map');
-				var options = {
-					center: new kakao.maps.LatLng(37.322843, 127.127846),
-					level: 4
-				};
-		
-				var map = new kakao.maps.Map(container, options);
-			</script>
 			
-			<div class="contents">
-				<div class="contents_info">
-				 	<ul>
-					 	<li>보통밥집  *4.9</li>
-					 	<li>3,000원 대</li>
-					 	<li>010-1234-1234</li>
-					 	<li>죽전동 어딘가</li>
-					  	<li></li>
-				 	</ul>
-				</div>
-				<div class="contents_img_box">
-				   	<img src="/resources/images/ban.jpg">
-				</div>
-			</div>
-	        <div class="contents">
-	        	<div class="contents_info">
-	            	<ul>
-	                	<li>보통밥집  *4.9</li>
-	                    <li>3,000원 대</li>
-	                    <li>010-1234-1234</li>
-	                   	<li>죽전동 어딘가</li>
-	                    <li></li>
-					</ul>
-	          	</div>
-	            <div class="contents_img_box">
-	            	<img src="/resources/images/ban.jpg">
-	            </div>
-			</div>
-	        <div class="contents">
-	        	<div class="contents_info">
-	            	<ul>
-	                	<li>보통밥집  *4.9</li>
-	                    <li>3,000원 대</li>
-	                    <li>010-1234-1234</li>
-	                   	<li>죽전동 어딘가</li>
-	                    <li></li>
-					</ul>
-	          	</div>
-	            <div class="contents_img_box">
-	            	<img src="/resources/images/ban.jpg">
-	            </div>
-			</div>
-	        <div class="contents">
-	        	<div class="contents_info">
-	            	<ul>
-	                	<li>보통밥집  *4.9</li>
-	                    <li>3,000원 대</li>
-	                    <li>010-1234-1234</li>
-	                   	<li>죽전동 어딘가</li>
-	                    <li></li>
-					</ul>
-	          	</div>
-	            <div class="contents_img_box">
-	            	<img src="/resources/images/ban.jpg">
-	            </div>
-			</div>
-	        <div class="contents">
-	        	<div class="contents_info">
-	            	<ul>
-	                	<li>보통밥집  *4.9</li>
-	                    <li>3,000원 대</li>
-	                    <li>010-1234-1234</li>
-	                   	<li>죽전동 어딘가</li>
-	                    <li></li>
-					</ul>
-	          	</div>
-	            <div class="contents_img_box">
-	            	<img src="/resources/images/ban.jpg">
-	            </div>
-			</div>
-			<p style="border-top: 1px solid #ededed"></p>
-		</div>   
+
     
 	    <!-- Footer -->
 		<!-- Bottom_bar -->
@@ -183,7 +102,7 @@
 		<div id="bottom_bar">
 			<ul>
 				<li onclick="location.href='/'"><img src="/resources/images/bar_home.png" alt="HOME">HOME</li>
-				<li onclick="location.href='#'"><img src="/resources/images/bar_food.png" alt="내주변맛집">내주변맛집</li>
+				<li onclick="location.href='/foodlist/foodView'"><img src="/resources/images/bar_food.png" alt="내주변밥집">내주변밥집</li>
 				<li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="해시태그">해시태그</li>
 				<li onclick="javascript:listLetter(<%= no %>)"><img src="/resources/images/bar_food2.png" alt="기능4">마음의편지</li>
 			    </ul>

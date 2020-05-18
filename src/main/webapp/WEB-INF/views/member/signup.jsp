@@ -6,8 +6,8 @@
 		<meta charset="UTF-8">
 		<title>보통밥집 : 회원가입</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<link rel="stylesheet" href="/resources/css/main.css" />
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script src="/resources/js/jquery.min.js"></script>
 		<script src="/resources/js/jquery.scrolly.min.js"></script>
 		<script src="/resources/js/skel.min.js"></script>
@@ -25,7 +25,7 @@
 					var pw_check = $("#acc_pw_check").val();
 					var name = $("#acc_name").val();
 					var acc_level = $('input[name=acc_level]:checked').val();
-					var formData = $("#signupForm").serialize();
+					var formData = $("#loginForm").serialize();
 					
 					if (id == "" || id == null) {
 						alert("아이디를 입력해주세요.");
@@ -52,7 +52,7 @@
 						return;
 					}
 
-					if (acc_level == undefined) {
+					if (acc_level == "") {
 						alert("회원 구분을 선택해주세요.");
 						return;
 					}

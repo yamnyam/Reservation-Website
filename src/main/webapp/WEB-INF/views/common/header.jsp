@@ -25,6 +25,7 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="/resources/css/main.css" />
 
 <!-- Meta -->
 <meta charset="utf-8" />
