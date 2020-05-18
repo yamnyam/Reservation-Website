@@ -25,7 +25,7 @@
 					var pw_check = $("#acc_pw_check").val();
 					var name = $("#acc_name").val();
 					var acc_level = $('input[name=acc_level]:checked').val();
-					var formData = $("#loginForm").serialize();
+					var formData = $("#signupForm").serialize();
 					
 					if (id == "" || id == null) {
 						alert("아이디를 입력해주세요.");
@@ -74,7 +74,7 @@
 			
 			<!-- Container -->
 			<div id="container">
-				<form id="loginForm" action="/member/register" method="post">
+				<form id="signupForm" action="/member/register" method="post">
 					<div class="input_row">
 						<span class="input_box">
 							<input class="input" type="text" id="acc_id" name="acc_id" placeholder="아이디" maxlength="35">

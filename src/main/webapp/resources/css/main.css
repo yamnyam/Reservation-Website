@@ -240,6 +240,88 @@
 	    padding: 7px 0 2px;
 	}
 		
+	#signupForm {
+		padding: 50px 15px 0;
+	    background-color: #ffffff;
+	}
+	#signupForm .input_row{
+		position: relative;
+	    overflow: hidden;
+	    height: 36px;
+	    margin: 0 0 6px;
+	    padding: 5px 39px 5px 11px;
+	    border: solid 1px #dadada;
+	    background: #fff;
+	}
+	#signupForm .input_row_lev{
+		position: relative;
+	    overflow: hidden;
+	    height: 36px;
+	    margin: 0 0 6px;
+	    padding: 5px 39px 5px 11px;
+	    border: solid 1px #dadada;
+	    background: #fff;
+	    display: none;
+	}
+	#signupForm .input_box {
+	    display: block;
+	    overflow: hidden;
+	}	
+	#signupForm .input{
+		font-size: 16px;
+	    line-height: 16px;
+	    position: relative;
+	    z-index: 9;
+	    width: 100%;
+	    height: 32px;
+	    padding: 13px 0 8px;
+	    color: #222;
+	    border: none;
+	    background: #fff;
+	}	
+	#signupForm .error {
+	    font-size: 12px;
+	    line-height: 16px;
+	    margin: -2px 0 12px;
+	    color: #ff1616;
+	}
+	#signupForm .btn_global {
+	    position: relative;
+	    display: block;
+	    width: 100%;
+	    height: 54px;
+	    margin: 6px 0 6px;
+	    padding: 15px 0 15px;
+	    font-size: 18px;
+	    font-weight: 700;
+	    cursor: pointer;
+	    text-align: center;
+	    color: #fff;
+	    border: none;
+	    border-radius: 0;
+	    background-color: #a2a2a2;
+	    -webkit-appearance: none;
+	}
+	#signupForm .level_code {
+		display: block;
+	    width: 100%;
+	    padding-right: 7px;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	#signupForm .sel{
+		background: #fff;
+		width: 100%;
+	    height: 32px;
+	    font-size: 16px;
+	    line-height: 16px;
+	    color: #000;
+	    border: none;
+	    border-radius: 0;
+	    -webkit-appearance: none;
+	    padding: 7px 0 2px;
+	}
+		
 		/* Search-box */
 		
 	#search-box {
