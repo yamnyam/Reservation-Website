@@ -24,7 +24,7 @@
         		, now()
     		   )
     </insert>
-	
+    
 	<select id="loginCheck" resultType="String">
 		SELECT acc_name 
 		  FROM ACCOUNT
