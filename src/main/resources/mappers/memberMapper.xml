@@ -17,7 +17,7 @@
     		   )
         VALUES (
         		#{acc_id}
-        		, #{acc_pw}
+        		, password(#{acc_pw})
         		, #{acc_name}
         		, #{acc_level}
         		, 0

@@ -25,7 +25,6 @@
 					var pw_check = $("#acc_pw_check").val();
 					var name = $("#acc_name").val();
 					var acc_level = $('input[name=acc_level]:checked').val();
-					var formData = $("#signupForm").serialize();
 					var sto_name = $("#sto_name").val();
 					var sto_tel = $("#sto_tel").val();
 					var sto_loc = $("#sto_loc").val();
@@ -74,6 +73,7 @@
 						}
 					}
 					
+					var formData = $("#signupForm").serialize();
 					
 					ajaxPostAction("/member/register", formData);
 				});
