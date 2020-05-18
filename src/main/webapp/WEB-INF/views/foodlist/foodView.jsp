@@ -4,32 +4,7 @@
 <html>
 	<head>
 		<title>보통밥집 : 내주변 밥집</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="/resources/css/main.css" />
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a"></script>
-		<script src="/resources/js/jquery.min.js"></script>
-		<script src="/resources/js/jquery.scrolly.min.js"></script>
-		<script src="/resources/js/skel.min.js"></script>
-		<script src="/resources/js/util.js"></script>
-		<script src="/resources/js/main.js"></script>
-		<script src="/resources/js/kakao.js"></script>
-		<script>
-			Kakao.init('efac78643eb016816e0a0d506200b05a');
-
-        	// SDK 초기화 여부를 판단합니다.
-       		console.log(Kakao.isInitialized());
-       		Kakao.Auth.createLoginButton({
-       		  container: '#kakao-login-btn',
-       		  size: 'small',
-       		  success: function(response) {
-       		    console.log(response);
-       		  },
-       		  fail: function(error) {
-       		    console.log(error);
-       		  },
-       		});
-		</script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a&libraries=services"></script>
 		<script type="text/javascript">
 			function listLetter() {
 				var acc_no = <%= no %>;
@@ -88,15 +63,23 @@
 				};
 		
 				var map = new kakao.maps.Map(container, options);
+				
+				var geocoder = new kakao.maps.services.Geocoder();
+
+				var callback = function(result, status) {
+				    if (status === kakao.maps.services.Status.OK) {
+				        console.log(result);
+				    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+					}
+				};
+				
 			</script>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
 				<c:forEach items="${view}" var="view">
 				 	<div class="contents">
 						<div class="contents_info">
@@ -105,7 +88,7 @@
 							 	<li>평균 가격: 아직 미정</li>
 							 	<li>${view.sto_tel}</li>
 							 	<li>${view.sto_loc}</li>
-							  	<li></li>
+							  	<li><script>geocoder.addressSearch('${view.sto_loc}', callback);</script></li>
 						 	</ul>
 						 </div>
 						 <div class="contents_img_box">
@@ -115,12 +98,7 @@
 				</c:forEach>
 				
 				<p style="border-top: 1px solid #ededed"></p>
-				<!-- for문닫 -->
-			<!-- Footer -->
-				
-				
-				
-			<!-- Footer -->
+
 		</div>
 		
 		<!-- Bottom_bar -->
