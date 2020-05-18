@@ -1,6 +1,5 @@
 package kr.website.letter.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.website.letter.vo.LetterVO;
-
 
 @Repository
 public class LetterDAOImpl implements LetterDAO {
@@ -38,8 +36,8 @@ public class LetterDAOImpl implements LetterDAO {
 	}
 	
 	@Override
-	public int count() throws Exception{
-		return sql.selectOne("letter.count");
+	public int count(LetterVO vo) throws Exception{
+		return sql.selectOne("letter.count", vo);
 	}
 	
 	@Override

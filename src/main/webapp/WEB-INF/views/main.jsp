@@ -32,16 +32,32 @@
 		</script>
 		<script type="text/javascript">
 			function listLetter(acc_no) {
-				if(acc_no == undefined){
-					alert("로그인한 후 이용가능합니다.");
-					return;
-				}
-				
-				location.href = "/letter/list?let_no_acc=" + acc_no + "&num=1";
-			}
-		</script>
-	</head>
-	<body>
+            
+				if (acc_no == undefined) {
+               		alert("로그인한 후 이용가능합니다.");
+               		return;
+            	}
+            
+            	var form = $("#letterForm");
+            	form.submit();
+         	}
+      	</script>
+   	</head>
+   	<body>
+    	<!-- Header -->
+      	<header id="header">
+        	<nav class="left">
+            	<a href="#menu"><span>Menu</span></a>
+         	</nav>
+         	<a href="/" class="logo">보통밥집</a>
+         	<nav class="right">   
+            <% if (no == null || no == "") { %>
+               <a href="/member/login" class="button alt">Login</a>
+            <% } else { %>
+               <a href="/member/logout" class="button alt">Logout</a>
+            <% } %>
+         	</nav>
+      	</header>
 
 		<!-- Header -->
 		<header id="header">
@@ -102,67 +118,66 @@
 				   	<img src="/resources/images/ban.jpg">
 				</div>
 			</div>
-			<div class="contents">
-				<div class="contents_info">
-				 	<!-- <ul>
-					 	<li>상호</li>
-					 	<li>대표메뉴가격</li>
-					 	<li>전화번호</li>
-					 	<li>위치</li>
-				 	</ul> -->
-				</div>
-				<div class="contents_img_box">
-				   	<img src="/resources/images/ban.jpg">
-				</div>
+	        <div class="contents">
+	        	<div class="contents_info">
+	            	<ul>
+	                	<li>보통밥집  *4.9</li>
+	                    <li>3,000원 대</li>
+	                    <li>010-1234-1234</li>
+	                   	<li>죽전동 어딘가</li>
+	                    <li></li>
+					</ul>
+	          	</div>
+	            <div class="contents_img_box">
+	            	<img src="/resources/images/ban.jpg">
+	            </div>
 			</div>
-			<div class="contents">
-				<div class="contents_info">
-				 	<!-- <ul>
-					 	<li>상호</li>
-					 	<li>대표메뉴가격</li>
-					 	<li>전화번호</li>
-					 	<li>위치</li>
-				 	</ul> -->
-				</div>
-				<div class="contents_img_box">
-				   	<img src="/resources/images/ban.jpg">
-				</div>
+	        <div class="contents">
+	        	<div class="contents_info">
+	            	<ul>
+	                	<li>보통밥집  *4.9</li>
+	                    <li>3,000원 대</li>
+	                    <li>010-1234-1234</li>
+	                   	<li>죽전동 어딘가</li>
+	                    <li></li>
+					</ul>
+	          	</div>
+	            <div class="contents_img_box">
+	            	<img src="/resources/images/ban.jpg">
+	            </div>
 			</div>
-			<div class="contents">
-				<div class="contents_info">
-				 	<!-- <ul>
-					 	<li>상호</li>
-					 	<li>대표메뉴가격</li>
-					 	<li>전화번호</li>
-					 	<li>위치</li>
-				 	</ul> -->
-				</div>
-				<div class="contents_img_box">
-				   	<img src="/resources/images/ban.jpg">
-				</div>
+	        <div class="contents">
+	        	<div class="contents_info">
+	            	<ul>
+	                	<li>보통밥집  *4.9</li>
+	                    <li>3,000원 대</li>
+	                    <li>010-1234-1234</li>
+	                   	<li>죽전동 어딘가</li>
+	                    <li></li>
+					</ul>
+	          	</div>
+	            <div class="contents_img_box">
+	            	<img src="/resources/images/ban.jpg">
+	            </div>
 			</div>
-			<div class="contents">
-				<div class="contents_info">
-				 	<!-- <ul>
-					 	<li>상호</li>
-					 	<li>대표메뉴가격</li>
-					 	<li>전화번호</li>
-					 	<li>위치</li>
-				 	</ul> -->
-				</div>
-				<div class="contents_img_box">
-				   	<img src="/resources/images/ban.jpg">
-				</div>
+	        <div class="contents">
+	        	<div class="contents_info">
+	            	<ul>
+	                	<li>보통밥집  *4.9</li>
+	                    <li>3,000원 대</li>
+	                    <li>010-1234-1234</li>
+	                   	<li>죽전동 어딘가</li>
+	                    <li></li>
+					</ul>
+	          	</div>
+	            <div class="contents_img_box">
+	            	<img src="/resources/images/ban.jpg">
+	            </div>
 			</div>
-			
 			<p style="border-top: 1px solid #ededed"></p>
-			<!-- for문닫 -->
-		<!-- Footer -->
-			
-			
-		</div>	
-		<!-- Footer -->
-		
+		</div>   
+    
+	    <!-- Footer -->
 		<!-- Bottom_bar -->
 
 		<div id="bottom_bar">
@@ -175,5 +190,9 @@
 			</div>
 		</div>
 		
+    	<!-- Hidden Form -->
+		<form id="letterForm" action="/letter/list" method="post">
+	    	<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" />
+		</form>
 	</body>
 </html>

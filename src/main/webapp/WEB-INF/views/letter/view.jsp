@@ -21,6 +21,13 @@
 				$("#btnUpdate").click(function(){
 					location.href = "/letter/modify?let_no=${view.let_no}";
 				});
+				
+				$("#btnList").click(function(){
+					
+					document.form.action = "/letter/list";
+					document.form.submit();
+					
+				});
 			});
 			
 		</script>
@@ -46,12 +53,8 @@
 			<div style="width:650px;">
 				<button type="button" id="btnUpdate">수정</button>
 				<button type="button" id="btnDelete">삭제</button>
+				<button type="button" id="btnList">게시물 목록</button>
 			</div>
 		</form>
-		<ul>
-			<li>
-				<a href="/letter/list?num=1">게시물 목록</a>
-			</li>
-		</ul>
 	</body>
 </html>

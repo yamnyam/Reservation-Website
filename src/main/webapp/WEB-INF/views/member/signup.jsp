@@ -24,7 +24,8 @@
 					var pw = $("#acc_pw").val();
 					var pw_check = $("#acc_pw_check").val();
 					var name = $("#acc_name").val();
-					var form = $("#signupForm");
+					var acc_level = $('input[name=acc_level]:checked').val();
+					var formData = $("#signupForm").serialize();
 					
 					if (id == "" || id == null) {
 						alert("아이디를 입력해주세요.");
@@ -37,7 +38,12 @@
 					}
 					
 					if (pw_check == "" || pw_check == null) {
-						alert("필수 입력 정보입니다.");
+						alert("비밀번호 확인을 입력해주세요.");
+						return;
+					}
+					
+					if (pw != pw_check){
+						alert("비밀번호가 일치하지 않습니다.");
 						return;
 					}
 					
@@ -45,13 +51,13 @@
 						alert("이름을 입력해주세요.");
 						return;
 					}
-					
-					if(pw != pw_check){
-						alert("비밀번호가 일치하지 않습니다.");
+
+					if (acc_level == undefined) {
+						alert("회원 구분을 선택해주세요.");
 						return;
 					}
 					
-					form.submit();
+					ajaxPostAction("/member/register", formData);
 				});
 			});
 		</script>
@@ -101,7 +107,7 @@
 	                        </select>
 						</div>
 					</div>
-					<div class="btn_login"><input type="submit" title="가입하기" alt="가입하기" value="가입하기" class="btn_global" id="join"></div>
+					<div class="btn_login"><input type="button" title="가입하기" alt="가입하기" value="가입하기" class="btn_global" id="regBtn"></div>
 				</form>
 			</div>
 		</div>

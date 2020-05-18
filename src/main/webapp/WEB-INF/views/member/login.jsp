@@ -34,7 +34,7 @@
 				$("#loginBtn").click(function(){
 					var id = $("#acc_id").val();
 					var pw = $("#acc_pw").val();
-					var form = $("#loginForm");
+					var formData = $("#loginForm").serialize();
 					
 					if (id == "" || id == null) {
 						alert("아이디를 입력해주세요.");
@@ -46,7 +46,7 @@
 						return;
 					}
 					
-					form.submit();
+					ajaxPostAction("/member/logincheck", formData);
 				});
 			});
 		</script>
@@ -76,7 +76,7 @@
 						</span>
 					</div>
 					<div class="error" role="alert" id="err_empty_pw" style="display: none;">비밀번호를 입력해주세요.</div>
-					<div class="btn_login"><input type="submit" title="로그인" alt="로그인" value="로그인" class="btn_global" id="login"></div>
+					<div class="btn_login"><input type="button" title="로그인" alt="로그인" value="로그인" class="btn_global" id="loginBtn"></div>
 					<div class="btn_login"><input type="button" title="회원가입" alt="회원가입" value="회원가입" class="btn_global" id="join" onclick="location.href='/member/signup'"></div>
 					<div class="btn_login"><a><img src="/resources/images/kakao_login_btn_medium_wide.png" style="width: 100%;"></a></div>
 				</form>
