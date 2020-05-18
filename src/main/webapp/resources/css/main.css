@@ -62,6 +62,12 @@
 		padding: 15px;
 	}
 
+	#wrap_ {
+		position: relative;
+		min-height: 100%;
+	}
+
+
 /* Header */
 
 	#header {
@@ -83,13 +89,9 @@
 	}
 
 		#header .logo {
-			color: #f6755e;
-			font-family: "Pacifico", cursive;
-			font-size: 2em;
-			letter-spacing: 2px;
-			margin-top: -5px;
-			text-decoration: none;
 			display: inline-block;
+			height: 33px;
+    		padding: 10px 0;
 		}
 
 		#header nav {
@@ -144,6 +146,100 @@
 						margin: 0 0.5em 0 0;
 					}
 					
+						
+	#header_{
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		left: 0;
+		top: 0;
+		width: 100%;
+		z-index: 10001;
+		text-align: center;
+		position: relative;
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	    padding: 113px 15px 0;
+	    background-color: #fff;
+	}
+		
+	/* Container */
+	#Container {
+		padding-bottom: 8px;
+	}
+	#loginForm {
+		padding: 50px 15px 0;
+	    background-color: #ffffff;
+	}
+	#loginForm .input_row{
+		position: relative;
+	    overflow: hidden;
+	    height: 36px;
+	    margin: 0 0 6px;
+	    padding: 5px 39px 5px 11px;
+	    border: solid 1px #dadada;
+	    background: #fff;
+	}
+	#loginForm .input_box {
+	    display: block;
+	    overflow: hidden;
+	}	
+	#loginForm .input{
+		font-size: 16px;
+	    line-height: 16px;
+	    position: relative;
+	    z-index: 9;
+	    width: 100%;
+	    height: 32px;
+	    padding: 13px 0 8px;
+	    color: #222;
+	    border: none;
+	    background: #fff;
+	}	
+	#loginForm .error {
+	    font-size: 12px;
+	    line-height: 16px;
+	    margin: -2px 0 12px;
+	    color: #ff1616;
+	}
+	#loginForm .btn_global {
+	    position: relative;
+	    display: block;
+	    width: 100%;
+	    height: 54px;
+	    margin: 6px 0 6px;
+	    padding: 15px 0 15px;
+	    font-size: 18px;
+	    font-weight: 700;
+	    cursor: pointer;
+	    text-align: center;
+	    color: #fff;
+	    border: none;
+	    border-radius: 0;
+	    background-color: #a2a2a2;
+	    -webkit-appearance: none;
+	}
+	#loginForm .level_code {
+		display: block;
+	    width: 100%;
+	    padding-right: 7px;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	#loginForm .sel{
+		background: #fff;
+		width: 100%;
+	    height: 32px;
+	    font-size: 16px;
+	    line-height: 16px;
+	    color: #000;
+	    border: none;
+	    border-radius: 0;
+	    -webkit-appearance: none;
+	    padding: 7px 0 2px;
+	}
+		
 		/* Search-box */
 		
 	#search-box {
@@ -402,7 +498,7 @@
 		align-items: center;
 		background: #fff;
 		cursor: default;
-		height: 400px;
+		height: 50%;
 		left: 0;
 		line-height: 60px;
 		position: relative;
@@ -441,8 +537,9 @@
 		}
 		
 		.contents_img_box img{
-			width: 100% !important;
+			/* width: 100% !important; */
 			height: 100%;
+			float: right;
 		}
 		.contents_img_box{
 			float: right;

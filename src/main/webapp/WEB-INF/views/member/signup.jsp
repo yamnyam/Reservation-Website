@@ -3,8 +3,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Signup</title>
+		<meta charset="UTF-8">
+		<title>보통밥집 : 회원가입</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<link rel="stylesheet" href="/resources/css/main.css" />
+		<script src="/resources/js/jquery.min.js"></script>
+		<script src="/resources/js/jquery.scrolly.min.js"></script>
+		<script src="/resources/js/skel.min.js"></script>
+		<script src="/resources/js/util.js"></script>
+		<script src="/resources/js/main.js"></script>
+		<script src="/resources/js/kakao.js"></script>
 		<script type="text/javascript">
+		
+			//TODO 1 기본적인 입력값 체크
+			//TODO 2 비밀번호 확인값 체크
 			$(document).ready(function(){
 				$("#regBtn").click(function(){
 					var id = $("#acc_id").val();
@@ -50,41 +63,53 @@
 		</script>
 	</head>
 	<body>
-		<form id="signupForm" action="" method="post">
-			<table>
-				<tr>
-					<td>ID</td>
-					<td><input type="text" id="acc_id" name="acc_id" /></td>
-				</tr>
-				<tr>
-					<td>PW</td>
-					<td><input type="password" id="acc_pw" name="acc_pw" /></td>
-				</tr>
-				<tr>
-					<td>PW 확인</td>
-					<td><input type="password" id="acc_pw_check" name="acc_pw_check" /></td>
-				</tr>
-				<tr>
-					<td>Name</td>
-					<td><input type="text" id="acc_name" name="acc_name" /></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="radio" id="acc_level" name="acc_level" value="1" />밥집사장
-						<input type="radio" id="acc_level" name="acc_level" value="2" />손님					
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="button" id="regBtn" value="가입완료" />
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<a href="/">처음으로</a>
-					</td>
-				</tr>
-			</table>
-	  	</form>
+		
+	  	<!-- Wrapper -->
+		<div id="wrap_">
+		
+			<!-- Header -->
+			<header id="header_">
+				<a href="/" class="logo"><img src="/resources/images/home.png"></a>
+			</header>
+			
+			<!-- Container -->
+			<div id="container">
+				<form id="loginForm" action="/member/register" method="post">
+					<div class="input_row">
+						<span class="input_box">
+							<input class="input" type="text" id="acc_id" name="acc_id" placeholder="아이디" maxlength="35">
+						</span>
+					</div>
+					<div class="error" role="alert" id="err_empty_id" style="display: none;">아이디를 입력해주세요.</div>
+					<div class="input_row">
+						<span class="input_box">
+							<input class="input" type="password" id="acc_pw" name="acc_pw" placeholder="패스워드" maxlength="16">
+						</span>
+					</div>
+					<div class="error" role="alert" id="err_empty_pw" style="display: none;">비밀번호를 입력해주세요.</div>
+					<div class="input_row">
+						<span class="input_box">
+							<input class="input" type="password" id="acc_pw_check" name="acc_pw_check" placeholder="패스워드 재확인" maxlength="16">
+						</span>
+					</div>
+					<div class="error" role="alert" id="err_empty_pw_check" style="display: none;">비밀번호를 입력해주세요.</div>
+					<div class="input_row">
+						<span class="input_box">
+							<input class="input" type="text" id="acc_name" name="acc_name" placeholder="이름" maxlength="20">
+						</span>
+					</div>
+					<div class="input_row">
+						<div class="level_code">
+							<select class="sel" id="acc_level" name="acc_level">
+	                               	<option value="" selected="">누구</option>
+	                        	    <option value="1">밥집사장</option>
+	                      			<option value="2">손님</option>
+	                        </select>
+						</div>
+					</div>
+					<div class="btn_login"><input type="button" title="가입하기" alt="가입하기" value="가입하기" class="btn_global" id="regBtn"></div>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>
