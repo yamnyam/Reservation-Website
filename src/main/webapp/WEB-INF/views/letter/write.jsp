@@ -3,9 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta charset="UTF-8">
-		<title>게시글 작성</title>
+		<title>보통밥집 : 마음의편지 작성</title>
 		<script type="text/javascript">
 			$(document).ready(function(){	
 				$("#btnSave").click(function(){
@@ -47,31 +45,53 @@
 		</script>
 	</head>
 	<body>
-		<h2>게시글 작성</h2>
-		<form id="writeForm">
-			<table>
-				<tr>
-					<td>제목</td>
-					<td><input name="let_title" id="let_title" size="80" placeholder="제목을 입력해주세요." /></td>
-				</tr>
-				<tr>
-					<td>내용</td>
-					<td><textarea name="let_content" id="let_content" rows="4" cols="80" placeholder="내용을 입력해주세요."></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
-						<button type="button" id="btnCancel">취소</button>
-						<button type="button" id="btnSave">확인</button>
-						<button type="button" id="btnList">목록</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<a href="/">처음으로</a>
-					</td>
-				</tr>
-			</table>		
-		</form>
+		<!-- Header -->
+		<header id="header">
+			<nav class="left">
+				<a href="#menu"><span>Menu</span></a>
+			</nav>
+			<a href="/"><img class="logo" src="/resources/images/home.png"></a>
+			<nav class="right">	
+				<% if (no == null || no == "") { %>
+					<a href="/member/login" class="button alt">Login</a>
+				<% } else { %>
+					<a href="/member/logout" class="button alt">Logout</a>
+				<% } %>
+			</nav>
+		</header>
+		
+		<!-- Wrap -->
+		<div class="letter_info">
+				마음의편지를 남겨주시면 성실하게<br>답변드리겠습니다.
+		</div>
+		<div id="wrap">
+			<form id="writeForm">
+				<div class="input_row">
+	                <h2 class="input_row_tit">제목<span class="point"></span></h2>
+	                <input class="input" id="let_title" name="let_title" type="text" placeholder="제목을 입력해주세요 (최대100자)">
+	            </div>
+	            <div class="input_row">
+	                <h2 class="input_row_tit">내용<span class="point"></span></h2>
+	                <textarea class="input_content" id="let_content" name="let_content" maxlength="400" placeholder="내용을 입력해주세요 (최대400자)"></textarea>
+	            </div>
+	            <div class="input_row">
+	                <input class="btn_global" type="button" id="btnSave" value="등록">
+	            	<input class="btn_global" type="button" id="btnCancel" value="취소">
+                </div>
+            </form>
+			
+			
+		</div>
+		
+		<!-- Bottom_bar -->
+
+		<div id="bottom_bar">
+			<ul>
+				<li onclick="location.href='/'"><img src="/resources/images/bar_home.png" alt="HOME">HOME</li>
+				<li onclick="location.href='/foodlist/foodView'"><img src="/resources/images/bar_food.png" alt="내주변밥집">내주변밥집</li>
+				<li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="해시태그">해시태그</li>
+				<li onclick="javascript:listLetter(<%= no %>)"><img src="/resources/images/bar_food2.png" alt="기능4">마음의편지</li>
+		    </ul>
+		</div>
 	</body>
 </html>
