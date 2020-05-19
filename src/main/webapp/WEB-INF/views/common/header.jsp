@@ -11,7 +11,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <!-- Script -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/resources/js/skel.min.js"></script>

@@ -133,7 +133,7 @@
 					<div class="input_row">
 						<div class="level_code">
 							<select class="sel" id="acc_level" name="acc_level" onchange="accChange()">
-	                               	<option value="" selected="">누구</option>
+	                               	<option value="" selected>누구</option>
 	                        	    <option value="1">밥집사장</option>
 	                      			<option value="2">손님</option>
 	                        </select>
