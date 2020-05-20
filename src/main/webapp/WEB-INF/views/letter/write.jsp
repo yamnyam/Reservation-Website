@@ -67,6 +67,7 @@
 		<div id="wrap">
 			<form id="writeForm">
 				<div class="input_row">
+					<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
 	                <h2 class="input_row_tit">제목<span class="point"></span></h2>
 	                <input class="input" id="let_title" name="let_title" type="text" placeholder="제목을 입력해주세요 (최대100자)">
 	            </div>

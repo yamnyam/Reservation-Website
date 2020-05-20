@@ -57,6 +57,9 @@
 		-webkit-border-radius: 0;
 	}
 	
+	a {
+		color: #555;
+	}
 /* Wrap */
 
 	#wrap {
@@ -747,7 +750,7 @@
 	    color: #000;
 	    margin-top: 5px;
 	}
-	.input_row{
+	#writeForm .input_row{
 		position: relative;
 	    overflow: hidden;
 	    margin: 10px 0;
@@ -755,13 +758,13 @@
 	    background: #fff;
 	    box-sizing: border-box;
 	}
-		.input_row .input_row_tit{
+		#writeForm .input_row .input_row_tit{
 			margin-bottom: 8px;
 		    font-size: 15px;
 		    font-weight: 500;
 		    color: #000;	
 		}
-			.input_row .input_row_tit .point {
+			#writeForm .input_row .input_row_tit .point {
 			    display: inline-block;
 			    width: 6px;
 			    height: 6px;
@@ -770,7 +773,7 @@
 			    margin-left: 4px;
 			    vertical-align: 6px;
 			}
-		.input_row .input{
+		#writeForm .input_row .input{
 			font-size: 16px;
 		    line-height: 16px;
 		    position: relative;
@@ -782,7 +785,7 @@
 		    background: #fff;
 		    display: block;
 		}	
-		.input_row .input_content{
+		#writeForm .input_row .input_content{
 		    font-size: 16px;
 		    line-height: 17px;
 		    position: relative;
@@ -797,7 +800,7 @@
 		    padding: 5px 0;
 		    resize: none;
 		}
-		.input_row .btn_global {
+		#writeForm .input_row .btn_global {
 		    position: relative;
 		    display: block;
 		    width: 100%;
