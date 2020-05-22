@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="search">
+
+	<select id="list" resultType="foodlistVO">
+		SELECT sto_no
+			   , sto_name
+			   , sto_tel
+			   , sto_loc
+		  FROM STORE
+		 WHERE sto_loc 
+		  LIKE CONCAT('%',#{search},'%')
+		    OR sto_name
+		  LIKE CONCAT('%',#{search},'%')
+	</select>
+	
+	<insert id="insert">
+		INSERT
+		  INTO search
+		       (
+		        search_result
+		       )
+		 VALUE (
+		 		#{search}
+		 	   )
+	</insert>
+
+</mapper>

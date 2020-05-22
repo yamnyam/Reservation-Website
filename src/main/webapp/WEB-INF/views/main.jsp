@@ -62,9 +62,11 @@
 		
 			<!-- Search -->
 			<div id="search-box">
-				<div class="search-area">   
-					<input type="text" class="search-bar">
-					<input type="submit" value=" " class="btn-search">
+				<div class="search-area">
+					<form id="searchForm" action="/search/searchList">   
+						<input type="text" id="search" name="search" class="search-bar">
+						<input type="submit" value=" " class="btn-search">
+					</form>
 				</div>
 			</div>
 			
