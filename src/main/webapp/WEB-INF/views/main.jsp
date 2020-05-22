@@ -66,11 +66,22 @@
 					<input type="submit" value=" " class="btn-search">
 				</div>
 			</div>
+			<!-- MainImg -->
 			<img class="mainimg" src="/resources/images/main.jpg">
+			
+			<!-- Notice -->
+	    	<div id="notice">
+	    		<ul class="links">
+	    			<li>공지사항</li>
+	    			<li></li>
+	    			<li></li>
+	    			<li></li>
+	    			<li></li>
+	    		</ul>
+	    	</div>
 		</div>
 			
-
-    
+		
 	    <!-- Footer -->
 		<!-- Bottom_bar -->
 
