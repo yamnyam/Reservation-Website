@@ -7,6 +7,13 @@
 		no = Integer.toString((int)session.getAttribute("acc_no"));
 %>
 
+<%	
+	int level = 0;
+
+	if (session.getAttribute("acc_level") != null)
+		level = (int)session.getAttribute("acc_level");
+%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>

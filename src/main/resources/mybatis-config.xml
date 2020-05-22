@@ -6,5 +6,6 @@
 		<typeAlias type="kr.website.member.vo.MemberVO" alias="memberVO"/>
 		<typeAlias type="kr.website.letter.vo.LetterVO" alias="letterVO"/>
 		<typeAlias type="kr.website.foodlist.vo.foodListVO" alias="foodlistVO"/>
+		<typeAlias type="kr.website.notice.vo.NoticeVO" alias="noticeVO"/>
 	</typeAliases>
 </configuration>

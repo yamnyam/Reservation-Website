@@ -54,12 +54,11 @@ public class MemberController {
 	
 	// 로그아웃 처리
 	@RequestMapping(value = "logout")
-	public ModelAndView logout(HttpSession session) throws Exception {
+	public String logout(HttpSession session) throws Exception {
+		
 		service.logout(session);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main");
-		mav.addObject("msg", "logout");
-		return mav;
+		
+		return "main";
 	}
 	
 	// 회원가입 화면 호출

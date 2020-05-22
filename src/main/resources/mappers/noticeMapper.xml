@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+
+	<insert id="write">
+		INSERT 
+		  INTO notice
+		  	   (
+				notice_title
+		  		, notice_content
+		  		, notice_date 
+		  		, notice_hits 
+		  	   ) 
+		VALUES (
+				#{notice_title}
+				, #{notice_content}
+				, NOW()
+				, 0
+			   )
+	</insert>
+	
+	<update id="updateHits">
+		UPDATE notice
+		   SET notice_hits = notice_hits + 1 
+		 WHERE notice_no = #{notice_no}
+	</update>
+	
+	<select id="view" resultType="noticeVO">
+		SELECT notice_no, notice_title, notice_content, notice_date, notice_hits
+		  FROM notice
+		 WHERE notice_no = #{notice_no}
+	</select>
+	
+	<select id="list" resultType="noticeVO">
+		SELECT notice_no
+			   , notice_title
+			   , notice_content
+			   , notice_date
+			   , notice_hits
+		  FROM notice
+	  ORDER BY notice_no DESC
+		 LIMIT 5
+	</select>
+	
+</mapper>
