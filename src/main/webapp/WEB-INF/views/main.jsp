@@ -68,10 +68,10 @@
 			</div>
 			<img class="mainimg" src="/resources/images/main.jpg">
 		</div>
-			
+		
+		<!-- Footer -->
 
-    
-	    <!-- Footer -->
+	    
 		<!-- Bottom_bar -->
 
 		<div id="bottom_bar">

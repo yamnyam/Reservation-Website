@@ -17,7 +17,7 @@
     		   )
         VALUES (
         		#{acc_id}
-        		, password(#{acc_pw})
+        		, #{acc_pw}
         		, #{acc_name}
         		, #{acc_level}
         		, 0
@@ -29,7 +29,7 @@
 		SELECT acc_name 
 		  FROM ACCOUNT
 		 WHERE acc_id = #{acc_id} 
-		   AND acc_pw = password(#{acc_pw})
+		   AND acc_pw = #{acc_pw}
 	</select>
 	
 	<select id="getMemberInfo" resultType="memberVO">
@@ -38,21 +38,21 @@
 		       , acc_id 
 		  FROM ACCOUNT
 		 WHERE acc_id = #{acc_id} 
-		   AND acc_pw = password(#{acc_pw})
+		   AND acc_pw = #{acc_pw}
 	</select>
 	
 	<update id="loginUpdate">
 		UPDATE ACCOUNT
 		   SET acc_count = acc_count + 1 
 		 WHERE acc_id = #{acc_id}
-		   AND acc_pw = password(#{acc_pw})
+		   AND acc_pw =	#{acc_pw}
 	</update>
 	
 	<update id="dateUpdate">
 		UPDATE ACCOUNT
 		   SET acc_date = now()
 		 WHERE acc_id = #{acc_id}
-		   AND acc_pw = password(#{acc_pw})  
+		   AND acc_pw = #{acc_pw}  
 	</update>
 	
 	<select id="idCheck" resultType="int">

@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<h2>게시글 목록</h2>
-		<table border="1" style="wdith:600px">
+		<table border="1" style="width:600px">
 			<colgroup>
 				<col width="10%" />
 				<col width="*" />
