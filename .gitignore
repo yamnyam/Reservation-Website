@@ -32,3 +32,5 @@ target/
 ​
 # End of https://www.gitignore.io/api/java,java-web
 src/main/webapp/WEB-INF/views/member/sub3_login.html
+.classpath
+.settings/org.eclipse.wst.common.project.facet.core.xml

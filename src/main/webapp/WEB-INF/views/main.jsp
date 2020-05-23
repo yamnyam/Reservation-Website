@@ -9,16 +9,6 @@
 
         	// SDK 초기화 여부를 판단합니다.
        		console.log(Kakao.isInitialized());
-       		Kakao.Auth.createLoginButton({
-       		  container: '#kakao-login-btn',
-       		  size: 'small',
-       		  success: function(response) {
-       		    console.log(response);
-       		  },
-       		  fail: function(error) {
-       		    console.log(error);
-       		  },
-       		});
 		</script>
 		<script type="text/javascript">
 			function listLetter(acc_no) {
