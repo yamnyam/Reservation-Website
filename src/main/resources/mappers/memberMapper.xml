@@ -35,7 +35,8 @@
 	<select id="getMemberInfo" resultType="memberVO">
 		SELECT acc_no
 			   , acc_name
-		       , acc_id 
+		       , acc_id
+		       , acc_level 
 		  FROM ACCOUNT
 		 WHERE acc_id = #{acc_id} 
 		   AND acc_pw = #{acc_pw}

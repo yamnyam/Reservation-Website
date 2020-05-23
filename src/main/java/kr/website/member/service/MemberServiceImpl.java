@@ -43,6 +43,7 @@ public class MemberServiceImpl implements MemberService {
 			session.setAttribute("acc_no", member.getAcc_no());
 			session.setAttribute("acc_id", member.getAcc_id());
 			session.setAttribute("acc_name", member.getAcc_name());
+			session.setAttribute("acc_level", member.getAcc_level());
 		}
 		
 		return result;

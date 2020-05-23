@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>보통밥집 : 내주변 밥집</title>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a&libraries=services"></script>
+	<meta charset="UTF-8">
+	<title>검색 리스트</title>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a&libraries=services"></script>
 	</head>
 	<body>
-
-		<!-- Header -->
+	
+	<!-- Header -->
 		<header id="header">
 			<nav class="left">
 				<a href="#menu"><span>Menu</span></a>
@@ -31,7 +32,7 @@
 				<li><a href="elements.html">밥집해시태그</a></li>
 			</ul>
 		</nav>
-	
+		
 		<!-- Search -->
 		<div id="search-box">
 			<div class="search-area">
@@ -41,52 +42,52 @@
 				</form>
 			</div>
 		</div>
-	
-		<!-- One -->
-		<div id = "map"></div>
-		<script>
-			var container = document.getElementById('map');
-			var options = {
-				center: new kakao.maps.LatLng(37.322843, 127.127846),
-				level: 4
-			};
-	
-			var map = new kakao.maps.Map(container, options);
-			
-			var geocoder = new kakao.maps.services.Geocoder();
+		
+			<!-- One -->
+			<div id = "map"></div>
+			<script>
+				var container = document.getElementById('map');
+				var options = {
+					center: new kakao.maps.LatLng(37.322843, 127.127846),
+					level: 4
+				};
+		
+				var map = new kakao.maps.Map(container, options);
+				
+				var geocoder = new kakao.maps.services.Geocoder();
 
-			var callback = function(result, status) {
-			    if (status === kakao.maps.services.Status.OK) {
-			        console.log(result);
-			    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				var callback = function(result, status) {
+				    if (status === kakao.maps.services.Status.OK) {
+				        console.log(result);
+				    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new kakao.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
-				}
-			};
-			
-		</script>
-			<c:forEach items="${view}" var="view">
-			 	<div class="contents">
-					<div class="contents_info">
-					 	<ul>
-						 	<li>${view.sto_name}</li>
-						 	<li>평균 가격: 아직 미정</li>
-						 	<li>${view.sto_tel}</li>
-						 	<li>${view.sto_loc}</li>
-						  	<li><script>geocoder.addressSearch('${view.sto_loc}', callback);</script></li>
-					 	</ul>
-					 </div>
-					 <div class="contents_img_box">
-				   			<img src="/resources/images/ban.png">
-					 </div>
-				</div>	
-			</c:forEach>
-			
-			<p style="border-top: 1px solid #ededed"></p>
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+					}
+				};
+				
+			</script>
+				<c:forEach items="${list}" var="list">
+				 	<div class="contents">
+						<div class="contents_info">
+						 	<ul>
+							 	<li>${list.sto_name}</li>
+							 	<li>평균 가격: 아직 미정</li>
+							 	<li>${list.sto_tel}</li>
+							 	<li>${list.sto_loc}</li>
+							  	<li><script>geocoder.addressSearch('${list.sto_loc}', callback);</script></li>
+						 	</ul>
+						 </div>
+						 <div class="contents_img_box">
+					   			<img src="/resources/images/ban.png">
+						 </div>
+					</div>	
+				</c:forEach>
+				
+				<p style="border-top: 1px solid #ededed"></p>
 		
 		<!-- Bottom_bar -->
 
@@ -98,7 +99,5 @@
 				<li onclick="javascript:listLetter(<%= no %>)"><img src="/resources/images/bar_food2.png" alt="기능4">마음의편지</li>
 		    </ul>
 		</div>
-		
-		
 	</body>
 </html>
