@@ -15,21 +15,7 @@
 		<script src="/resources/js/kakao.js"></script>
 		<script>
 			Kakao.init('efac78643eb016816e0a0d506200b05a');
-
-        	// SDK 초기화 여부를 판단합니다.
-       		console.log(Kakao.isInitialized());
-       		Kakao.Auth.createLoginButton({
-       		  container: '#kakao-login-btn',
-       		  size: 'small',
-       		  success: function(response) {
-       		    console.log(response);
-       		  },
-       		  fail: function(error) {
-       		    console.log(error);
-       		  },
-       		});
-		</script>
-		<script type="text/javascript">
+			
 			$(document).ready(function(){
 				$("#loginBtn").click(function(){
 					var id = $("#acc_id").val();
@@ -78,7 +64,7 @@
 					<div class="error" role="alert" id="err_empty_pw" style="display: none;">비밀번호를 입력해주세요.</div>
 					<div class="btn_login"><input type="button" title="로그인" alt="로그인" value="로그인" class="btn_global" id="loginBtn"></div>
 					<div class="btn_login"><input type="button" title="회원가입" alt="회원가입" value="회원가입" class="btn_global" id="join" onclick="location.href='/member/signup'"></div>
-					<div class="btn_login"><a><img src="/resources/images/kakao_login_btn_medium_wide.png" style="width: 100%;"></a></div>
+					<div class="btn_login" id="kakao-login-btn" onClick="Kakao.Auth.authorize()"><img src="/resources/images/kakao_login_btn_medium_wide.png" style="width: 100%;"></div>
 				</form>
 			</div>
 		</div>
