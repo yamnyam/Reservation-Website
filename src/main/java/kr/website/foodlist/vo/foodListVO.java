@@ -6,8 +6,14 @@ public class foodListVO {
 	private String sto_tel;
 	private String sto_gps;
 	private String sto_loc;
+	private String sto_gps_x;
+	private String sto_gps_y;
 	private int sto_no_acc;
 	private int averge_price;
+	
+	private String gps_x;
+	private String gps_y;
+	
 	public int getSto_no() {
 		return sto_no;
 	}
@@ -50,6 +56,30 @@ public class foodListVO {
 	public void setAverge_price(int averge_price) {
 		this.averge_price = averge_price;
 	}
+	public String getSto_gps_x() {
+		return sto_gps_x;
+	}
+	public void setSto_gps_x(String sto_gps_x) {
+		this.sto_gps_x = sto_gps_x;
+	}
+	public String getSto_gps_y() {
+		return sto_gps_y;
+	}
+	public void setSto_gps_y(String sto_gps_y) {
+		this.sto_gps_y = sto_gps_y;
+	}
 	
 	
+	public String getGps_x() {
+		return gps_x;
+	}
+	public void setGps_x(String gps_x) {
+		this.gps_x = gps_x;
+	}
+	public String getGps_y() {
+		return gps_y;
+	}
+	public void setGps_y(String gps_y) {
+		this.gps_y = gps_y;
+	}
 }

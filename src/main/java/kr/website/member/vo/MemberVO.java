@@ -14,6 +14,8 @@ public class MemberVO {
 	private String sto_name;
 	private String sto_tel;
 	private String sto_loc;
+	private String sto_gps_x;
+	private String sto_gps_y;
 	
 	public int getAcc_no() {
 		return acc_no;
@@ -79,5 +81,16 @@ public class MemberVO {
 	public void setSto_loc(String sto_loc) {
 		this.sto_loc = sto_loc;
 	}
-
+	public String getSto_gps_x() {
+		return sto_gps_x;
+	}
+	public void setSto_gps_x(String sto_gps_x) {
+		this.sto_gps_x = sto_gps_x;
+	}
+	public String getSto_gps_y() {
+		return sto_gps_y;
+	}
+	public void setSto_gps_y(String sto_gps_y) {
+		this.sto_gps_y = sto_gps_y;
+	}
 }

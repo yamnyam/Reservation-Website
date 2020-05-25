@@ -37,7 +37,7 @@
 		<div id="search-box">
 			<div class="search-area">
 				<form id="searchForm" action="/search/searchList">   
-					<input type="text" id="search" name="search" class="search-bar">
+					<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식">
 					<input type="submit" value=" " class="btn-search">
 				</form>
 			</div>

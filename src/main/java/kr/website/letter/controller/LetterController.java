@@ -67,34 +67,58 @@ public class LetterController {
 	}
 	
 	// 게시글 수정
-	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public String modify(@RequestParam("let_no") int no, Model model) throws Exception{
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modify(LetterVO vo, Model model) throws Exception{
 		
-		LetterVO vo = service.view(no);
+		int no = vo.getLet_no();
 		
-		model.addAttribute("view", vo);
+		LetterVO let_vo = service.view(no);
+		
+		model.addAttribute("view", let_vo);
 		
 		return "/letter/modify";
 
 	}
 	
 	// 게시글 수정 후
-	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	@RequestMapping(value = "/postModify", method = RequestMethod.POST)
+	@ResponseBody
 	public String postModify (LetterVO vo) throws Exception {
 		
 		service.modify(vo);
 		
-		return "redirect:/letter/view?let_no=" + vo.getLet_no();
+	    JSONObject params = new JSONObject();
+	    params.put("let_no", vo.getLet_no());
+	    
+	    JSONArray array = new JSONArray();
+	    array.add("게시글이 정상적으로 수정되었습니다.");
+	    array.add("/letter/view");
+	    array.add(params);
+	    
+	    return array.toJSONString();
+	    
+//		return "redirect:/letter/view?let_no=" + vo.getLet_no();
 	}
 	
 	// 게시글 삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@ResponseBody
 	public String delete(LetterVO vo) throws Exception{
 		
 		int no = vo.getLet_no();
 		service.delete(no);
 		
-		return "/letter/list";
+	    JSONObject params = new JSONObject();
+	    params.put("let_no_acc", vo.getLet_no_acc());
+	    
+	    JSONArray array = new JSONArray();
+	    array.add("게시글이 정상적으로 삭제되었습니다.");
+	    array.add("/letter/list");
+	    array.add(params);
+	    
+	    return array.toJSONString();
+	    
+//	    return "/letter/list";
 	}
 
 	// 게시글 목록 + 페이징

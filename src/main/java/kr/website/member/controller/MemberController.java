@@ -38,7 +38,8 @@ public class MemberController {
 	@ResponseBody
 	public String logincheck(@ModelAttribute MemberVO vo, HttpSession session) throws Exception {
 		boolean result = service.loginCheck(vo, session);
-	    JSONArray array = new JSONArray();
+	    
+		JSONArray array = new JSONArray();
 	    
 	    // true: 로그인 성공 | false: 로그인  실패
 	    if (result == true) {
@@ -54,11 +55,15 @@ public class MemberController {
 	
 	// 로그아웃 처리
 	@RequestMapping(value = "logout")
+	@ResponseBody
 	public String logout(HttpSession session) throws Exception {
-		
 		service.logout(session);
 		
-		return "main";
+		JSONArray array = new JSONArray();
+		array.add("정상적으로 로그아웃되었습니다.");
+		array.add("/");
+		
+		return array.toJSONString();
 	}
 	
 	// 회원가입 화면 호출
@@ -77,7 +82,6 @@ public class MemberController {
 	    // 1: 중복아이디 존재
 	    if (id_count == 1) {
 	    	array.add("이미 등록된 아이디입니다.");
-	    	array.add("/member/signup");
 	    } else {
 	    	service.register(vo);
 	    	array.add("정상적으로 회원가입되었습니다.");

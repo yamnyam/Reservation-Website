@@ -10,6 +10,13 @@
 					location.href = "/letter/writeView";
 				});
 			});
+			
+			function listView(let_no) {
+				var form = $("#letForm");
+				$("#let_no").val(let_no);
+
+				form.submit();
+			}
 		</script>
 	</head>
 	<body>
@@ -38,7 +45,7 @@
 						<tr>
 							<td>${list.let_no}</td>
 							<td>
-								<a href="/letter/view?let_no=${list.let_no}">${list.let_title}</a>
+								<a href="javascript:listView('${list.let_no}')">${list.let_title}</a>
 							</td>
 							<td>
 								<fmt:formatDate value="${list.let_date}" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -77,5 +84,9 @@
 				</td>
 			</tr>
 		</table>
+		
+		<form id="letForm" action="/letter/view" method="post">
+	    	<input type="hidden" id="let_no" name="let_no" />
+		</form>
 	</body>
 </html>

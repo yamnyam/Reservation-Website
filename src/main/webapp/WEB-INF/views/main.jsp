@@ -12,7 +12,6 @@
 		</script>
 		<script type="text/javascript">
 			function listLetter(acc_no) {
-            
 				if (acc_no == undefined) {
                		alert("로그인한 후 이용가능합니다.");
                		return;
@@ -21,6 +20,17 @@
             	var form = $("#letterForm");
             	form.submit();
          	}
+			
+			function logout() {
+				ajaxPostAction("/member/logout");
+			}
+			
+			function noticeView(notice_no) {
+				var form = $("#noticeForm");
+				$("#notice_no").val(notice_no);
+
+				form.submit();
+			}
       	</script>
    	</head>
    	<body>
@@ -34,7 +44,7 @@
 				<% if (no == null || no == "") { %>
 					<a href="/member/login" class="button alt">Login</a>
 				<% } else { %>
-					<a href="/member/logout" class="button alt">Logout</a>
+					<a href="javascript:logout()" class="button alt">Logout</a>
 				<% } %>
 			</nav>
 		</header>
@@ -54,7 +64,7 @@
 			<div id="search-box">
 				<div class="search-area">
 					<form id="searchForm" action="/search/searchList">   
-						<input type="text" id="search" name="search" class="search-bar">
+						<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식">
 						<input type="submit" value=" " class="btn-search">
 					</form>
 				</div>
@@ -90,7 +100,7 @@
 						<tr>
 							<td>${list.notice_no}</td>
 							<td>
-								<a href="/notice/noticeView?notice_no=${list.notice_no}">${list.notice_title}</a>
+								<a href="javascript:noticeView('${list.notice_no}')">${list.notice_title}</a>
 							</td>
 							<td>
 								<fmt:formatDate value="${list.notice_date}" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -98,10 +108,11 @@
 							<td>${list.notice_hits}</td>
 						</tr>
 					</c:forEach>
-				
 			</table>
 		</div>
 
+		
+		
 		
 		<% if (level == 3) { %>
 			<a href="/notice/noticeWrite">글쓰기</a>
@@ -124,6 +135,10 @@
 		<!-- Hidden Form -->
 		<form id="letterForm" action="/letter/list" method="post">
 	    	<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" />
+		</form>
+		
+		<form id="noticeForm" action="/notice/noticeView" method="post">
+	    	<input type="hidden" id="notice_no" name="notice_no" />
 		</form>
 	</body>
 </html>
