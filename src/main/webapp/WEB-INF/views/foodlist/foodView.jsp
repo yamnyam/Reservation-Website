@@ -45,12 +45,28 @@
 		<!-- One -->
 		<div id = "map"></div>
 		<script>
+
+			
+			
 			var container = document.getElementById('map');
 			var options = {
 				center: new kakao.maps.LatLng(37.322843, 127.127846),
 				level: 4
 			};
 	
+			if(navigator.geolocation){
+				navigator.geolocation.getCurrentPosition(function(position) {
+			        
+			        var lat = position.coords.latitude, // 위도
+			            lon = position.coords.longitude; // 경도
+			        
+			        var locPosition = new kakao.maps.LatLng(lat, lon);
+			        map.setCenter(locPosition);   
+				});
+			}else{
+				console.error('geo error');
+			}
+				
 			var map = new kakao.maps.Map(container, options);
 			
 			var geocoder = new kakao.maps.services.Geocoder();
@@ -67,7 +83,6 @@
 		        });
 				}
 			};
-			
 		</script>
 			<c:forEach items="${view}" var="view">
 			 	<div class="contents">
@@ -99,6 +114,9 @@
 		    </ul>
 		</div>
 		
-		
+		<!-- Hidden Form -->
+		<form id="letterForm" action="/letter/list" method="post">
+	    	<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" />
+		</form>
 	</body>
 </html>

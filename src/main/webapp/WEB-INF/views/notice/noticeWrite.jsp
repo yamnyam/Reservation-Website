@@ -71,7 +71,7 @@
 	            </div>
 	            <div class="input_row">
 	                <h2 class="input_row_tit">내용<span class="point"></span></h2>
-	                <textarea class="notice_content" id="notice_content" name="notice_content" maxlength="400" placeholder="내용을 입력해주세요 (최대400자)"></textarea>
+	                <textarea class="input_content" id="notice_content" name="notice_content" maxlength="400" placeholder="내용을 입력해주세요 (최대400자)"></textarea>
 	            </div>
 	            <div class="input_row">
 	                <input class="btn_global" type="button" id="btnSave" value="등록">
@@ -92,5 +92,10 @@
 				<li onclick="javascript:listLetter(<%= no %>)"><img src="/resources/images/bar_food2.png" alt="기능4">마음의편지</li>
 		    </ul>
 		</div>
+		
+		<!-- Hidden Form -->
+		<form id="letterForm" action="/letter/list" method="post">
+	    	<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" />
+		</form>
 	</body>
 </html>
