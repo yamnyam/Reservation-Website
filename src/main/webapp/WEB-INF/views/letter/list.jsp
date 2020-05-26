@@ -11,6 +11,13 @@
 					location.href = "/letter/writeView";
 				});
 			});
+			
+			function listView(let_no) {
+				var form = $("#letForm");
+				$("#let_no").val(let_no);
+
+				form.submit();
+			}
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
@@ -109,9 +116,9 @@
 		    </ul>
 		</div>
 		
-		<!-- Hidden Form -->
-		<form id="letterForm" action="/letter/list" method="post">
-	    	<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" />
+		
+		<form id="letForm" action="/letter/view" method="post">
+	    	<input type="hidden" id="let_no" name="let_no" />
 		</form>
 	</body>
 </html>

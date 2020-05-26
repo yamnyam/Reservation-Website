@@ -1,7 +1,5 @@
 package kr.website.main;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -29,19 +27,12 @@ public class HomeController {
 
 	@RequestMapping(value = "/")
 	public String home(Locale locale, Model model, NoticeVO vo) throws Exception {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
+		logger.info("I LOVE YOU.", locale);
 		
 		List<NoticeVO> list = null;
 		list = service.list(vo);
 		
 		model.addAttribute("list", list);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "main";
 	}

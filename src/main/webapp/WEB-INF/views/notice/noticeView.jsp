@@ -51,7 +51,9 @@
 				<div>
 <!-- 					<button type="button" id="btnUpdate">수정</button> -->
 <!-- 					<button type="button" id="btnDelete">삭제</button> -->
-					<button type="button" id="btnList">메인</button>
+<!-- 					<button type="button" id="btnList">메인</button> -->
+					<a href="/" class="button alt">메인</a>
+					
 				</div>
 			</form>
 		</div>

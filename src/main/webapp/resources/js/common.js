@@ -15,7 +15,6 @@ function ajaxPostAction(url, formData) {
         	callbackPage(data[1], data[2]);
         },
         error: function(data) {
-        	console.log(data);
             alert("오류가 발생했습니다.\n잠시후 다시 시도하세요.");
         }
     });
@@ -23,6 +22,9 @@ function ajaxPostAction(url, formData) {
 
 // CallBack 화면 이동
 function callbackPage(url, data) {
+	if (url == null || url == undefined)
+		return;
+	
 	var form = document.createElement('form');
 	form.setAttribute('method', "post");
 	form.setAttribute('action', url);

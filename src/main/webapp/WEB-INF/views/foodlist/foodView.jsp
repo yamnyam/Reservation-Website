@@ -5,6 +5,19 @@
 	<head>
 		<title>보통밥집 : 내주변 밥집</title>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a&libraries=services"></script>
+		
+		<script type="text/javascript">
+			function listLetter(acc_no) {
+            
+				if (acc_no == undefined) {
+               		alert("로그인한 후 이용가능합니다.");
+               		return;
+            	}
+            
+            	var form = $("#letterForm");
+            	form.submit();
+         	}
+      	</script>
 	</head>
 	<body>
 
@@ -36,7 +49,7 @@
 		<div id="search-box">
 			<div class="search-area">
 				<form id="searchForm" action="/search/searchList">   
-					<input type="text" id="search" name="search" class="search-bar">
+					<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식">
 					<input type="submit" value=" " class="btn-search">
 				</form>
 			</div>
@@ -49,8 +62,15 @@
 			
 			
 			var container = document.getElementById('map');
+			
+			var gps_x = 37.322843;
+			var gps_y = 127.127846;
+			
+			$("#gps_x").val(gps_x);
+			$("#gps_y").val(gps_y);
+			
 			var options = {
-				center: new kakao.maps.LatLng(37.322843, 127.127846),
+				center: new kakao.maps.LatLng(gps_x, gps_y),
 				level: 4
 			};
 	

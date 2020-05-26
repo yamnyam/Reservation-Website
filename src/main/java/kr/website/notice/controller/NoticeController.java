@@ -12,14 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.website.notice.service.NoticeService;
 import kr.website.notice.vo.NoticeVO;
 
 @Controller
 @RequestMapping("/notice/*")
-@SuppressWarnings("unchecked")
 public class NoticeController {
 	
 	private static final Logger Logger = LoggerFactory.getLogger(NoticeController.class);
@@ -45,7 +43,7 @@ public class NoticeController {
 	}
 	
 	// 공지사항 조회
-	@RequestMapping(value = "/noticeView")
+	@RequestMapping(value = "/noticeView", method=RequestMethod.POST)
 	public String view(@RequestParam("notice_no") int no, Model model, HttpSession session) throws Exception {
 		
 		NoticeVO vo = service.view(no);

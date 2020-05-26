@@ -19,7 +19,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void register(MemberVO vo) throws Exception {
 		sql.insert("member.signup", vo);
-		
+		sql.insert("member.store", vo);
 	}
 	
 	// 회원 가입 중복 로그인 체크
@@ -58,5 +58,4 @@ public class MemberDAOImpl implements MemberDAO {
 	public void logout(HttpSession session) throws Exception {
 		
 	}
-
 }

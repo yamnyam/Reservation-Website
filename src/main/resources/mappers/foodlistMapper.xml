@@ -9,7 +9,7 @@
 			   , sto_tel
 			   , sto_loc
 		  FROM STORE
-<!-- 		 WHERE sto_no = #{sto_no}  -->
+<!-- 		 WHERE sto_gps_x -->
 	</select>
 	
 </mapper>

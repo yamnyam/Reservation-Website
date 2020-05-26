@@ -33,9 +33,9 @@ public class foodListController {
 		List<foodListVO> view = null;
 		view = service.foodView(vo);
 		
-		
 		model.addAttribute("view", view);
 		
 		return "/foodlist/foodView"; 
 	}
+	
 }
