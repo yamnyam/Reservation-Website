@@ -17,6 +17,12 @@
 
 				form.submit();
 			}
+			
+// 			function listLetter() {
+// 				var form = $("#listForm");
+				
+// 				form.submit();
+// 			}
 		</script>
 	</head>
 	<body>
@@ -62,7 +68,8 @@
 							<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
 								<c:choose>	
 									<c:when test="${select != num}">
-										<a href="/letter/list?num=${num}">${num}</a>
+										<a href="/letter/list">${num}</a>
+<%-- 										<a onclick="javascript:listLetter()">${num}</a> --%>
 									</c:when>
 									<c:otherwise>
 										<span style="color:red">${num}</span>
