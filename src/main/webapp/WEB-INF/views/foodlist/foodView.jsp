@@ -62,33 +62,6 @@
 			</div>
 		</div>
 	
-		<!-- One -->
-		<div id = "map"></div>
-		<script>
-				var container = document.getElementById('map');
-				
-				var options = {
-					center: new kakao.maps.LatLng(gps_x, gps_y),
-					level: 4
-				};
-		
-				var map = new kakao.maps.Map(container, options);
-				
-				var geocoder = new kakao.maps.services.Geocoder();
-	
-				var callback = function(result, status) {
-				    if (status === kakao.maps.services.Status.OK) {
-				        console.log(result);
-				    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-	
-			        // 결과값으로 받은 위치를 마커로 표시합니다
-			        var marker = new kakao.maps.Marker({
-			            map: map,
-			            position: coords
-			        });
-					}
-				};
-		</script>
 			<c:forEach items="${view}" var="view">
 			 	<div class="contents">
 					<div class="contents_info" onclick="javascript:foodDetail('${view.sto_no}')">
