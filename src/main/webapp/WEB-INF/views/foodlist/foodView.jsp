@@ -67,12 +67,6 @@
 		<script>
 				var container = document.getElementById('map');
 				
-				var gps_x = 37.322843;
-				var gps_y = 127.127846;
-				
-				$("#gps_x").val(gps_x);
-				$("#gps_y").val(gps_y);
-				
 				var options = {
 					center: new kakao.maps.LatLng(gps_x, gps_y),
 					level: 4

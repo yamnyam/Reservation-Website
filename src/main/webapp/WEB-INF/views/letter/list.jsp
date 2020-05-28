@@ -69,7 +69,6 @@
 								<c:choose>	
 									<c:when test="${select != num}">
 										<a href="/letter/list">${num}</a>
-<%-- 										<a onclick="javascript:listLetter()">${num}</a> --%>
 									</c:when>
 									<c:otherwise>
 										<span style="color:red">${num}</span>
