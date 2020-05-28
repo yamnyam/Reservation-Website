@@ -19,7 +19,7 @@ public class ReserveController {
 	@RequestMapping(value = "/afterReserve", method=RequestMethod.POST)
 	public String afterReserve(ReserveVO vo) throws Exception {
 		
-		String date = vo.getRes_month() + "월" + vo.getRes_date() + "일" + vo.getRes_time();
+		String date = vo.getRes_date() + vo.getRes_time();
 		
 		vo.setRes_all(date);
 		

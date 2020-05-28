@@ -8,7 +8,6 @@ public class ReserveVO {
 	private int res_no_sto;
 	private Date res_cur_time;
 	private String res_time;
-	private String res_month;
 	private String res_date;
 	private int res_people;
 	private String res_all;
@@ -56,12 +55,6 @@ public class ReserveVO {
 	}
 	public void setRes_time(String res_time) {
 		this.res_time = res_time;
-	}
-	public String getRes_month() {
-		return res_month;
-	}
-	public void setRes_month(String res_month) {
-		this.res_month = res_month;
 	}
 	public String getRes_date() {
 		return res_date;

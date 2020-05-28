@@ -39,6 +39,7 @@
 <!-- CSS -->
 <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
 <link rel="stylesheet" href="/resources/css/main.css" />
+<link rel="stylesheet" href="/resources/css/date.css" />
 
 <!-- Meta -->
 <meta charset="utf-8" />
