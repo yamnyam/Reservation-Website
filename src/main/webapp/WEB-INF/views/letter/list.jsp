@@ -18,6 +18,12 @@
 
 				form.submit();
 			}
+			
+// 			function listLetter() {
+// 				var form = $("#listForm");
+				
+// 				form.submit();
+// 			}
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>

@@ -17,6 +17,13 @@
             	var form = $("#letterForm");
             	form.submit();
          	}
+
+			function foodDetail(sto_no) {
+				var form = $("#detailForm");
+				$("#sto_no").val(sto_no);
+
+				form.submit();
+			}
       	</script>
 	</head>
 	<body>
@@ -106,12 +113,13 @@
 		</script>
 			<c:forEach items="${view}" var="view">
 			 	<div class="contents">
-					<div class="contents_info">
+					<div class="contents_info" onclick="javascript:foodDetail('${view.sto_no}')">
 					 	<ul>
 						 	<li>${view.sto_name}</li>
-						 	<li>평균 가격: 아직 미정</li>
-						 	<li>${view.sto_tel}</li>
-						 	<li>${view.sto_loc}</li>
+						 	<li>음식종류 #해시태그</li>
+		                    <li>사장 한마디</li>
+		                    <li>"       "</li> 
+		                    <li>#해시태그 #해시태그 #해시태그</li>
 						  	<li><script>geocoder.addressSearch('${view.sto_loc}', callback);</script></li>
 					 	</ul>
 					 </div>
@@ -137,6 +145,10 @@
 		<!-- Hidden Form -->
 		<form id="letterForm" action="/letter/list" method="post">
 	    	<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" />
+		</form>
+		
+		<form id="detailForm" action="/foodlist/foodDetail" method="post">
+	    	<input type="hidden" id="sto_no" name="sto_no" />
 		</form>
 	</body>
 </html>
