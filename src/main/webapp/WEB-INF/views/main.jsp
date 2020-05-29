@@ -72,55 +72,41 @@
 			
 			<!-- MainImg -->
 			<img class="mainimg" src="/resources/images/main.jpg">
+			
+			<div>
+				<table border="1" style="width: 350px">
+					<colgroup>
+						<col width="10%" />
+						<col width="*" />
+						<col width="25%" />
+						<col width="15%" />
+					</colgroup>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성일</th>
+						<th>조회수</th>
+					</tr>
+						<c:forEach items="${list}" var="list">
+							<tr>
+								<td>${list.notice_no}</td>
+								<td>
+									<a href="/notice/noticeView?notice_no=${list.notice_no}">${list.notice_title}</a>
+								</td>
+								<td>
+									<fmt:formatDate value="${list.notice_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+								</td>
+								<td>${list.notice_hits}</td>
+							</tr>
+						</c:forEach>
+					
+				</table>
+				<% if (level == 3) { %>
+				<a href="/notice/noticeWrite">글쓰기</a>
+				<% } %>
+			</div>	
 		</div>
-			<!-- Notice -->
-<!-- 	    	<div id="notice"> -->
-<!-- 	    		<ul class="links"> -->
-<!-- 	    			<li>공지사항</li> -->
-<!-- 	    			<li>번호</li> -->
-<!-- 	    			<li>제목</li> -->
-<!-- 	    			<li>작성일</li> -->
-<!-- 	    			<li>조회수</li> -->
-<!-- 	    		</ul> -->
-		<div>
-			<table border="1" style="width: 350px">
-				<colgroup>
-					<col width="10%" />
-					<col width="*" />
-					<col width="25%" />
-					<col width="15%" />
-				</colgroup>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성일</th>
-					<th>조회수</th>
-				</tr>
-					<c:forEach items="${list}" var="list">
-						<tr>
-							<td>${list.notice_no}</td>
-							<td>
-								<a href="javascript:noticeView('${list.notice_no}')">${list.notice_title}</a>
-							</td>
-							<td>
-								<fmt:formatDate value="${list.notice_date}" pattern="yyyy-MM-dd HH:mm:ss" />
-							</td>
-							<td>${list.notice_hits}</td>
-						</tr>
-					</c:forEach>
-			</table>
-		</div>
-
 		
-		
-		
-		<% if (level == 3) { %>
-			<a href="/notice/noticeWrite">글쓰기</a>
-		<% } %>
-
-		<!-- Footer -->
-		
-
 		<!-- Bottom_bar -->
 
 		<div id="bottom_bar">
