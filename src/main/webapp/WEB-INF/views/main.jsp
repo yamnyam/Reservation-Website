@@ -98,7 +98,7 @@
 							<tr>
 								<td>${list.notice_no}</td>
 								<td>
-									<a href="/notice/noticeView?notice_no=${list.notice_no}">${list.notice_title}</a>
+									<a href="javascript:noticeView(${list.notice_no})">${list.notice_title}</a>
 								</td>
 								<td>
 									<fmt:formatDate value="${list.notice_date}" pattern="yyyy-MM-dd HH:mm:ss" />

@@ -35,8 +35,8 @@
 		
 		                        // 해당 주소에 대한 좌표를 받아서
 		                        var coords = new kakao.maps.LatLng(result.y, result.x);
-		                        $("#sto_gps_x").val(result.x);
-		    			        $("#sto_gps_y").val(result.y);
+		                        $("#sto_gps_x").val(result.y);
+		    			        $("#sto_gps_y").val(result.x);
 		                        // 지도를 보여준다.
 		                        mapContainer.style.display = "block";
 		                        map.relayout();
@@ -188,7 +188,7 @@
 					</div>
 					<div class="input_row_lev" id="input_row_lev1">
 						<span class="input_box">
-							<input class="input" type="text" id="sto_name" name="sto_name" placeholder="맛집명" maxlength="35">
+							<input class="input" type="text" id="sto_name" name="sto_name" placeholder="밥집명" maxlength="35">
 						</span>
 					</div>
 					<div class="input_row_lev" id="input_row_lev2">

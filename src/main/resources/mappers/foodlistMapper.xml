@@ -9,8 +9,8 @@
 			   , sto_tel
 			   , sto_loc
 		  FROM STORE
-		 WHERE sto_gps_y between #{gps_x} - 1 AND #{gps_x} + 1
-		   AND sto_gps_x between #{gps_y} - 1 and #{gps_y} + 1
+		 WHERE sto_gps_x between #{gps_x} - 1 AND #{gps_x} + 1
+		   AND sto_gps_y between #{gps_y} - 1 and #{gps_y} + 1
 	</select>
 	
 	<select id="detail" resultType="foodListVO">
