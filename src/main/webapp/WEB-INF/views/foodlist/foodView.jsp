@@ -24,6 +24,12 @@
 
 				form.submit();
 			}
+			
+			function foodlist() {
+				var form = $("#foodlistForm");
+
+				form.submit();
+			}
       	</script>
 	</head>
 	<body>
@@ -61,39 +67,42 @@
 				</form>
 			</div>
 		</div>
-	
+		
 		<!-- One -->
 		<div id = "map"></div>
 		<script>
 
-			
-			
 			var container = document.getElementById('map');
 			
-			var gps_x = 37.322843;
-			var gps_y = 127.127846;
-			
-			$("#gps_x").val(gps_x);
-			$("#gps_y").val(gps_y);
-			
 			var options = {
-				center: new kakao.maps.LatLng(gps_x, gps_y),
-				level: 4
+					center: new kakao.maps.LatLng(${gps_x}, ${gps_y}),
+					level: 4
 			};
-	
+			
 			if(navigator.geolocation){
 				navigator.geolocation.getCurrentPosition(function(position) {
 			        
 			        var lat = position.coords.latitude, // 위도
 			            lon = position.coords.longitude; // 경도
 			        
-			        var locPosition = new kakao.maps.LatLng(lat, lon);
-			        map.setCenter(locPosition);   
+					$("#gps_x").val(lat);
+					$("#gps_y").val(lon);
+					
 				});
 			}else{
 				console.error('geo error');
 			}
-				
+			
+			$(document).ready(function(){
+				$("#btnAround").click(function(){
+					var formData = $("#aroundForm");
+				    
+			        var locPosition = new kakao.maps.LatLng($("#gps_x").val(), $("#gps_y").val());
+			        map.setCenter(locPosition);   
+					
+				    formData.submit();
+				});
+			});
 			var map = new kakao.maps.Map(container, options);
 			
 			var geocoder = new kakao.maps.services.Geocoder();
@@ -111,6 +120,8 @@
 				}
 			};
 		</script>
+			<input type="button" id="btnAround" name="btnAround" value="GPS" />
+			
 			<c:forEach items="${view}" var="view">
 			 	<div class="contents">
 					<div class="contents_info" onclick="javascript:foodDetail('${view.sto_no}')">
@@ -136,7 +147,7 @@
 		<div id="bottom_bar">
 			<ul>
 				<li onclick="location.href='/'"><img src="/resources/images/bar_home.png" alt="HOME">HOME</li>
-				<li onclick="location.href='/foodlist/foodView'"><img src="/resources/images/bar_food.png" alt="내주변밥집">내주변밥집</li>
+				<li onclick="javascript:foodlist()"><img src="/resources/images/bar_food.png" alt="내주변밥집">내주변밥집</li>
 				<li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="해시태그">해시태그</li>
 				<li onclick="javascript:listLetter(<%= no %>)"><img src="/resources/images/bar_food2.png" alt="기능4">마음의편지</li>
 		    </ul>
@@ -149,6 +160,16 @@
 		
 		<form id="detailForm" action="/foodlist/foodDetail" method="post">
 	    	<input type="hidden" id="sto_no" name="sto_no" />
+		</form>
+		
+		<form id="aroundForm" action="/foodlist/foodView" method="post">
+	    	<input type="hidden" id="gps_x" name="gps_x"/>
+	    	<input type="hidden" id="gps_y" name="gps_y"/>
+		</form>
+		
+		<form id="foodlistForm" action="/foodlist/foodView" method="post">
+	    	<input type="hidden" id="gps_x" name="gps_x" value="37.322843"/>
+	    	<input type="hidden" id="gps_y" name="gps_y" value="127.127846"/>
 		</form>
 	</body>
 </html>

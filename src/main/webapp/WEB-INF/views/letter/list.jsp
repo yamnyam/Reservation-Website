@@ -24,6 +24,12 @@
 				
 // 				form.submit();
 // 			}
+
+			function foodlist() {
+				var form = $("#foodlistForm");
+
+				form.submit();
+			}
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
@@ -116,7 +122,7 @@
 		<div id="bottom_bar">
 			<ul>
 				<li onclick="location.href='/'"><img src="/resources/images/bar_home.png" alt="HOME">HOME</li>
-				<li onclick="location.href='/foodlist/foodView'"><img src="/resources/images/bar_food.png" alt="내주변밥집">내주변밥집</li>
+				<li onclick="javascript:foodlist()"><img src="/resources/images/bar_food.png" alt="내주변밥집">내주변밥집</li>
 				<li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="해시태그">해시태그</li>
 				<li onclick="javascript:listLetter(<%= no %>)"><img src="/resources/images/bar_food2.png" alt="기능4">마음의편지</li>
 		    </ul>
@@ -125,6 +131,11 @@
 		
 		<form id="letForm" action="/letter/view" method="post">
 	    	<input type="hidden" id="let_no" name="let_no" />
+		</form>
+		
+		<form id="foodlistForm" action="/foodlist/foodView" method="post">
+	    	<input type="hidden" id="gps_x" name="gps_x" value="37.322843"/>
+	    	<input type="hidden" id="gps_y" name="gps_y" value="127.127846"/>
 		</form>
 	</body>
 </html>
