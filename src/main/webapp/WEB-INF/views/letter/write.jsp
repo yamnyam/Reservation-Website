@@ -74,7 +74,7 @@
 				마음의편지를 남겨주시면 성실하게<br>답변드리겠습니다.
 		</div>
 		<div id="wrap">
-			<form id="writeForm">
+			<form id="writeForm" enctype="multipart/form-data">
 				<div class="input_row">
 					<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
 	                <h2 class="input_row_tit">제목<span class="point"></span></h2>
@@ -83,6 +83,22 @@
 	            <div class="input_row">
 	                <h2 class="input_row_tit">내용<span class="point"></span></h2>
 	                <textarea class="input_content" id="let_content" name="let_content" maxlength="400" placeholder="내용을 입력해주세요 (최대400자)"></textarea>
+	            </div>
+	            <div class="input_row">
+	            	<label for="let_image">이미지 첨부</label>
+	            	<input type="file" id="let_image" name="let_image" />
+	            	<div class="select_img"><img src="" /></div>
+		       		<script>
+				    	$("#let_image").change(function(){
+							if(this.files && this.files[0]) {
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_img img").attr("src", data.target.result).width(500);        
+								}
+								reader.readAsDataURL(this.files[0]);
+							}
+						});
+		       		</script>
 	            </div>
 	            <div class="input_row">
 	                <input class="btn_global" type="button" id="btnSave" value="등록">

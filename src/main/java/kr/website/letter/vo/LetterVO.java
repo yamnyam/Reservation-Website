@@ -10,7 +10,7 @@ public class LetterVO extends PageVO {
 	private String let_content;
 	private Date let_date;
 	private int let_no_acc;
-	private String photo;
+	private String let_photo;
 	private int let_viewCnt;
 
 	public int getLet_no() {
@@ -45,14 +45,6 @@ public class LetterVO extends PageVO {
 		this.let_no_acc = let_no_acc;
 	}
 
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
 	public String getLet_title() {
 		return let_title;
 	}
@@ -67,5 +59,13 @@ public class LetterVO extends PageVO {
 
 	public void setLet_viewCnt(int let_viewCnt) {
 		this.let_viewCnt = let_viewCnt;
+	}
+
+	public String getLet_photo() {
+		return let_photo;
+	}
+
+	public void setLet_photo(String let_photo) {
+		this.let_photo = let_photo;
 	}
 }

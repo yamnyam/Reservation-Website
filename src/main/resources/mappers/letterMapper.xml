@@ -12,6 +12,7 @@
 		  		, let_no_acc
 		  		, let_date 
 		  		, let_viewCnt 
+		  		, let_photo
 		  	   ) 
 		VALUES (
 				#{let_title}
@@ -19,6 +20,7 @@
 				, #{let_no_acc}
 				, NOW()
 				, 0
+				, #{let_photo}
 			   )
 	</insert>
 	
