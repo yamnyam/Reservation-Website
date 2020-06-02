@@ -81,33 +81,24 @@
 			<img class="mainimg" src="/resources/images/main.jpg">
 			
 			<div>
-				<table border="1" style="width: 350px">
-					<colgroup>
-						<col width="10%" />
-						<col width="*" />
-						<col width="25%" />
-						<col width="15%" />
-					</colgroup>
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성일</th>
-						<th>조회수</th>
-					</tr>
-						<c:forEach items="${list}" var="list">
-							<tr>
-								<td>${list.notice_no}</td>
-								<td>
-									<a href="javascript:noticeView(${list.notice_no})">${list.notice_title}</a>
-								</td>
-								<td>
-									<fmt:formatDate value="${list.notice_date}" pattern="yyyy-MM-dd HH:mm:ss" />
-								</td>
-								<td>${list.notice_hits}</td>
-							</tr>
-						</c:forEach>
-					
-				</table>
+				<div style="text-align: center; font-size: 1.5em;padding: 5px 0;">공지사항</div>
+				<div class="list_header">
+					<div style="width: 15%;">번호</div>
+					<div style="width: 45%;">제목</div>
+					<div style="width: 25%;">작성일</div>
+					<div style="width: 15%;">조회</div>
+				</div>
+				<div class="list_box">	
+					<!-- list_content -->
+					<c:forEach items="${list}" var="list">
+						<div class="list_content">
+							<div style="width: 15%;">${list.notice_no}</div>
+							<div style="width: 45%;text-align: left;"><a href="javascript;noticeView(${list.notice_no})">${list.notice_title}</a></div>
+							<div style="width: 25%;"><fmt:formatDate value="${list.notice_date}" pattern="MM-dd" /></div>
+							<div style="width: 15%;">${list.notice_hits}</div>
+						</div>
+					</c:forEach>
+				</div>
 				<% if (level == 3) { %>
 				<a href="/notice/noticeWrite">글쓰기</a>
 				<% } %>
