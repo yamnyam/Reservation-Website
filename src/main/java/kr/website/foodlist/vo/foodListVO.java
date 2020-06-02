@@ -10,9 +10,11 @@ public class foodListVO {
 	private String sto_gps_y;
 	private int sto_no_acc;
 	private int averge_price;
+	private String sto_photo;
 	
 	private String gps_x;
 	private String gps_y;
+	
 	
 	public int getSto_no() {
 		return sto_no;
@@ -68,7 +70,12 @@ public class foodListVO {
 	public void setSto_gps_y(String sto_gps_y) {
 		this.sto_gps_y = sto_gps_y;
 	}
-	
+	public String getSto_photo() {
+		return sto_photo;
+	}
+	public void setSto_photo(String sto_photo) {
+		this.sto_photo = sto_photo;
+	}
 	
 	public String getGps_x() {
 		return gps_x;

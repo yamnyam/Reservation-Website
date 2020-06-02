@@ -2,6 +2,8 @@ package kr.website.letter.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import kr.website.common.vo.PageVO;
 
 public class LetterVO extends PageVO {
@@ -12,7 +14,7 @@ public class LetterVO extends PageVO {
 	private int let_no_acc;
 	private String let_photo;
 	private int let_viewCnt;
-
+	
 	public int getLet_no() {
 		return let_no;
 	}

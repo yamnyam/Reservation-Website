@@ -8,6 +8,7 @@
 			   , sto_name
 			   , sto_tel
 			   , sto_loc
+			   , sto_photo
 		  FROM STORE
 		 WHERE sto_gps_x between #{gps_x} - 1 AND #{gps_x} + 1
 		   AND sto_gps_y between #{gps_y} - 1 and #{gps_y} + 1
