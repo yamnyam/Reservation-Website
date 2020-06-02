@@ -9,4 +9,6 @@ public interface SearchService {
 	// 검색 후 리스트
 	public List<foodListVO> list(String search) throws Exception;
 	
+	public foodListVO search2(foodListVO vo) throws Exception;
+	
 }

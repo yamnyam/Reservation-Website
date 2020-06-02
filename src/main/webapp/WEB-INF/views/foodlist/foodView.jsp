@@ -68,7 +68,6 @@
 						</form>
 					</div>
 				</div>
-			</div>
 			
 			<!-- One -->
 			<div id = "map"></div>
@@ -77,8 +76,8 @@
 				var container = document.getElementById('map');
 				
 				var options = {
-						center: new kakao.maps.LatLng(${gps_x}, ${gps_y}),
-						level: 4
+					center: new kakao.maps.LatLng(${gps_x}, ${gps_y}),
+					level: 4
 				};
 				
 				if(navigator.geolocation){
@@ -143,7 +142,7 @@
 			</c:forEach>
 			
 			<p style="border-top: 1px solid #ededed"></p>
-		
+		</div>
 		<!-- Bottom_bar -->
 
 		<div id="bottom_bar">

@@ -3,13 +3,38 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="UTF-8">
-	<title>검색 리스트</title>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a&libraries=services"></script>
+		<title>보통밥집 : 내주변 밥집</title>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a&libraries=services"></script>
+		
+		<script type="text/javascript">
+			function listLetter(acc_no) {
+            
+				if (acc_no == undefined) {
+               		alert("로그인한 후 이용가능합니다.");
+               		return;
+            	}
+            
+            	var form = $("#letterForm");
+            	form.submit();
+         	}
+
+			function foodDetail(sto_no) {
+				var form = $("#detailForm");
+				$("#sto_no").val(sto_no);
+
+				form.submit();
+			}
+			
+			function foodlist() {
+				var form = $("#foodlistForm");
+
+				form.submit();
+			}
+      	</script>
 	</head>
 	<body>
-	
-	<!-- Header -->
+
+		<!-- Header -->
 		<header id="header">
 			<nav class="left">
 				<a href="#menu"><span>Menu</span></a>
@@ -32,72 +57,123 @@
 				<li><a href="elements.html">밥집해시태그</a></li>
 			</ul>
 		</nav>
-		
-		<!-- Search -->
-		<div id="search-box">
-			<div class="search-area">
-				<form id="searchForm" action="/search/searchList">   
-					<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식">
-					<input type="submit" value=" " class="btn-search">
-				</form>
-			</div>
-		</div>
-		
+		<!-- Wrap -->
+			<div id="wrap">
+			<!-- Search -->
+				<div id="search-box">
+					<div class="search-area">
+						<form id="searchForm" action="/search/searchList">   
+							<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식">
+							<input type="submit" value=" " class="btn-search">
+						</form>
+					</div>
+				</div>
+			
 			<!-- One -->
 			<div id = "map"></div>
 			<script>
+	
 				var container = document.getElementById('map');
+				
 				var options = {
-					center: new kakao.maps.LatLng(37.322843, 127.127846),
-					level: 4
-				};
-		
+						center: new kakao.maps.LatLng("${searchGps_x}", "${searchGps_y}"),
+						level: 4
+					};
+				
+				if(navigator.geolocation){
+					navigator.geolocation.getCurrentPosition(function(position) {
+				        
+				        var lat = position.coords.latitude, // 위도
+				            lon = position.coords.longitude; // 경도
+				        
+						$("#gps_x").val(lat);
+						$("#gps_y").val(lon);
+						
+						var formData = $("#aroundForm");
+						
+						ajaxPostAction("/search/search2", formData);
+					});
+				}else{
+					console.error('geo error');
+				}
+				
+				$(document).ready(function(){
+					$("#btnAround").click(function(){
+						var formData = $("#aroundForm");
+					    
+				        var locPosition = new kakao.maps.LatLng($("#gps_x").val(), $("#gps_y").val());
+				        map.setCenter(locPosition);   
+						
+					    formData.submit();
+					});
+				});
 				var map = new kakao.maps.Map(container, options);
 				
 				var geocoder = new kakao.maps.services.Geocoder();
-
+	
 				var callback = function(result, status) {
 				    if (status === kakao.maps.services.Status.OK) {
 				        console.log(result);
 				    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
+	
 			        // 결과값으로 받은 위치를 마커로 표시합니다
 			        var marker = new kakao.maps.Marker({
 			            map: map,
 			            position: coords
 			        });
 					}
-				};
-				
-			</script>
-				<c:forEach items="${list}" var="list">
-				 	<div class="contents">
-						<div class="contents_info">
-						 	<ul>
-							 	<li>${list.sto_name}</li>
-							 	<li>평균 가격: 아직 미정</li>
-							 	<li>${list.sto_tel}</li>
-							 	<li>${list.sto_loc}</li>
-							  	<li><script>geocoder.addressSearch('${list.sto_loc}', callback);</script></li>
-						 	</ul>
-						 </div>
-						 <div class="contents_img_box">
-					   			<img src="/resources/images/ban.png">
-						 </div>
-					</div>	
-				</c:forEach>
-				
-				<p style="border-top: 1px solid #ededed"></p>
-		
+			};
+		</script>
+			<input type="button" id="btnAround" name="btnAround" value="GPS" />
+			
+			<c:forEach items="${list}" var="list">
+			 	<div class="contents">
+					<div class="contents_info" onclick="javascript:foodDetail('${list.sto_no}')">
+					 	<ul>
+						 	<li>${list.sto_name}</li>
+						 	<li>음식종류 #해시태그</li>
+		                    <li>사장 한마디</li>
+		                    <li>"       "</li> 
+		                    <li>#해시태그 #해시태그 #해시태그</li>
+						  	<li><script>geocoder.addressSearch('${list.sto_loc}', callback);</script></li>
+					 	</ul>
+					 </div>
+					 <div class="contents_img_box">
+				   			<img src="${list.sto_photo}">
+					 </div>
+				</div>	
+			</c:forEach>
+			
+			<p style="border-top: 1px solid #ededed"></p>
+		</div>
 		<!-- Bottom_bar -->
 
 		<div id="bottom_bar">
 			<ul>
 				<li onclick="location.href='/'"><img src="/resources/images/bar_home.png" alt="HOME">HOME</li>
-				<li onclick="location.href='/foodlist/foodView'"><img src="/resources/images/bar_food.png" alt="내주변밥집">내주변밥집</li>
+				<li onclick="javascript:foodlist()"><img src="/resources/images/bar_food.png" alt="내주변밥집">내주변밥집</li>
 				<li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="해시태그">해시태그</li>
 				<li onclick="javascript:listLetter(<%= no %>)"><img src="/resources/images/bar_food2.png" alt="기능4">마음의편지</li>
 		    </ul>
 		</div>
+		
+		<!-- Hidden Form -->
+		<form id="letterForm" action="/letter/list" method="post">
+	    	<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" />
+		</form>
+		
+		<form id="detailForm" action="/foodlist/foodDetail" method="post">
+	    	<input type="hidden" id="sto_no" name="sto_no" />
+		</form>
+		
+		<form id="aroundForm" action="/search/search2" method="post">
+	    	<input type="hidden" id="gps_x" name="gps_x"/>
+	    	<input type="hidden" id="gps_y" name="gps_y"/>
+		</form>
+		
+		<form id="foodlistForm" action="/foodlist/foodView" method="post">
+	    	<input type="hidden" id="gps_x" name="gps_x" value="37.322843"/>
+	    	<input type="hidden" id="gps_y" name="gps_y" value="127.127846"/>
+		</form>
 	</body>
 </html>

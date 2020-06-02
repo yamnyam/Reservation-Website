@@ -70,7 +70,7 @@
 			<!-- Search -->
 			<div id="search-box">
 				<div class="search-area">
-					<form id="searchForm" action="/search/searchList">   
+					<form id="searchForm" action="/search/searchList" method="post">   
 						<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식">
 						<input type="submit" value=" " class="btn-search">
 					</form>
@@ -93,7 +93,7 @@
 					<c:forEach items="${list}" var="list">
 						<div class="list_content">
 							<div style="width: 15%;">${list.notice_no}</div>
-							<div style="width: 45%;text-align: left;"><a href="javascript;noticeView(${list.notice_no})">${list.notice_title}</a></div>
+							<div style="width: 45%;text-align: left;"><a href="javascript:noticeView(${list.notice_no})">${list.notice_title}</a></div>
 							<div style="width: 25%;"><fmt:formatDate value="${list.notice_date}" pattern="MM-dd" /></div>
 							<div style="width: 15%;">${list.notice_hits}</div>
 						</div>

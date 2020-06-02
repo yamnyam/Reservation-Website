@@ -8,22 +8,27 @@
 			   , sto_name
 			   , sto_tel
 			   , sto_loc
+			   , sto_gps_x
+			   , sto_gps_y
+			   , sto_photo
 		  FROM STORE
 		 WHERE sto_loc 
 		  LIKE CONCAT('%',#{search},'%')
 		    OR sto_name
-		  LIKE CONCAT('%',#{search},'%')
+		  LIKE CONCAT('%',#{search},'%') 
 	</select>
 	
-	<insert id="insert">
-		INSERT
-		  INTO search
-		       (
-		        search_result
-		       )
-		 VALUE (
-		 		#{search}
-		 	   )
-	</insert>
-
+	<select id="search2" resultType="foodlistVO">
+		SELECT sto_no
+			   , sto_name
+			   , sto_tel
+			   , sto_loc
+			   , sto_gps_x
+			   , sto_gps_y
+			   , sto_photo
+		  FROM STORE
+	  ORDER BY POWER(sto_gps_x - #{gps_x}, 2) + POWER(sto_gps_y - #{gps_y}, 2)
+	  	   ASC 
+	  	 LIMIT 1
+	</select>
 </mapper>
