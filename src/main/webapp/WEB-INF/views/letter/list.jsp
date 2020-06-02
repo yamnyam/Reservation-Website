@@ -104,8 +104,8 @@
 				</c:otherwise>
 			</c:choose>
 		</div>		
-			
-			<button type="button" id="btnWrite">글쓰기</button>
+			<input class="btn_global" type="button" id="btnWrite" value="글쓰기">
+		
 			
 		</div>
 		<!-- Bottom_bar -->
