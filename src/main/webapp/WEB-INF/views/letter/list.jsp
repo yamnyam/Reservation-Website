@@ -53,69 +53,57 @@
 		
 		<!-- Wrap -->
 		<div id="wrap">
-			<table border="1">
-				<colgroup>
-					<col width="10%" />
-					<col width="*" />
-					<col width="20%" />
-					<col width="10%" />
-				</colgroup>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성일</th>
-					<th>조회수</th>
-				</tr>
+			<div>
+				<div class="list_header">
+					<div style="width: 10%;">번호</div>
+					<div style="width: 40%;">제목</div>
+					<div style="width: 20%;">글쓴이</div>
+					<div style="width: 20%;">작성일</div>
+					<div style="width: 10%;">조회</div>
+				</div>
 				<c:choose>
 					<c:when test="${fn:length(list) == 0}">
-						<tr>
-							<td colspan="4">등록하신 글이 없습니다.</td>
-						</tr>
+						<div>문의하신 글이 없습니다.</div>
 					</c:when>
-					<c:otherwise>
+				<c:otherwise>
+					<div class="list_box">	
+						<!-- list_content -->
 						<c:forEach items="${list}" var="list">
-							<tr>
-								<td>${list.let_no}</td>
-								<td>
-									<a href="/letter/view?let_no=${list.let_no}">${list.let_title}</a>
-								</td>
-								<td>
-									<fmt:formatDate value="${list.let_date}" pattern="yyyy-MM-dd HH:mm:ss" />
-								</td>
-								<td>${list.let_viewCnt}</td>
-							</tr>
+							<div class="list_content">
+								<div style="width: 10%;">${list.let_no}</div>
+								<div style="width: 40%;text-align: left;"><a href="/letter/view?let_no=${list.let_no}">${list.let_title}</a></div>
+								<div style="width: 20%;">글쓴이</div>
+								<div style="width: 20%;"><fmt:formatDate value="${list.let_date}" pattern="MM-dd" /></div>
+								<div style="width: 10%;">${list.let_viewCnt}</div>
+							</div>
 						</c:forEach>
-						<tr>
-							<td colspan="4">
-								<c:if test="${prev}">
-									<a href="/letter/list?let_no_acc=${let_no_acc}&num=${startPageNum - 1}">[이전]</a>
-								</c:if>
-							
-								<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
-									<c:choose>	
-										<c:when test="${select != num}">
-											<a href="/letter/list?num=${num}">${num}</a>
-										</c:when>
-										<c:otherwise>
-											<span style="color:red">${num}</span>
-										</c:otherwise>	 
-									</c:choose>
-								</c:forEach>
-								
-								<c:if test="${next}">
-									<a href="/letter/list?let_no_acc=${let_no_acc}&num=${endPageNum + 1}">[다음]</a>
-								</c:if> 	
-							</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-				<tr>
-					<td colspan="4">
-						<button type="button" id="btnWrite">글쓰기</button>
-						<a href="/">처음으로</a>
-					</td>
-				</tr>
-			</table>
+					</div>
+					<div class="list_header">
+						<c:if test="${prev}">
+							<a href="/letter/list?let_no_acc=${let_no_acc}&num=${startPageNum - 1}">[이전]</a>
+						</c:if>
+					
+						<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+							<c:choose>	
+								<c:when test="${select != num}">
+									<a href="/letter/list?num=${num}">${num}</a>
+								</c:when>
+								<c:otherwise>
+									<span style="color:red">${num}</span>
+								</c:otherwise>	 
+							</c:choose>
+						</c:forEach>
+						
+						<c:if test="${next}">
+							<a href="/letter/list?let_no_acc=${let_no_acc}&num=${endPageNum + 1}">[다음]</a>
+						</c:if>
+					</div>
+				</c:otherwise>
+			</c:choose>
+		</div>		
+			
+			<button type="button" id="btnWrite">글쓰기</button>
+			
 		</div>
 		<!-- Bottom_bar -->
 
