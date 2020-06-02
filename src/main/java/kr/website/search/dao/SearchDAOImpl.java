@@ -17,10 +17,11 @@ public class SearchDAOImpl implements SearchDAO {
 	
 	@Override
 	public List<foodListVO> list(String search) throws Exception {
-		
-		sql.insert("search.insert", search); 
-		
 		return sql.selectList("search.list", search);
 	}
-
+	
+	@Override
+	public foodListVO search2(foodListVO vo) throws Exception {
+		return sql.selectOne("search.search2", vo);
+	}
 }
