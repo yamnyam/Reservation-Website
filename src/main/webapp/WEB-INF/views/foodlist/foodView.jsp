@@ -57,67 +57,69 @@
 				<li><a href="elements.html">밥집해시태그</a></li>
 			</ul>
 		</nav>
-	
-		<!-- Search -->
-		<div id="search-box">
-			<div class="search-area">
-				<form id="searchForm" action="/search/searchList">   
-					<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식">
-					<input type="submit" value=" " class="btn-search">
-				</form>
+		<!-- Wrap -->
+			<div id="wrap">
+			<!-- Search -->
+				<div id="search-box">
+					<div class="search-area">
+						<form id="searchForm" action="/search/searchList">   
+							<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식">
+							<input type="submit" value=" " class="btn-search">
+						</form>
+					</div>
+				</div>
 			</div>
-		</div>
-		
-		<!-- One -->
-		<div id = "map"></div>
-		<script>
-
-			var container = document.getElementById('map');
 			
-			var options = {
-					center: new kakao.maps.LatLng(${gps_x}, ${gps_y}),
-					level: 4
-			};
-			
-			if(navigator.geolocation){
-				navigator.geolocation.getCurrentPosition(function(position) {
-			        
-			        var lat = position.coords.latitude, // 위도
-			            lon = position.coords.longitude; // 경도
-			        
-					$("#gps_x").val(lat);
-					$("#gps_y").val(lon);
-					
-				});
-			}else{
-				console.error('geo error');
-			}
-			
-			$(document).ready(function(){
-				$("#btnAround").click(function(){
-					var formData = $("#aroundForm");
-				    
-			        var locPosition = new kakao.maps.LatLng($("#gps_x").val(), $("#gps_y").val());
-			        map.setCenter(locPosition);   
-					
-				    formData.submit();
-				});
-			});
-			var map = new kakao.maps.Map(container, options);
-			
-			var geocoder = new kakao.maps.services.Geocoder();
-
-			var callback = function(result, status) {
-			    if (status === kakao.maps.services.Status.OK) {
-			        console.log(result);
-			    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-		        // 결과값으로 받은 위치를 마커로 표시합니다
-		        var marker = new kakao.maps.Marker({
-		            map: map,
-		            position: coords
-		        });
+			<!-- One -->
+			<div id = "map"></div>
+			<script>
+	
+				var container = document.getElementById('map');
+				
+				var options = {
+						center: new kakao.maps.LatLng(${gps_x}, ${gps_y}),
+						level: 4
+				};
+				
+				if(navigator.geolocation){
+					navigator.geolocation.getCurrentPosition(function(position) {
+				        
+				        var lat = position.coords.latitude, // 위도
+				            lon = position.coords.longitude; // 경도
+				        
+						$("#gps_x").val(lat);
+						$("#gps_y").val(lon);
+						
+					});
+				}else{
+					console.error('geo error');
 				}
+				
+				$(document).ready(function(){
+					$("#btnAround").click(function(){
+						var formData = $("#aroundForm");
+					    
+				        var locPosition = new kakao.maps.LatLng($("#gps_x").val(), $("#gps_y").val());
+				        map.setCenter(locPosition);   
+						
+					    formData.submit();
+					});
+				});
+				var map = new kakao.maps.Map(container, options);
+				
+				var geocoder = new kakao.maps.services.Geocoder();
+	
+				var callback = function(result, status) {
+				    if (status === kakao.maps.services.Status.OK) {
+				        console.log(result);
+				    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+					}
 			};
 		</script>
 			<input type="button" id="btnAround" name="btnAround" value="GPS" />
