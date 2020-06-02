@@ -135,7 +135,7 @@
 					 	</ul>
 					 </div>
 					 <div class="contents_img_box">
-				   			<img src="/resources/images/ban.png">
+				   			<img src="${view.sto_photo}">
 					 </div>
 				</div>	
 			</c:forEach>
