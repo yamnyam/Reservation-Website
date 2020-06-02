@@ -1,7 +1,9 @@
 package kr.website.letter.controller;
 
+import java.io.File;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -15,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.website.letter.service.LetterService;
 import kr.website.letter.vo.LetterVO;
+import kr.website.utils.UploadFileUtils;
 
 @Controller
 @RequestMapping("/letter/*")
@@ -29,6 +33,9 @@ public class LetterController {
 	@Inject
 	private LetterService service;
 	
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
 	// 게시글 작성 화면 호출
 	@RequestMapping(value="writeView")
 	public String write() throws Exception {
@@ -39,7 +46,23 @@ public class LetterController {
 	// 게시글 작성
 	@RequestMapping(value="write", method=RequestMethod.POST)
 	@ResponseBody
-	public String write(Model model, LetterVO vo) throws Exception {
+	public String write(Model model, LetterVO vo, MultipartFile file) throws Exception {
+		Logger.info("파일이름 : " + file.getOriginalFilename());
+		Logger.info("파일크기 : " + file.getSize());
+		Logger.info("컨텐트 타입 : ");
+		
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+		String fileName = null;
+
+		if(file != null) {
+			fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		} else {
+			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+		}
+		
+		vo.setLet_photo(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+		
 		service.write(vo);
 		
 	    JSONObject params = new JSONObject();
