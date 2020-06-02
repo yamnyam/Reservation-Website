@@ -34,28 +34,17 @@
 		
 		
 		<!-- Wrap -->
-		<div id="wrap">
-			<form name="form">
-				<div>
-					작성일자 : <fmt:formatDate value="${view.notice_date}" pattern="yyyy-MM-dd a HH:mm:ss" />
-				</div>
-				<div>
-					조회수 : ${view.notice_hits}
-				</div>
-				<div>
-					제목 : ${view.notice_title} 
-				</div>
-				<div>
-					내용 : ${view.notice_content} 
-				</div>
-				<div>
-<!-- 					<button type="button" id="btnUpdate">수정</button> -->
-<!-- 					<button type="button" id="btnDelete">삭제</button> -->
-<!-- 					<button type="button" id="btnList">메인</button> -->
-					<a href="/" class="button alt">메인</a>
-					
-				</div>
-			</form>
+		
+		<div id="wrap">		
+			<div class="view">
+				<div class="title" style="width: 100%;">${view.notice_title}</div>
+				<div class="title_sub"><fmt:formatDate value="${view.notice_date}" pattern="yyyy-MM-dd HH:mm" />  조회수 ${view.notice_hits}</div>
+				<div class="content">${view.notice_content}</div>
+				<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
+			</div>
+			<div>
+				<a href="/"><input class="btn_global" type="button" id="btnUpdate" value="메인"></a>
+			</div>
 		</div>
 		<!-- Bottom_bar -->
 

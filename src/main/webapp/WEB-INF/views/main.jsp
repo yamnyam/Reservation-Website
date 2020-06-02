@@ -58,11 +58,15 @@
 
 		<!-- Menu -->
 		<nav id="menu">
-			<ul class="links">
-				<li><a href="main">Home</a></li>
-				<li><a href="generic.html">내주변밥집</a></li>
-				<li><a href="elements.html">밥집해시태그</a></li>
-			</ul>
+			<div class="acc_img"><img src="/resources/images/medical-mask.png"></div>
+			<div class="acc_info">
+				<div class="nick">
+					ㅇㅇ님
+				</div>
+				<div>내정보수정</div>
+				<div >내가 쓴 리뷰</div>
+				<div>예약확인</div>
+			</div>
 		</nav>
 		
 		<div id="wrap">
@@ -93,7 +97,7 @@
 					<c:forEach items="${list}" var="list">
 						<div class="list_content">
 							<div style="width: 15%;">${list.notice_no}</div>
-							<div style="width: 45%;text-align: left;"><a href="javascript;noticeView(${list.notice_no})">${list.notice_title}</a></div>
+							<div style="width: 45%;text-align: left;"><a href="javascript:noticeView(${list.notice_no})">${list.notice_title}</a></div>
 							<div style="width: 25%;"><fmt:formatDate value="${list.notice_date}" pattern="MM-dd" /></div>
 							<div style="width: 15%;">${list.notice_hits}</div>
 						</div>

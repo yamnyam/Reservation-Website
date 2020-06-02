@@ -30,21 +30,61 @@
 		</script>
 	</head>
 	<body>
-		<h2>게시물 수정</h2>
-		<form id="modifyForm" name="modifyForm" action="post">
-			<div>
-				제목<input name="let_title" size="80" value="${view.let_title}" placeholder="제목을 입력해주세요" />
-			</div>
-			<div>
-				내용<textarea name="let_content" rows="4" cols="80">${view.let_content}</textarea>
-			</div>
-				<input type="hidden" id="let_no" name="let_no" value="${view.let_no}"/>
-				<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
-			<div style="width:650px; text-align: center;">
-				<button type="button" id="btnModify">완료</button>
-				<button type="button" id="btnCancel">취소</button>
-				<button type="button" id="btnList">게시글 목록</button>
-			</div>
+		<!-- Header -->
+		<header id="header">
+			<nav class="left">
+				<a href="#menu"><span>Menu</span></a>
+			</nav>
+			<a href="/"><img class="logo" src="/resources/images/home.png"></a>
+			<nav class="right">	
+				<% if (no == null || no == "") { %>
+					<a href="/member/login" class="button alt">Login</a>
+				<% } else { %>
+					<a href="/member/logout" class="button alt">Logout</a>
+				<% } %>
+			</nav>
+		</header>
+		
+		<!-- Wrap -->
+		<div class="letter_info">
+				마음의편지를 남겨주시면 성실하게<br>답변드리겠습니다.
+		</div>
+		<div id="wrap">
+			<form id="modifyForm" name="modifyForm" action="post">
+				<div class="input_row">
+					<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
+					<input type="hidden" id="let_no" name="let_no" value="${view.let_no}"/>
+	                <h2 class="input_row_tit">제목<span class="point"></span></h2>
+	                <input class="input" id="let_title" name="let_title" type="text" value="${view.let_title}">
+	            </div>
+	            <div class="input_row">
+	                <h2 class="input_row_tit">내용<span class="point"></span></h2>
+	                <textarea class="input_content" id="let_content" name="let_content" maxlength="400">${view.let_content}</textarea>
+	            </div>
+					
+	            <div class="input_row">
+	                <input class="btn_global" type="button" id="btnModify" value="수정">
+	            	<input class="btn_global" type="button" id="btnCancel" value="취소">
+	            	<input class="btn_global" type="button" id="btnList" value="게시글 목록">
+                </div>
+            </form>
+			
+		</div>
+		
+		<!-- Bottom_bar -->
+
+		<div id="bottom_bar">
+			<ul>
+				<li onclick="location.href='/'"><img src="/resources/images/bar_home.png" alt="HOME">HOME</li>
+				<li onclick="javascript:foodlist()"><img src="/resources/images/bar_food.png" alt="내주변밥집">내주변밥집</li>
+				<li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="해시태그">해시태그</li>
+				<li onclick="javascript:listLetter(<%= no %>)"><img src="/resources/images/bar_food2.png" alt="기능4">마음의편지</li>
+		    </ul>
+		</div>
+		
+		<form id="foodlistForm" action="/foodlist/foodView" method="post">
+	    	<input type="hidden" id="gps_x" name="gps_x" value="37.322843"/>
+	    	<input type="hidden" id="gps_y" name="gps_y" value="127.127846"/>
 		</form>
 	</body>
 </html>

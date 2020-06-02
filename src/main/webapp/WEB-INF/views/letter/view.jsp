@@ -67,25 +67,16 @@
 		
 		<!-- Wrap -->
 		<div id="wrap">		
-			<div>
-				작성일자 : <fmt:formatDate value="${view.let_date}" pattern="yyyy-MM-dd a HH:mm:ss" />
-			</div>
-			<div>
-				조회수 : ${view.let_viewCnt}
-			</div>
-			<div>
-				제목 : ${view.let_title} 
-			</div>
-			<div>
-				내용 : ${view.let_content} 
-			</div>
-			<div>
+			<div class="view">
+				<div class="title" style="width: 100%;">${view.let_title}</div>
+				<div class="title_sub"><fmt:formatDate value="${view.let_date}" pattern="yyyy-MM-dd HH:mm" />  조회수 ${view.let_viewCnt}</div>
+				<div class="content">${view.let_content}</div>
 				<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
 			</div>
 			<div>
-				<button type="button" id="btnUpdate">수정</button>
-				<button type="button" id="btnDelete">삭제</button>
-				<button type="button" id="btnList">게시물 목록</button>
+				<input class="btn_global" type="button" id="btnUpdate" value="수정">
+				<input class="btn_global" type="button" id="btnDelete" value="삭제">
+				<input class="btn_global" type="button" id="btnList" value="게시물 목록">
 			</div>
 		</div>
 		
