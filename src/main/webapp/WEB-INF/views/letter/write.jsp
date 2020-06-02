@@ -22,7 +22,7 @@
 						alert("내용을 입력하세요.");
 						return;
 					}
-					
+
 					ajaxPostAction("/letter/write", formData);
 				});
 				
@@ -84,22 +84,7 @@
 	                <h2 class="input_row_tit">내용<span class="point"></span></h2>
 	                <textarea class="input_content" id="let_content" name="let_content" maxlength="400" placeholder="내용을 입력해주세요 (최대400자)"></textarea>
 	            </div>
-	            <div class="input_row">
-	            	<label for="let_image">이미지 첨부</label>
-	            	<input type="file" id="let_image" name="let_image" />
-	            	<div class="select_img"><img src="" /></div>
-		       		<script>
-				    	$("#let_image").change(function(){
-							if(this.files && this.files[0]) {
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$(".select_img img").attr("src", data.target.result).width(500);        
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-		       		</script>
-	            </div>
+					
 	            <div class="input_row">
 	                <input class="btn_global" type="button" id="btnSave" value="등록">
 	            	<input class="btn_global" type="button" id="btnCancel" value="취소">

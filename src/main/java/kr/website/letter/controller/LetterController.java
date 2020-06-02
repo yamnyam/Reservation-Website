@@ -46,22 +46,7 @@ public class LetterController {
 	// 게시글 작성
 	@RequestMapping(value="write", method=RequestMethod.POST)
 	@ResponseBody
-	public String write(Model model, LetterVO vo, MultipartFile file) throws Exception {
-		Logger.info("파일이름 : " + file.getOriginalFilename());
-		Logger.info("파일크기 : " + file.getSize());
-		Logger.info("컨텐트 타입 : ");
-		
-		String imgUploadPath = uploadPath + File.separator + "imgUpload";
-		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
-		String fileName = null;
-
-		if(file != null) {
-			fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-		} else {
-			fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-		}
-		
-		vo.setLet_photo(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+	public String write(Model model, LetterVO vo) throws Exception {
 		
 		service.write(vo);
 		
