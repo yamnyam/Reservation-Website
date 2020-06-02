@@ -54,7 +54,10 @@
 		<!-- Wrap -->
 		<div id="wrap">
 			<div>
-				<div class="list_header">
+				<div class="letter_info">
+					마음의편지를 남겨주시면 성실하게<br>답변드리겠습니다.
+				</div>
+				<div class="list_header" style="padding-top: 10px;">
 					<div style="width: 10%;">번호</div>
 					<div style="width: 40%;">제목</div>
 					<div style="width: 20%;">글쓴이</div>

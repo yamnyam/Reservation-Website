@@ -11,6 +11,7 @@
 		font: inherit;
 		vertical-align: baseline;
 		font-family: 'Noto Sans KR', sans-serif;
+		text-decoration: none;
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -396,7 +397,7 @@
 		background: #ffd147;
 		color: #ffffff;
 		height: 100%;
-		max-width: 80%;
+		max-width: 50%;
 		overflow-y: auto;
 		padding: 3em 2em;
 		position: fixed;
@@ -733,6 +734,75 @@
 		    background-color: #a2a2a2;
 		    -webkit-appearance: none;
 		}
+		
+		
+	#modifyForm .input_row{
+		position: relative;
+	    overflow: hidden;
+	    margin: 10px 0;
+	    padding: 5px 0 5px 0;
+	    background: #fff;
+	    box-sizing: border-box;
+	}
+		#modifyForm .input_row .input_row_tit{
+			margin-bottom: 8px;
+		    font-size: 15px;
+		    font-weight: 500;
+		    color: #000;	
+		}
+			#modifyForm .input_row .input_row_tit .point {
+			    display: inline-block;
+			    width: 6px;
+			    height: 6px;
+			    background: #2e5bcc;
+			    border-radius: 50%;
+			    margin-left: 4px;
+			    vertical-align: 6px;
+			}
+		#modifyForm .input_row .input{
+			font-size: 16px;
+		    line-height: 16px;
+		    position: relative;
+		    z-index: 9;
+		    width: 100%;
+		    height: 32px;
+		    color: #222;
+	    	border: 1px solid #bbb;
+		    background: #fff;
+		    display: block;
+		}	
+		#modifyForm .input_row .input_content{
+		    font-size: 16px;
+		    line-height: 17px;
+		    position: relative;
+		    z-index: 9;
+		    width: 100%;
+		    color: #222;
+	    	border: 1px solid #bbb;
+		    background: #fff;
+		    display: block;
+		    height: 176px;
+		    box-sizing: border-box;
+		    padding: 5px 0;
+		    resize: none;
+		}
+		.btn_global {
+		    position: relative;
+		    display: block;
+		    width: 100%;
+		    height: 54px;
+		    margin: 6px 0 6px;
+		    padding: 15px 0 15px;
+		    font-size: 18px;
+		    font-weight: 700;
+		    cursor: pointer;
+		    text-align: center;
+		    color: #fff;
+		    border: none;
+		    border-radius: 0;
+		    background-color: #a2a2a2;
+		    -webkit-appearance: none;
+		}
 	.list_header {
 	    height: 30px;
 	    line-height: 31px;
@@ -755,4 +825,44 @@
 			float: left;
 			font-size: 0.9em;
 		}
+		
+	
+	
+	
+	
+	.acc_img img{
+		width: 50%;
+		padding: 10% 25%;
+	}
+	.acc_info {
+		padding-top: 10px;
+		text-align: center;
+	}
+	.acc_info div{
+		height: 1.5em;
+		line-height: 1.5em;
+	}
+	.acc_info .nick{
+		font-size: 1.3em;
+	}
+	
+	.view{
+		border-top: 1px solid #ededed;
+		border-bottom: 1px solid #ededed;
+	}
+	.view .title{
+		margin: 10px 0;
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+	.view .title_sub{
+		margin: 0 0 10px 0;
+		font-size: 0.9em;
+		color: #555;
+		border-bottom: 1px solid #ededed;
+	}
+	.view .content{
+		height: 60%;
+		
+	}
 		
