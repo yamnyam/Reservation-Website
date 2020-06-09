@@ -62,7 +62,7 @@
 			
 			function edit(acc_no) {
 				var editForm = document.getElementById('informationForm');;
-				$("#acc_no").val(acc_no);
+				$("#sto_no_acc").val(acc_no);
 				editForm.action="/information/edit";
 				editForm.method="post";
 // 				form.action = "/information/edit";
@@ -97,11 +97,14 @@
 					<%= session.getAttribute("acc_name") %>님
 					<% } %>
 				</div>
-				<div>
-					<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">내정보수정</a>
-				</div>
+				<div>내정보 수정</div>
 				<div>내가 쓴 리뷰</div>
 				<div>예약확인</div>
+				<div>
+					<% if (level == 1) { %>
+						<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">밥집등록</a>	
+					<% } %>
+				</div>
 			</div>
 		</nav>
 		
@@ -169,7 +172,7 @@
 		</form>
 		
 		<form id="informationForm">
-			<input type="hidden" id="acc_no" name="acc_no" />
+			<input type="hidden" id="sto_no_acc" name="sto_no_acc" />
 		</form>
 		
 		<form id="foodlistForm" action="/foodlist/foodView" method="post">

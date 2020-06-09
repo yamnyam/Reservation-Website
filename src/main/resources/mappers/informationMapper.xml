@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="information">
+
+    <insert id="stoInfo">
+    	INSERT 
+    	  INTO STORE
+    		   (
+				sto_name
+				, sto_tel
+				, sto_loc
+				, sto_no_acc 
+				, sto_gps_x
+				, sto_gps_y
+				, sto_comment
+				, sto_photo
+				, sto_thumbPhoto
+    		   )
+        VALUES (
+        		#{sto_name}
+        		, #{sto_tel}
+        		, #{sto_loc}
+        		, #{sto_no_acc}
+        		, #{sto_gps_x}
+        		, #{sto_gps_y}
+        		, #{sto_comment}
+        		, #{sto_photo}
+        		, #{sto_thumbPhoto}
+    		   )
+    </insert>
+    
+    <select id="stoNo" resultType="int">
+		SELECT sto_no
+		  FROM STORE
+		 WHERE sto_no_acc = #{sto_no_acc}
+	</select>
+    
+    <insert id="menuInfo">
+        INSERT 
+    	  INTO menu
+    		   (
+				menu_no_sto
+				, menu_name
+				, menu_price
+				, menu_check
+    		   )
+        VALUES (
+				#{menu_no_sto}
+				, #{menu_name}
+				, #{menu_price}
+				, #{menu_check}
+    		   )
+    </insert>
+    
+    <select id="selectStore" resultType="informationVO">
+		SELECT sto_name
+			   , sto_tel
+			   , sto_loc
+			   , sto_comment
+		  FROM STORE
+		 WHERE sto_no_acc = #{sto_no_acc}
+	</select>
+    
+</mapper>
