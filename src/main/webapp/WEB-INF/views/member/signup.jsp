@@ -68,19 +68,6 @@
 				});
 			});
 			
-			function accChange(){
-				if(document.getElementById("acc_level").value=="2"){
-					document.getElementById("input_row_lev1").style.display="none";
-					document.getElementById("input_row_lev2").style.display="none";
-					document.getElementById("input_row_lev3").style.display="none";
-				}
-				else if(document.getElementById("acc_level").value=="1"){
-					document.getElementById("input_row_lev1").style.display="block";
-					document.getElementById("input_row_lev2").style.display="block";
-					document.getElementById("input_row_lev3").style.display="block";
-					
-				}
-			};
 </script>
 	</head>
 	<body>
