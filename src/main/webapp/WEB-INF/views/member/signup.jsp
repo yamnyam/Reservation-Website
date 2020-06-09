@@ -99,46 +99,13 @@
 					if (name == "" || name == null) {
 						alert("이름을 입력해주세요.");
 						return;
-					}
-
-					if (acc_level == "") {
-						alert("회원 구분을 선택해주세요.");
-						return;
-					}
-					if (acc_level == "1"){
-						if(sto_name == "" || sto_name == null){
-							alert("매장 이름을 입력해주세요.");
-							return;
-						}
-						if(sto_tel == "" || sto_tel == null){
-							alert("매장 전화번호를 입력해주세요.");
-							return;
-						}
-						if(sto_loc == "" || sto_loc == null){
-							alert("매장 주소를 입력해주세요.");
-							return;
-						}
-					}
-					
+					}				
 					var formData = $("#signupForm").serialize();
 					
 					ajaxPostAction("/member/register", formData);
 				});
 			});
 			
-			function accChange(){
-				if(document.getElementById("acc_level").value=="2"){
-					document.getElementById("input_row_lev1").style.display="none";
-					document.getElementById("input_row_lev2").style.display="none";
-					document.getElementById("input_row_lev3").style.display="none";
-				}
-				else if(document.getElementById("acc_level").value=="1"){
-					document.getElementById("input_row_lev1").style.display="block";
-					document.getElementById("input_row_lev2").style.display="block";
-					document.getElementById("input_row_lev3").style.display="block";
-					
-				}
-			};
 </script>
 	</head>
 	<body>
@@ -177,50 +144,6 @@
 							<input class="input" type="text" id="acc_name" name="acc_name" placeholder="이름" maxlength="20">
 						</span>
 					</div>
-					<div class="input_row">
-						<div class="level_code">
-							<select class="sel" id="acc_level" name="acc_level" onchange="accChange()">
-	                               	<option value="" selected>회원유형</option>
-	                        	    <option value="1">밥집사장</option>
-	                      			<option value="2">손님</option>
-	                        </select>
-						</div>
-					</div>
-					<div class="input_row_lev" id="input_row_lev1">
-						<span class="input_box">
-							<input class="input" type="text" id="sto_name" name="sto_name" placeholder="밥집명" maxlength="35">
-						</span>
-					</div>
-					<div class="input_row_lev" id="input_row_lev2">
-						<span class="input_box">
-							<input class="input" type="text" id="sto_tel" name="sto_tel" placeholder="전화번호" maxlength="35">
-						</span>
-					</div>
-					<div class="input_row_lev" id="input_row_lev3">
-						<span class="input_box">
-							<input class="input" type="text" id="sto_loc" name="sto_loc" placeholder="주소" maxlength="100" style="float: left; width:90%;">
-							<input class="input" type="text" onclick="findAddress()" value="검색" style="float: right; width: 10%; border: 1px solid #dadada; text-align-last: center;">
-							<input type="hidden" id="sto_gps_x" name="sto_gps_x" value="">
-							<input type="hidden" id="sto_gps_y" name="sto_gps_y" value="">
-						</span>
-					</div>
-					<div id="map" style="width:100%;height:300px;margin-top:10px;display:none;"></div>
-					<script>
-						var mapContainer = document.getElementById('map');
-						var options = {
-								center: new kakao.maps.LatLng(37.322843, 127.127846),
-								level: 4
-							};
-						
-							var map = new kakao.maps.Map(mapContainer, options);
-							//주소-좌표 변환 객체를 생성
-						    var geocoder = new kakao.maps.services.Geocoder();
-						    //마커를 미리 생성
-						    var marker = new kakao.maps.Marker({
-						        position: new kakao.maps.LatLng(37.322843, 127.127846),
-						        map: map
-						    });
-				    </script>
 					<div class="btn_login"><input type="button" title="가입하기" alt="가입하기" value="가입하기" class="btn_global" id="regBtn"></div>
 				</form>
 			</div>
