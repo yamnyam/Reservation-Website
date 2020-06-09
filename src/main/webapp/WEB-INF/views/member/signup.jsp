@@ -17,49 +17,8 @@
 		
 		<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a&libraries=services"></script>		
 		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<script>
-			//지도를 미리 생성
-		 	    function findAddress() {
-		        new daum.Postcode({
-		            oncomplete: function(data) {
-		                var addr = data.address; // 최종 주소 변수
-		
-		                // 주소 정보를 해당 필드에 넣는다.
-		                $("#sto_loc").val(addr);
-		                // 주소로 상세 정보를 검색
-		                geocoder.addressSearch(data.address, function(results, status) {
-		                    // 정상적으로 검색이 완료됐으면
-		                    if (status === daum.maps.services.Status.OK) {
-		
-		                        var result = results[0]; //첫번째 결과의 값을 활용
-		
-		                        // 해당 주소에 대한 좌표를 받아서
-		                        var coords = new kakao.maps.LatLng(result.y, result.x);
-		                        $("#sto_gps_x").val(result.y);
-		    			        $("#sto_gps_y").val(result.x);
-		                        // 지도를 보여준다.
-		                        mapContainer.style.display = "block";
-		                        map.relayout();
-		                        // 지도 중심을 변경한다.
-		                        map.setCenter(coords);
-		                        // 마커를 결과값으로 받은 위치로 옮긴다.
-		                        marker.setPosition(coords)
-		                    }
-		                });
-		            }
-		        }).open();
-		    }
-		</script>
 		<script type="text/javascript">
-			
-			var geocoder = new kakao.maps.services.Geocoder();
-			
-			var callback = function(result, status) {
-			    if (status === kakao.maps.services.Status.OK) {
-			        console.log(result);
-			       
-				}
-			};
+
 			//TODO 1 기본적인 입력값 체크
 			//TODO 2 비밀번호 확인값 체크
 			$(document).ready(function(){
@@ -69,9 +28,6 @@
 					var pw_check = $("#acc_pw_check").val();
 					var name = $("#acc_name").val();
 					var acc_level = $("#acc_level").val();
-					var sto_name = $("#sto_name").val();
-					var sto_tel = $("#sto_tel").val();
-					var sto_loc = $("#sto_loc").val();
 					
 					if (id == "" || id == null) {
 						document.getElementById("err_empty_id").style.display = "block"
@@ -99,7 +55,13 @@
 					if (name == "" || name == null) {
 						alert("이름을 입력해주세요.");
 						return;
-					}				
+					}
+
+					if (acc_level == "") {
+						alert("회원 구분을 선택해주세요.");
+						return;
+					}
+					
 					var formData = $("#signupForm").serialize();
 					
 					ajaxPostAction("/member/register", formData);
@@ -143,6 +105,15 @@
 						<span class="input_box">
 							<input class="input" type="text" id="acc_name" name="acc_name" placeholder="이름" maxlength="20">
 						</span>
+					</div>
+					<div class="input_row">
+						<div class="level_code">
+							<select class="sel" id="acc_level" name="acc_level" onchange="accChange()">
+	                               	<option value="" selected>회원유형</option>
+	                        	    <option value="1">밥집사장</option>
+	                      			<option value="2">손님</option>
+	                        </select>
+						</div>
 					</div>
 					<div class="btn_login"><input type="button" title="가입하기" alt="가입하기" value="가입하기" class="btn_global" id="regBtn"></div>
 				</form>
