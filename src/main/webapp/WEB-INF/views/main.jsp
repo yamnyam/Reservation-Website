@@ -91,7 +91,11 @@
 			<div class="acc_img"><img src="/resources/images/medical-mask.png"></div>
 			<div class="acc_info">
 				<div class="nick">
+					<% if (no == null || no == "") { %>
+						<a href="/member/login" class="button alt">로그인하세요</a>
+					<% } else { %>	
 					<%= session.getAttribute("acc_name") %>님
+					<% } %>
 				</div>
 				<div>
 					<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">내정보수정</a>

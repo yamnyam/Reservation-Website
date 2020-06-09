@@ -25,25 +25,6 @@
     		   )
     </insert>
     
-    <insert id="store">
-    	INSERT
-    	  INTO STORE
-    	       (
-    	       	sto_name
-    	       	, sto_tel
-    	       	, sto_loc
-    	       	, sto_gps_x
-    	       	, sto_gps_y
-    	       )
-    	 VALUE (
-    	 		#{sto_name}
-        		, #{sto_tel}
-        		, #{sto_loc}
-        		, #{sto_gps_x}
-        		, #{sto_gps_y}
-    	 	   )     
-    </insert>
-    
 	<select id="loginCheck" resultType="String">
 		SELECT acc_name 
 		  FROM ACCOUNT
