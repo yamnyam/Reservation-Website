@@ -14,16 +14,18 @@
 			
 			function listView(let_no) {
 				var form = $("#letForm");
-				$("#let_no").val(let_no);
-
+				$("#let_no").val(let_no);	
+				
 				form.submit();
 			}
 			
-// 			function listLetter() {
-// 				var form = $("#listForm");
+			function listpage(num, let_no_acc) {
+				var form = $("#pageForm");
+				$("#num").val(num);	
+				$("#let_no_acc").val(let_no_acc);	
 				
-// 				form.submit();
-// 			}
+				form.submit();
+			}
 
 			function foodlist() {
 				var form = $("#foodlistForm");
@@ -83,22 +85,21 @@
 					</div>
 					<div class="list_header">
 						<c:if test="${prev}">
-							<a href="/letter/list?let_no_acc=${let_no_acc}&num=${startPageNum - 1}">[이전]</a>
+							<a href="javascript:listpage('${startPageNum - 1}', '${let_no_acc}')">[이전]</a>
 						</c:if>
 					
 						<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
 							<c:choose>	
 								<c:when test="${select != num}">
-									<a href="/letter/list?num=${num}">${num}</a>
+									<a href="javascript:listpage('${num}', '${let_no_acc}')">${num}</a>
 								</c:when>
 								<c:otherwise>
 									<span style="color:red">${num}</span>
 								</c:otherwise>	 
 							</c:choose>
 						</c:forEach>
-						
 						<c:if test="${next}">
-							<a href="/letter/list?let_no_acc=${let_no_acc}&num=${endPageNum + 1}">[다음]</a>
+							<a href="javascript:listpage('${endPageNum + 1}', '${let_no_acc}')">[다음]</a>
 						</c:if>
 					</div>
 				</c:otherwise>
@@ -119,9 +120,13 @@
 		    </ul>
 		</div>
 		
-		
 		<form id="letForm" action="/letter/view" method="post">
 	    	<input type="hidden" id="let_no" name="let_no" />
+		</form>
+		
+		<form id="pageForm" action="/letter/list" method="post">
+	    	<input type="hidden" id="num" name="num" />
+	    	<input type="hidden" id="let_no_acc" name="let_no_acc" />
 		</form>
 		
 		<form id="foodlistForm" action="/foodlist/foodView" method="post">

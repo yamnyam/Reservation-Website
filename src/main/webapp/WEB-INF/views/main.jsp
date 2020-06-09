@@ -40,9 +40,6 @@
 				form.submit();
 			}
 			
-			
-			
-			
 			function onClickSearch(){
 				
 				var places = new kakao.maps.services.Places();
@@ -60,7 +57,16 @@
 				};
 	
 				places.keywordSearch($("#search").val(), callback);
-			//	$("#searchForm").submit();
+				$("#searchForm").submit();
+			}
+			
+			function edit(acc_no) {
+				var editForm = document.getElementById('informationForm');;
+				$("#acc_no").val(acc_no);
+				editForm.action="/information/edit";
+				editForm.method="post";
+// 				form.action = "/information/edit";
+				editForm.submit();
 			}
       	</script>
    	</head>
@@ -85,10 +91,12 @@
 			<div class="acc_img"><img src="/resources/images/medical-mask.png"></div>
 			<div class="acc_info">
 				<div class="nick">
-					ㅇㅇ님
+					<%= session.getAttribute("acc_name") %>님
 				</div>
-				<div>내정보수정</div>
-				<div >내가 쓴 리뷰</div>
+				<div>
+					<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">내정보수정</a>
+				</div>
+				<div>내가 쓴 리뷰</div>
 				<div>예약확인</div>
 			</div>
 		</nav>
@@ -154,6 +162,10 @@
 		
 		<form id="noticeForm" action="/notice/noticeView" method="post">
 	    	<input type="hidden" id="notice_no" name="notice_no" />
+		</form>
+		
+		<form id="informationForm">
+			<input type="hidden" id="acc_no" name="acc_no" />
 		</form>
 		
 		<form id="foodlistForm" action="/foodlist/foodView" method="post">

@@ -66,7 +66,7 @@
 		    </ul>
 		</div>
 		
-		<form id="reserveForm" action="/foodlist/reserve" method="post">
+		<form id="reserveForm" action="/foodlist/reserve?sto_no=${detail.sto_no}">
 	    	<input type="hidden" id="sto_no" name="sto_no" />
 		</form>
 		

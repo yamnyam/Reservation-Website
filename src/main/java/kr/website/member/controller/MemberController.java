@@ -4,9 +4,11 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,9 +38,10 @@ public class MemberController {
 	// 로그인 처리
 	@RequestMapping(value="logincheck", method=RequestMethod.POST)
 	@ResponseBody
-	public String logincheck(@ModelAttribute MemberVO vo, HttpSession session) throws Exception {
+	public String logincheck(@ModelAttribute MemberVO vo, HttpSession session, Model model) throws Exception {
 		boolean result = service.loginCheck(vo, session);
 	    
+		model.addAttribute("acc_name", vo.getAcc_name());
 		JSONArray array = new JSONArray();
 	    
 	    // true: 로그인 성공 | false: 로그인  실패

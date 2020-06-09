@@ -30,6 +30,26 @@
 
 				form.submit();
 			}
+			
+			function onClickSearch(){
+				
+				var places = new kakao.maps.services.Places();
+				
+				var callback = function(result, status) {
+				    if (status === kakao.maps.services.Status.OK) {
+				        console.log(result);
+				        $("#search_gps_x").val(result[0].x);
+				        $("#search_gps_y").val(result[0].y);
+				    }
+				};
+				
+				var options ={
+						location: new kakao.maps.LatLng($("gps_x").val(), $("gps_y").val())
+				};
+	
+				places.keywordSearch($("#search").val(), callback);
+				$("#searchForm").submit();
+			}
       	</script>
 	</head>
 	<body>
@@ -60,14 +80,17 @@
 		<!-- Wrap -->
 			<div id="wrap">
 			<!-- Search -->
-				<div id="search-box">
-					<div class="search-area">
-						<form id="searchForm" action="/search/searchList">   
-							<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식">
-							<input type="submit" value=" " class="btn-search">
-						</form>
-					</div>
+			<div id="search-box">
+				<div class="search-area">
+					<form id="searchForm" action="/search/searchList" method="post">
+						<input type="text" style="display: none;">   
+						<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식" onkeypress="javascript:if( event.keyCode==13 ){onClickSearch();}">
+						<input type="button" onclick="javascript:onClickSearch()" value=" " class="btn-search">
+						<input type="hidden" id="search_gps_x" name="search_gps_x">
+						<input type="hidden" id="search_gps_y" name="search_gps_y">
+					</form>
 				</div>
+			</div>
 			
 			<!-- One -->
 			<div id = "map"></div>
@@ -89,24 +112,21 @@
 						$("#gps_x").val(lat);
 						$("#gps_y").val(lon);
 						
-						var formData = $("#aroundForm");
-						
-						ajaxPostAction("/search/search2", formData);
 					});
 				}else{
 					console.error('geo error');
 				}
 				
-				$(document).ready(function(){
-					$("#btnAround").click(function(){
-						var formData = $("#aroundForm");
+// 				$(document).ready(function(){
+// 					$("#btnAround").click(function(){
+// 						var formData = $("#aroundForm");
 					    
-				        var locPosition = new kakao.maps.LatLng($("#gps_x").val(), $("#gps_y").val());
-				        map.setCenter(locPosition);   
+// 				        var locPosition = new kakao.maps.LatLng($("#gps_x").val(), $("#gps_y").val());
+// 				        map.setCenter(locPosition);   
 						
-					    formData.submit();
-					});
-				});
+// 					    formData.submit();
+// 					});
+// 				});
 				var map = new kakao.maps.Map(container, options);
 				
 				var geocoder = new kakao.maps.services.Geocoder();
@@ -124,7 +144,7 @@
 					}
 			};
 		</script>
-			<input type="button" id="btnAround" name="btnAround" value="GPS" />
+<!-- 			<input type="button" id="btnAround" name="btnAround" value="GPS" /> -->
 			
 			<c:forEach items="${list}" var="list">
 			 	<div class="contents">
@@ -166,10 +186,10 @@
 	    	<input type="hidden" id="sto_no" name="sto_no" />
 		</form>
 		
-		<form id="aroundForm" action="/search/search2" method="post">
-	    	<input type="hidden" id="gps_x" name="gps_x"/>
-	    	<input type="hidden" id="gps_y" name="gps_y"/>
-		</form>
+<!-- 		<form id="aroundForm" action="/search/searchList" method="post"> -->
+<!-- 	    	<input type="hidden" id="gps_x" name="gps_x"/> -->
+<!-- 	    	<input type="hidden" id="gps_y" name="gps_y"/> -->
+<!-- 		</form> -->
 		
 		<form id="foodlistForm" action="/foodlist/foodView" method="post">
 	    	<input type="hidden" id="gps_x" name="gps_x" value="37.322843"/>

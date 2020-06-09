@@ -75,7 +75,7 @@ public class foodListController {
 		return "/foodlist/foodDetail";
 	}
 	
-	@RequestMapping(value = "/reserve", method=RequestMethod.POST)
+	@RequestMapping(value = "/reserve")
 	public String foodReserve(Model model, foodListVO vo) throws Exception {
 		
 		int no = vo.getSto_no();

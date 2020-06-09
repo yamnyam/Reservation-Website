@@ -30,6 +30,26 @@
 
 				form.submit();
 			}
+			
+			function onClickSearch(){
+				
+				var places = new kakao.maps.services.Places();
+				
+				var callback = function(result, status) {
+				    if (status === kakao.maps.services.Status.OK) {
+				        console.log(result);
+				        $("#search_gps_x").val(result[0].x);
+				        $("#search_gps_y").val(result[0].y);
+				    }
+				};
+				
+				var options ={
+						location: new kakao.maps.LatLng($("gps_x").val(), $("gps_y").val())
+				};
+	
+				places.keywordSearch($("#search").val(), callback);
+				$("#searchForm").submit();
+			}
       	</script>
 	</head>
 	<body>
@@ -57,17 +77,21 @@
 				<li><a href="elements.html">밥집해시태그</a></li>
 			</ul>
 		</nav>
+		
 		<!-- Wrap -->
-			<div id="wrap">
+		<div id="wrap">
 			<!-- Search -->
-				<div id="search-box">
-					<div class="search-area">
-						<form id="searchForm" action="/search/searchList">   
-							<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식">
-							<input type="submit" value=" " class="btn-search">
-						</form>
-					</div>
+			<div id="search-box">
+				<div class="search-area">
+					<form id="searchForm" action="/search/searchList" method="post">
+						<input type="text" style="display: none;">   
+						<input type="text" id="search" name="search" class="search-bar" placeholder="지역, 식당 또는 음식" onkeypress="javascript:if( event.keyCode==13 ){onClickSearch();}">
+						<input type="button" onclick="javascript:onClickSearch()" value=" " class="btn-search">
+						<input type="hidden" id="search_gps_x" name="search_gps_x">
+						<input type="hidden" id="search_gps_y" name="search_gps_y">
+					</form>
 				</div>
+			</div>
 			
 			<!-- One -->
 			<div id = "map"></div>
