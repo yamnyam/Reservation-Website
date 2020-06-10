@@ -32,4 +32,9 @@ public class InformationDAOImpl implements InformationDAO {
 	public InformationVO selectStore(int no) throws Exception {
 		return sql.selectOne("information.selectStore", no);
 	}
+	
+	@Override
+	public void averagePrice(int no) throws Exception {
+		sql.update("information.averagePrice", no);
+	}
 }

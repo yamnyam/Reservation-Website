@@ -5,6 +5,8 @@ function ajaxPostAction(url, formData) {
         type: "POST",
         data: formData,
         dataType: "json",
+        processData: false,
+        contentType: false,
         success: function(data) {
         	/**
         	 * data[0] : success message

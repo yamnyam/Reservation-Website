@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.website.foodlist.vo.foodListVO;
+import kr.website.information.vo.InformationVO;
 
 @Repository
 public class foodListDAOImpl implements foodListDAO {
@@ -23,5 +24,10 @@ public class foodListDAOImpl implements foodListDAO {
 	@Override
 	public foodListVO foodDetail(int no) throws Exception {
 		return sql.selectOne("foodlist.detail", no);
+	}
+	
+	@Override
+	public List<InformationVO> menu(int no) throws Exception {
+		return sql.selectList("foodlist.menu", no);
 	}
 }

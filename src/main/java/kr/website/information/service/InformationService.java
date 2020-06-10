@@ -11,4 +11,6 @@ public interface InformationService {
 	public int stoNo(InformationVO vo) throws Exception;
 	
 	public InformationVO selectStore(int no) throws Exception;
+	
+	public void averagePrice(int no) throws Exception;
 }

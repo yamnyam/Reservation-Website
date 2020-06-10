@@ -3,6 +3,7 @@ package kr.website.foodlist.dao;
 import java.util.List;
 
 import kr.website.foodlist.vo.foodListVO;
+import kr.website.information.vo.InformationVO;
 
 public interface foodListDAO {
 	
@@ -11,4 +12,6 @@ public interface foodListDAO {
 
 	// 상세보기
 	public foodListVO foodDetail(int no) throws Exception;
+	
+	public List<InformationVO> menu(int no) throws Exception;
 }

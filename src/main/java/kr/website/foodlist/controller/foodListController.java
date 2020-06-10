@@ -4,20 +4,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.website.foodlist.service.foodListService;
 import kr.website.foodlist.vo.foodListVO;
-import kr.website.member.controller.MemberController;
+import kr.website.information.vo.InformationVO;
 
 @Controller
 @RequestMapping(value = "/foodlist/*")
@@ -69,7 +65,10 @@ public class foodListController {
 		int no = vo.getSto_no();
 		
 		foodListVO detail = service.foodDetail(no);
+		List <InformationVO> menu = null;
+		menu = service.menu(no);
 		
+		model.addAttribute("menu", menu);
 		model.addAttribute("detail", detail);
 		
 		return "/foodlist/foodDetail";
