@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>보통밥집: 상세보기</title>
-		
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a&libraries=services"></script>		
 		<script type="text/javascript">
 			function foodReserve(sto_no) {
 				var form = $("#reserveForm");
@@ -45,17 +46,39 @@
 				<li><a href="elements.html">밥집해시태그</a></li>
 			</ul>
 		</nav>
-			<div> 
-				${detail.sto_name}
+			<div id="wrap">
+				<div class="stoDetail">
+					<div class="sto_name">${detail.sto_name}</div>
+					<div class="sto_sub">${detail.sto_tel}</div>
+					<div id = "map"></div>
+					<script>
+			
+						var container = document.getElementById('map');
+						var coords = new kakao.maps.LatLng(${detail.sto_gps_x}, ${detail.sto_gps_y});
+						var options = {
+							center: coords,
+							level: 4
+						};
+						var map = new kakao.maps.Map(container, options);
+						
+						
+				        // 결과값으로 받은 위치를 마커로 표시합니다
+				        var marker = new kakao.maps.Marker({
+				            map: map,
+				            position: coords
+				        });
+				        
+					</script>
+					<div class="sto_sub" >${detail.sto_loc}</div>
+				
+					<div class="stoMenu" style="border-top: 10px solid #ededed; width: 100%;">
+						<span >메뉴 작업중.</span>
+					</div>
+				
+				</div>
+				<%  %>
+				<button type="button" class="btn_global" id="btnReserve" onclick="javascript:foodReserve('${detail.sto_no}')">에약하기</button>
 			</div>
-			<div>
-				전화번호: ${detail.sto_tel}
-			</div>
-			<div>
-				위치: ${detail.sto_loc}
-			</div>
-			<button type="button" id="btnReserve" onclick="javascript:foodReserve('${detail.sto_no}')">에약하기</button>
-		
 		<!-- Bottom_bar -->
 		<div id="bottom_bar">
 			<ul>

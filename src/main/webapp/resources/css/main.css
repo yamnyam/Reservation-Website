@@ -865,4 +865,23 @@
 		height: 60%;
 		
 	}
+	
+	.stoDetail{
+		text-align: center;
+		padding: 30px;
+    	
+	}
+	.stoDetail .sto_name{
+   		font-size: 2em;
+   		padding: 10px;
+	}
+	.stoDetail .sto_sub{
+		font-size: 0.9em;
+		padding: 2px;
+	}
 		
+		
+	.stoMenu{
+		padding: 5px 0 ;
+		border: 1px 0 solid #ededed;
+	}
