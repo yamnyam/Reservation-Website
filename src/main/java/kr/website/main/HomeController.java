@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.website.notice.service.NoticeService;
 import kr.website.notice.vo.NoticeVO;
@@ -26,14 +27,14 @@ public class HomeController {
 	private NoticeService service;
 
 	@RequestMapping(value = "/")
-	public String home(Locale locale, Model model, NoticeVO vo) throws Exception {
+	public String home( Locale locale, Model model, NoticeVO vo) throws Exception {
 		logger.info("I LOVE YOU.", locale);
 		
 		List<NoticeVO> list = null;
 		list = service.list(vo);
 		
 		model.addAttribute("list", list);
-		
+
 		return "main";
 	}
 }
