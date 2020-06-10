@@ -61,5 +61,13 @@
 		  FROM STORE
 		 WHERE sto_no_acc = #{sto_no_acc}
 	</select>
+	
+	<update id="averagePrice">
+		UPDATE STORE 
+		   SET STORE.average_price = (SELECT round(avg(menu_price), -3) 
+		   								FROM menu 
+		   							   WHERE menu.menu_no_sto = #{sto_no} and menu_check=1) 
+		 WHERE store.sto_no = #{sto_no};
+	</update>
     
 </mapper>

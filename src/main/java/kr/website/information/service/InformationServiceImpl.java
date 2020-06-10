@@ -32,4 +32,9 @@ public class InformationServiceImpl implements InformationService {
 	public InformationVO selectStore(int no) throws Exception{
 		return dao.selectStore(no);
 	}
+	
+	@Override
+	public void averagePrice(int no) throws Exception{
+		dao.averagePrice(no);
+	}
 }

@@ -76,6 +76,8 @@ public class InformationController {
 			service.menuInfo(vo1);
 		}
 		
+		service.averagePrice(sto_no);
+		
 		JSONArray array = new JSONArray();
 		array.add("밥집등록을 완료했습니다.");
 		array.add("/");

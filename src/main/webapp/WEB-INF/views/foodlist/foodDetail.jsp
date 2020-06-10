@@ -72,7 +72,10 @@
 					<div class="sto_sub" >${detail.sto_loc}</div>
 				
 					<div class="stoMenu" style="border-top: 10px solid #ededed; width: 100%;">
-						<span >메뉴 작업중.</span>
+						<c:forEach items="${menu}" var="menu">
+							<span>${menu.menu_name}</span>
+							<span>${menu.menu_price}</span>
+						</c:forEach>
 					</div>
 				
 				</div>

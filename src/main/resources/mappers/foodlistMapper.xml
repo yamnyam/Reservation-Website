@@ -24,4 +24,13 @@
 		  FROM STORE
 		 WHERE sto_no = #{sto_no}
 	</select>
+	
+	<select id="menu" resultType="informationVO">
+		SELECT menu_no
+			   , menu_name
+			   , menu_price
+			   , menu_check
+		  FROM menu
+		 WHERE menu_no_sto = #{sto_no}
+	</select>
 </mapper>
