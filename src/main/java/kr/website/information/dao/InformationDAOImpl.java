@@ -24,8 +24,8 @@ public class InformationDAOImpl implements InformationDAO {
 	}
 	
 	@Override
-	public int stoNo(InformationVO vo) throws Exception {
-		return sql.selectOne("information.stoNo", vo);
+	public int stoNo(int no) throws Exception {
+		return sql.selectOne("information.stoNo", no);
 	}
 	
 	@Override

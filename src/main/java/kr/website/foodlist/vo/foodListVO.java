@@ -9,7 +9,7 @@ public class foodListVO {
 	private String sto_gps_x;
 	private String sto_gps_y;
 	private int sto_no_acc;
-	private int averge_price;
+	private int average_price;
 	private String sto_photo;
 	private String sto_thumbPhoto;
 	private String sto_comment;
@@ -54,11 +54,11 @@ public class foodListVO {
 	public void setSto_no_acc(int sto_no_acc) {
 		this.sto_no_acc = sto_no_acc;
 	}
-	public int getAverge_price() {
-		return averge_price;
+	public int getAverage_price() {
+		return average_price;
 	}
-	public void setAverge_price(int averge_price) {
-		this.averge_price = averge_price;
+	public void setAverage_price(int averge_price) {
+		this.average_price = averge_price;
 	}
 	public String getSto_gps_x() {
 		return sto_gps_x;

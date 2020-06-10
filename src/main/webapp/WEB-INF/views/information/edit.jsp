@@ -95,13 +95,13 @@
 				$("#searchForm").submit();
 			}
 			
-			$(document).ready(function(){
-				$("#stoInfoBtn").click(function(){
-					var formData = $("#signupForm").serialize();
+// 			$(document).ready(function(){
+// 				$("#stoInfoBtn").click(function(){
+// 					var formData = $("#signupForm").serialize();
 					
-					ajaxPostAction("/information/stoInfo", formData);
-				});
-			});
+// 					ajaxFileAction("/information/stoInfo", formData);
+// 				});
+// 			});
 
       	</script>
    	</head>
@@ -143,7 +143,7 @@
 			</div>
 		</nav>
 		<div id="wrap">
-			<form id="signupForm" method="post">
+			<form id="signupForm" enctype="multipart/form-data" action="/information/stoInfo" method="post">
 				<div class="input_row" id="sto_name_box">
 					<span class="input_box">
 						<input type="hidden" id="sto_no_acc" name="sto_no_acc" value="<%= session.getAttribute("acc_no") %>" />
@@ -190,7 +190,7 @@
 				</div>
 				<div class="inputArea">
 					<label for="sto_photo">이미지</label>
-					<input type="file" id="sto_photo" name="sto_photo" />
+					<input type="file" id="sto_photo" name="file" />
 					<div class="select_img"><img src="" /></div>
 					<script>
 						$("#sto_photo").change(function(){
@@ -207,7 +207,7 @@
 <%-- 					<%=request.getRealPath("/") %> --%>
 				</div>
 				
-				<div class="btn_login"><input type="button" title="등록하기" alt="등록하기" value="등록하기" class="btn_global" id="stoInfoBtn"></div>
+				<div class="btn_login"><input type="submit" title="등록하기" alt="등록하기" value="등록하기" class="btn_global" id="stoInfoBtn"></div>
 			    <script>
 			    	var count = 0;
 			    	
