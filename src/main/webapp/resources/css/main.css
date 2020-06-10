@@ -880,8 +880,24 @@
 		padding: 2px;
 	}
 		
-		
+	.menu_title{
+		padding-top: 10px;
+		text-align: center;
+		font_size: 1.2em;
+	}
 	.stoMenu{
+		margin: 10px 0;
 		padding: 5px 0 ;
-		border: 1px 0 solid #ededed;
+		border-top: 3px solid #ededed;
+		border-bottom: 3px solid #ededed;
+		width: 100%;
+	}
+	.stoMenu .menu_box{
+		height: 1.5em; line-height: 1.5em;
+	}
+	.stoMenu .menu_box .menu_name{
+		float: left; font-size: 1.2em;
+	}
+	.stoMenu .menu_box .menu_price{
+		float: right; font-size: 1.2em;
 	}

@@ -70,16 +70,16 @@
 				        
 					</script>
 					<div class="sto_sub" >${detail.sto_loc}</div>
-				
-					<div class="stoMenu" style="border-top: 10px solid #ededed; width: 100%;">
+					<div class="menu_title">메 뉴</div>
+					<div class="stoMenu">
 						<c:forEach items="${menu}" var="menu">
-							<span>${menu.menu_name}</span>
-							<span>${menu.menu_price}</span>
+							<div class="menu_box">
+								<div class="menu_name">${menu.menu_name}</div>
+								<div class="menu_price">${menu.menu_price}원</div>
+							</div>
 						</c:forEach>
 					</div>
-				
 				</div>
-				<%  %>
 				<button type="button" class="btn_global" id="btnReserve" onclick="javascript:foodReserve('${detail.sto_no}')">에약하기</button>
 			</div>
 		<!-- Bottom_bar -->

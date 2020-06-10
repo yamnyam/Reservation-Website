@@ -35,5 +35,6 @@
 			   , menu_check
 		  FROM menu
 		 WHERE menu_no_sto = #{sto_no}
+      ORDER BY 4 DESC
 	</select>
 </mapper>
