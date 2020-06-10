@@ -95,14 +95,14 @@
 				$("#searchForm").submit();
 			}
 			
-			function edit(acc_no) {
-				var editForm = document.getElementById('informationForm');;
-				$("#acc_no").val(acc_no);
-				editForm.action="/information/edit";
-				editForm.method="post";
-// 				form.action = "/information/edit";
-				editForm.submit();
-			}
+			$(document).ready(function(){
+				$("#stoInfoBtn").click(function(){
+					var formData = $("#signupForm").serialize();
+					
+					ajaxPostAction("/information/stoInfo", formData);
+				});
+			});
+
       	</script>
    	</head>
    	<body>
@@ -126,31 +126,38 @@
 			<div class="acc_img"><img src="/resources/images/medical-mask.png"></div>
 			<div class="acc_info">
 				<div class="nick">
+					<% if (no == null || no == "") { %>
+						<a href="/member/login" class="button alt">로그인하세요</a>
+					<% } else { %>	
 					<%= session.getAttribute("acc_name") %>님
+					<% } %>
 				</div>
-				<div>
-					<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">내정보수정</a>
-				</div>
+				<div>내정보 수정</div>
 				<div>내가 쓴 리뷰</div>
 				<div>예약확인</div>
+				<div>
+					<% if (level == 1) { %>
+						<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">밥집등록</a>	
+					<% } %>
+				</div>
 			</div>
 		</nav>
-		
 		<div id="wrap">
 			<form id="signupForm" method="post">
 				<div class="input_row" id="sto_name_box">
 					<span class="input_box">
-						<input class="input" type="text" id="sto_name" name="sto_name" placeholder="밥집명" maxlength="35">
+						<input type="hidden" id="sto_no_acc" name="sto_no_acc" value="<%= session.getAttribute("acc_no") %>" />
+						<input class="input" type="text" id="sto_name" name="sto_name" placeholder="밥집명" maxlength="35" value="${store.sto_name}">
 					</span>
 				</div>
 				<div class="input_row" id="sto_tel_box">
 					<span class="input_box">
-						<input class="input" type="text" id="sto_tel" name="sto_tel" placeholder="전화번호" maxlength="35">
+						<input class="input" type="text" id="sto_tel" name="sto_tel" placeholder="전화번호" maxlength="35" value="${store.sto_tel}">
 					</span>
 				</div>
 				<div class="input_row" id="sto_loc_box">
 					<span class="input_box">
-						<input class="input" type="text" id="sto_loc" name="sto_loc" placeholder="주소" maxlength="100" style="float: left; width:90%;">
+						<input class="input" type="text" id="sto_loc" name="sto_loc" placeholder="주소" maxlength="100" style="float: left; width:90%;" value="${store.sto_loc}">
 						<input class="input" type="text" onclick="findAddress()" value="검색" style="float: right; width: 10%; border: 1px solid #dadada; text-align-last: center;">
 						<input type="hidden" id="sto_gps_x" name="sto_gps_x" value="">
 						<input type="hidden" id="sto_gps_y" name="sto_gps_y" value="">
@@ -173,14 +180,34 @@
 					        map: map
 					    });
 			    </script>
-			    <div class="input_row" id="sto_coment">
+			    <div class="input_row" id="sto_comment">
 					<span class="input_box">
-						<input class="input" type="text" id="sto_coment" name="sto_coment" placeholder="한마디" maxlength="35">
+						<input class="input" type="text" id="sto_comment" name="sto_comment" placeholder="한마디" maxlength="35" value="${store.sto_comment}">
 					</span>
 				</div>
 			    <div id="sto_menu">
 			    	<input type="button" onclick="javascript:addMenu()">
 				</div>
+				<div class="inputArea">
+					<label for="sto_photo">이미지</label>
+					<input type="file" id="sto_photo" name="sto_photo" />
+					<div class="select_img"><img src="" /></div>
+					<script>
+						$("#sto_photo").change(function(){
+							if(this.files && this.files[0]) {
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_img img").attr("src", data.target.result).width(500);        
+								}
+								reader.readAsDataURL(this.files[0]);
+							}
+						});
+					</script>
+					
+<%-- 					<%=request.getRealPath("/") %> --%>
+				</div>
+				
+				<div class="btn_login"><input type="button" title="등록하기" alt="등록하기" value="등록하기" class="btn_global" id="stoInfoBtn"></div>
 			    <script>
 			    	var count = 0;
 			    	
@@ -189,11 +216,11 @@
 			    		
 			    		var str = "";
 			    		
-			    		str+="<div class='input_row' id='menu_"+count+"' style='height: fit-content;'>";
+			    		str+="<div class='input_row' id='menu1' style='height: fit-content;'>";
 			    		str+="<span class='input_box'>";
-			    		str+="<input class='input' type='text' id='menu_name_"+count+"' name='menu_name_"+count+"' placeholder='메뉴이름' maxlength='35'>";
-			    		str+="<input class='input' type='text' id='menu_price_"+count+"' name='menu_price_"+count+"' style='float: left; width: 85%;' placeholder='가격' maxlength='35'>";
-			    		str+="<input class='input' type='checkbox' id='menu_check_"+count+"' style='float: right; width: fit-content;' name='menu_check_"+count+"'>";
+			    		str+="<input class='input' type='text' id='menu_name1' name='menu_name' placeholder='메뉴이름' maxlength='35'>";
+			    		str+="<input class='input' type='text' id='menu_price1' name='menu_price' style='float: left; width: 85%;' placeholder='가격' maxlength='35'>";
+			    		str+="<input class='input' type='text' id='menu_check1' style='float: right; width: fit-content;' name='menu_check'>";
 			    		str+="</span></div>";
 			    		
 			    		var addedDiv = document.createElement("div");

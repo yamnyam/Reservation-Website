@@ -11,6 +11,8 @@ public class foodListVO {
 	private int sto_no_acc;
 	private int averge_price;
 	private String sto_photo;
+	private String sto_thumbPhoto;
+	private String sto_comment;
 	
 	private String gps_x;
 	private String gps_y;
@@ -88,5 +90,17 @@ public class foodListVO {
 	}
 	public void setGps_y(String gps_y) {
 		this.gps_y = gps_y;
+	}
+	public String getSto_comment() {
+		return sto_comment;
+	}
+	public void setSto_comment(String sto_comment) {
+		this.sto_comment = sto_comment;
+	}
+	public String getSto_thumbPhoto() {
+		return sto_thumbPhoto;
+	}
+	public void setSto_thumbPhoto(String sto_thumbPhoto) {
+		this.sto_thumbPhoto = sto_thumbPhoto;
 	}
 }
