@@ -1,6 +1,8 @@
 package kr.website.information.controller;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -44,36 +46,37 @@ public class InformationController {
 	@RequestMapping(value = "/stoInfo", method=RequestMethod.POST)
 	public String stoInfo(InformationVO vo, MultipartFile file) throws Exception {
 		InformationVO vo1 = new InformationVO();
-		
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
-		String ymdPath = UploadFileUtils.calcPath(imgUploadPath);
+
 		String fileName = null;
 
 		if(file != null) {
-		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes()); 
 		} else {
 		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
 
-		vo.setSto_photo(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-		vo.setSto_thumbPhoto(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+		vo.setSto_photo(File.separator + "imgUpload" + File.separator + fileName);
+		vo.setSto_thumbPhoto(File.separator + "imgUpload" + File.separator + "s" + File.separator + "s_" + fileName);
 		
 		service.stoInfo(vo);
 		
 		int sto_no = service.stoNo(vo.getSto_no_acc());
-		
-		String[] menu_name = vo.getMenu_name().split(",");
-		String[] menu_price = vo.getMenu_price().split(",");
-		String[] menu_check = vo.getMenu_check().split(",");
-		
-		for(int i = 0; i < menu_name.length; i++) {
-			vo1.setMenu_name(menu_name[i]);
-			vo1.setMenu_price(menu_price[i]);
-			vo1.setMenu_check(menu_check[i]);
-			vo1.setMenu_no_sto(sto_no);
-			service.menuInfo(vo1);
+		try {	// 메뉴 없을경우 exception
+			String[] menu_name = vo.getMenu_name().split(",");
+			String[] menu_price = vo.getMenu_price().split(",");
+			String[] menu_check = vo.getMenu_check().split(",");
+			
+			for(int i = 0; i < menu_name.length; i++) {
+				vo1.setMenu_name(menu_name[i]);
+				vo1.setMenu_price(menu_price[i]);
+				vo1.setMenu_check(menu_check[i]);
+				vo1.setMenu_no_sto(sto_no);
+				service.menuInfo(vo1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-		
 		service.averagePrice(sto_no);
 		
 		return "redirect:/";
