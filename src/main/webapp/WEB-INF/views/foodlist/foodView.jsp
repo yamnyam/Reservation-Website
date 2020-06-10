@@ -120,11 +120,20 @@
 				
 				$(document).ready(function(){
 					$("#btnAround").click(function(){
-						var formData = $("#aroundForm");
-					    
-				        var locPosition = new kakao.maps.LatLng($("#gps_x").val(), $("#gps_y").val());
+						var formData = $("#foodlistForm");
+						navigator.geolocation.getCurrentPosition(function(position) {
+					        
+					        var lat = position.coords.latitude, // 위도
+					            lon = position.coords.longitude; // 경도
+					        
+					        if(lat==null&&lon==null){
+								$("#gps_x").val(lat);
+								$("#gps_y").val(lon);
+					        }
+						});
+				        /* var locPosition = new kakao.maps.LatLng($("#gps_x").val(), $("#gps_y").val());
 				        map.setCenter(locPosition);   
-						
+						 */
 					    formData.submit();
 					});
 				});
@@ -187,14 +196,14 @@
 	    	<input type="hidden" id="sto_no" name="sto_no" />
 		</form>
 		
-		<form id="aroundForm" action="/foodlist/foodView" method="post">
+		<!-- <form id="aroundForm" action="/foodlist/foodView" method="post">
 	    	<input type="hidden" id="gps_x" name="gps_x"/>
 	    	<input type="hidden" id="gps_y" name="gps_y"/>
-		</form>
+		</form> -->
 		
 		<form id="foodlistForm" action="/foodlist/foodView" method="post">
-	    	<input type="hidden" id="gps_x" name="gps_x" value="37.322843"/>
-	    	<input type="hidden" id="gps_y" name="gps_y" value="127.127846"/>
+	    	<input type="hidden" id="gps_x" name="gps_x" value="${gps_x}"/>
+	    	<input type="hidden" id="gps_y" name="gps_y" value="${gps_y}"/>
 		</form>
 	</body>
 </html>
