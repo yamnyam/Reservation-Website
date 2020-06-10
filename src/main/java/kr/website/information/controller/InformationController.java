@@ -22,7 +22,6 @@ import kr.website.utils.UploadFileUtils;
 
 @Controller
 @RequestMapping(value = "/information/*")
-@SuppressWarnings("unchecked")
 public class InformationController {
 	private static final Logger Logger =  LoggerFactory.getLogger(InformationController.class);
 	
@@ -43,7 +42,6 @@ public class InformationController {
 	}
 	
 	@RequestMapping(value = "/stoInfo", method=RequestMethod.POST)
-	@ResponseBody
 	public String stoInfo(InformationVO vo, MultipartFile file) throws Exception {
 		InformationVO vo1 = new InformationVO();
 		
@@ -62,7 +60,7 @@ public class InformationController {
 		
 		service.stoInfo(vo);
 		
-		int sto_no = service.stoNo(vo);
+		int sto_no = service.stoNo(vo.getSto_no_acc());
 		
 		String[] menu_name = vo.getMenu_name().split(",");
 		String[] menu_price = vo.getMenu_price().split(",");
@@ -78,11 +76,7 @@ public class InformationController {
 		
 		service.averagePrice(sto_no);
 		
-		JSONArray array = new JSONArray();
-		array.add("밥집등록을 완료했습니다.");
-		array.add("/");
-		
-		return array.toJSONString();
+		return "redirect:/";
 	}
 	
 	

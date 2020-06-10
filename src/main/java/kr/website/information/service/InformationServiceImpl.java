@@ -24,8 +24,8 @@ public class InformationServiceImpl implements InformationService {
 	}
 	
 	@Override
-	public int stoNo(InformationVO vo) throws Exception {
-		return dao.stoNo(vo);
+	public int stoNo(int no) throws Exception {
+		return dao.stoNo(no);
 	}
 	
 	@Override

@@ -153,14 +153,14 @@
 					 	<ul>
 						 	<li>${view.sto_name}</li>
 						 	<li>음식종류 #해시태그</li>
-		                    <li>사장 한마디</li>
-		                    <li>"       "</li> 
+		                    <li>${view.sto_comment}</li>
+		                    <li>평균가격: ${view.average_price}</li> 
 		                    <li>#해시태그 #해시태그 #해시태그</li>
 						  	<li><script>geocoder.addressSearch('${view.sto_loc}', callback);</script></li>
 					 	</ul>
 					 </div>
 					 <div class="contents_img_box">
-				   			<img src="${view.sto_photo}">
+				   			<img src="${view.sto_photo}" class="Img" />
 					 </div>
 				</div>	
 			</c:forEach>

@@ -8,7 +8,7 @@ public interface InformationService {
 	
 	public void menuInfo(InformationVO vo) throws Exception;
 	
-	public int stoNo(InformationVO vo) throws Exception;
+	public int stoNo(int no) throws Exception;
 	
 	public InformationVO selectStore(int no) throws Exception;
 	
