@@ -8,6 +8,8 @@
 		  INTO RESERVATION
 		  	   (
 				res_name
+				, res_no_acc
+				, res_no_sto
 		  		, res_time
 		  		, res_cur_time
 		  		, res_people
@@ -15,6 +17,8 @@
 		VALUES (
 				#{res_name}
 				, #{res_all}
+				, #{res_no_acc}
+				, #{res_no_sto}
 				, NOW()
 				, #{res_people}
 			   )

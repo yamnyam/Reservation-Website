@@ -15,12 +15,21 @@
 				$("#btnReserve").click(function(){
 					var form = document.getElementById('reserveForm');
 					form.action = "/store/afterReserve";
+					$("#res_no_sto").val('${reserve.sto_no}');
+					$("#res_no_acc").val('<%= no %>');
 					form.method = "post";
 					form.submit();
 				});
 				
 				$( "#res_date" ).datepicker({
 					dateFormat: 'yy-mm-dd' 
+				});
+				
+				$("#btnCancel").click(function(){
+					
+					form.action = "/foodlist/foodDetail";
+					form.method = "post";
+					form.submit();
 				});
 			});
 			
@@ -58,6 +67,8 @@
 	
 		<h2>${reserve.sto_name} 예약</h2>
 		<form id="reserveForm">
+			<input type="hidden" id="res_no_sto" name="res_no_sto"/>
+			<input type="hidden" id="res_no_acc" name="res_no_acc"/>
 			예약자 성명: <input type="text" id="res_name" name="res_name" maxlength="50"><br>
 			예약 인원: <select id="res_people" name="res_people">
 						<option value="">인원 수</option>
