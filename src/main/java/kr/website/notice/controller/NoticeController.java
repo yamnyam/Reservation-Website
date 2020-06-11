@@ -39,7 +39,7 @@ public class NoticeController {
 		
 		service.write(vo);
 		
-		return "main";
+		return "redirect:/";
 	}
 	
 	// 공지사항 조회

@@ -19,7 +19,7 @@
 				});
 				
 				$("#btnUpdate").click(function(){
-					
+
 					viewForm.action = "/letter/modify";
 					viewForm.submit();
 					
