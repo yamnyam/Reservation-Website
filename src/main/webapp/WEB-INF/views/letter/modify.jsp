@@ -40,11 +40,32 @@
 				<% if (no == null || no == "") { %>
 					<a href="/member/login" class="button alt">Login</a>
 				<% } else { %>
-					<a href="/member/logout" class="button alt">Logout</a>
+					<a href="javascript:logout()" class="button alt">Logout</a>
 				<% } %>
 			</nav>
 		</header>
-		
+
+		<!-- Menu -->
+		<nav id="menu">
+			<div class="acc_img"><img src="/resources/images/medical-mask.png"></div>
+			<div class="acc_info">
+				<div class="nick">
+					<% if (no == null || no == "") { %>
+						<a href="/member/login" class="button alt">로그인하세요</a>
+					<% } else { %>	
+					<%= session.getAttribute("acc_name") %>님
+					<% } %>
+				</div>
+				<div>내정보 수정</div>
+				<div>내가 쓴 리뷰</div>
+				<div>예약확인</div>
+				<div>
+					<% if (level == 1) { %>
+						<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">밥집등록</a>	
+					<% } %>
+				</div>
+			</div>
+		</nav>		
 		<!-- Wrap -->
 		<div class="letter_info">
 				마음의편지를 남겨주시면 성실하게<br>답변드리겠습니다.

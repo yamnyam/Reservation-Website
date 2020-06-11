@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>예약</title>
+		<title>보통밥집 : 예약</title>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script src="//code.jquery.com/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -18,6 +18,7 @@
 					$("#res_no_sto").val('${reserve.sto_no}');
 					$("#res_no_acc").val('<%= no %>');
 					form.method = "post";
+					
 					form.submit();
 				});
 				
@@ -58,33 +59,66 @@
 
 		<!-- Menu -->
 		<nav id="menu">
-			<ul class="links">
-				<li><a href="main">Home</a></li>
-				<li><a href="generic.html">내주변밥집</a></li>
-				<li><a href="elements.html">밥집해시태그</a></li>
-			</ul>
+			<div class="acc_img"><img src="/resources/images/medical-mask.png"></div>
+			<div class="acc_info">
+				<div class="nick">
+					<% if (no == null || no == "") { %>
+						<a href="/member/login" class="button alt">로그인하세요</a>
+					<% } else { %>	
+					<%= session.getAttribute("acc_name") %>님
+					<% } %>
+				</div>
+				<div>내정보 수정</div>
+				<div>내가 쓴 리뷰</div>
+				<div>예약확인</div>
+				<div>
+					<% if (level == 1) { %>
+						<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">밥집등록</a>	
+					<% } %>
+				</div>
+			</div>
 		</nav>
-	
-		<h2>${reserve.sto_name} 예약</h2>
-		<form id="reserveForm">
-			<input type="hidden" id="res_no_sto" name="res_no_sto"/>
-			<input type="hidden" id="res_no_acc" name="res_no_acc"/>
-			예약자 성명: <input type="text" id="res_name" name="res_name" maxlength="50"><br>
-			예약 인원: <select id="res_people" name="res_people">
-						<option value="">인원 수</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-					</select><br>
-			예약 날짜: <input type="text" id="res_date" name="res_date"><br>
-			예약 시간: <input type="text" id="res_time" name="res_time" maxlength="50"><br>
-			<input type="button" id="btnReserve" value="예약완료">
-			<input type="button" id="btnCancel" value="취소">
-		</form>
-		
+		<div class="letter_info" style="padding-left: 30px; text-align: center; font-size: 1.7em;">
+				예약 : ${reserve.sto_name}
+		</div>
+		<div id="wrap">
+			<form id="reserveForm">
+				<div class="input_row">
+					<input type="hidden" id="res_no_sto" name="res_no_sto"/>
+					<input type="hidden" id="res_no_acc" name="res_no_acc"/>
+	                <h2 class="input_row_tit">예약자 성명<span class="point"></span></h2>
+	                <input class="input" id="let_title" name="res_name" type="text" placeholder="이름을 입력해주세요.">
+	            </div>
+	            <div class="input_row">
+	                <h2 class="input_row_tit">예약 인원<span class="point"></span></h2>
+	                <div class="input_row">
+						<div class="level_code">
+							<select class="sel" id="acc_level" name="res_people">
+                               	<option value="">인원 수</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+	                        </select>
+						</div>
+					</div>
+	            </div>
+				<div class="input_row">
+	            	<h2 class="input_row_tit">예약 날짜<span class="point"></span></h2>
+					<input class ="input" type="text" id="res_date" name="res_date">
+	            </div>
+	            <div class="input_row">
+	            	<h2 class="input_row_tit">예약 시간<span class="point"></span></h2>
+	            	<input class="input" type="time" id="res_time" name="res_time" maxlength="50"><br>
+	            </div>
+	            <div class="input_row">
+	                <input class="btn_global" type="button" id="btnReserve" value="예약등록">
+	            	<input class="btn_global" type="button" id="btnCancel" value="취소">
+                </div>
+            </form>
+		</div>
 		<!-- Bottom_bar -->
 		<div id="bottom_bar">
 			<ul>
