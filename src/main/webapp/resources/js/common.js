@@ -44,6 +44,44 @@ function callbackPage(url, data) {
     form.submit();
 }
 
+
+function foodReserve(sto_no) {
+	var form = $("#reserveForm");
+	$("#sto_no").val(sto_no);
+
+	form.submit();
+}
+
+function foodDetail(sto_no) {
+	var form = $("#detailForm");
+	$("#sto_no").val(sto_no);
+
+	form.submit();
+}
+
+function foodlist() {
+	var form = $("#foodlistForm");
+
+	form.submit();
+}
+
+
+
+function listView(let_no) {
+	var form = $("#letForm");
+	$("#let_no").val(let_no);	
+	
+	form.submit();
+}
+
+function listpage(num, let_no_acc) {
+	var form = $("#pageForm");
+	$("#num").val(num);	
+	$("#let_no_acc").val(let_no_acc);	
+	
+	form.submit();
+}
+
 function listLetter(acc_no) {
     
 	if (acc_no == undefined) {
@@ -53,19 +91,85 @@ function listLetter(acc_no) {
 
 	var form = $("#letterForm");
 	form.submit();
-	}
-
+}
 
 function logout() {
 	ajaxPostAction("/member/logout");
 }
 
-function listLetter(acc_no) {
-	if (acc_no == undefined) {
-   		alert("로그인한 후 이용가능합니다.");
-   		return;
-	}
+function noticeView(notice_no) {
+	var form = $("#noticeForm");
+	$("#notice_no").val(notice_no);
 
-	var form = $("#letterForm");
 	form.submit();
+}
+
+function edit(acc_no) {
+	var editForm = document.getElementById('informationForm');;
+	$("#sto_no_acc").val(acc_no);
+	editForm.action="/information/edit";
+	editForm.method="post";
+	editForm.submit();
+}
+
+function onClickSearch(){
+	
+	var places = new kakao.maps.services.Places();
+	
+	var callback = function(result, status) {
+	    if (status === kakao.maps.services.Status.OK) {
+	        console.log(result);
+	        $("#search_gps_x").val(result[0].x);
+	        $("#search_gps_y").val(result[0].y);
+	    }
+	};
+	
+	var options ={
+			location: new kakao.maps.LatLng($("gps_x").val(), $("gps_y").val())
+	};
+
+	places.keywordSearch($("#search").val(), callback);
+	$("#searchForm").submit();
+}
+
+$("#sto_photo").change(function(){
+	if(this.files && this.files[0]) {
+		var reader = new FileReader;
+		reader.onload = function(data) {
+			$(".select_img img").attr("src", data.target.result).width(500);        
+		}
+		reader.readAsDataURL(this.files[0]);
+	}
+});
+
+
+function findAddress() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var addr = data.address; // 최종 주소 변수
+
+            // 주소 정보를 해당 필드에 넣는다.
+            $("#sto_loc").val(addr);
+            // 주소로 상세 정보를 검색
+            geocoder.addressSearch(data.address, function(results, status) {
+                // 정상적으로 검색이 완료됐으면
+                if (status === daum.maps.services.Status.OK) {
+
+                    var result = results[0]; //첫번째 결과의 값을 활용
+
+                    // 해당 주소에 대한 좌표를 받아서
+                    var coords = new kakao.maps.LatLng(result.y, result.x);
+                    $("#sto_gps_x").val(result.y);
+			        $("#sto_gps_y").val(result.x);
+                    // 지도를 보여준다.
+                    mapContainer.style.display = "block";
+                    map.relayout();
+                    // 지도 중심을 변경한다.
+                    map.setCenter(coords);
+                    // 마커를 결과값으로 받은 위치로 옮긴다.
+                    marker.setPosition(coords)
+                }
+            });
+        }
+    }).open();
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,15 +7,17 @@
 		<title>보통밥집 : 로그인</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/resources/css/main.css" />
+		<!-- Script -->
+		
 		<script src="/resources/js/jquery.min.js"></script>
 		<script src="/resources/js/jquery.scrolly.min.js"></script>
 		<script src="/resources/js/skel.min.js"></script>
 		<script src="/resources/js/util.js"></script>
 		<script src="/resources/js/main.js"></script>
 		<script src="/resources/js/kakao.js"></script>
-		<script>
-			Kakao.init('efac78643eb016816e0a0d506200b05a');
-			
+		<script src="/resources/js/common.js"></script>
+		
+		<script>	
 			$(document).ready(function(){
 				$("#loginBtn").click(function(){
 					var id = $("#acc_id").val();
@@ -68,5 +70,5 @@
 				</form>
 			</div>
 		</div>
-		</body>
+	</body>
 </html>

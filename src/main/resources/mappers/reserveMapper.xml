@@ -16,9 +16,9 @@
 		  	   ) 
 		VALUES (
 				#{res_name}
-				, #{res_all}
 				, #{res_no_acc}
 				, #{res_no_sto}
+				, #{res_all}
 				, NOW()
 				, #{res_people}
 			   )

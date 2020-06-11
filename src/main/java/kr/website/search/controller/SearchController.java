@@ -37,6 +37,8 @@ public class SearchController {
 		
 		List<foodListVO> list = service.list(search);
 		
+		if(list.isEmpty()) return "/search/searchList";
+		
 		String x = list.get(0).getSto_gps_x();
 		String y = list.get(0).getSto_gps_y();
 		
