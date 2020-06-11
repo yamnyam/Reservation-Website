@@ -10,7 +10,7 @@
 		<div id="wrap">
 			<div class="stoDetail">
 				<div class="sto_name">${detail.sto_name}</div>
-				<div class="sto_sub">${detail.sto_tel}</div>
+				<div class="sto_sub"><a href="tel:${detail.sto_tel}"><img src="/resources/images/tel.png" style="width: 0.9em;">${detail.sto_tel}</a></div>
 				<div id = "map"></div>
 				<script>
 		
