@@ -54,3 +54,18 @@ function listLetter(acc_no) {
 	var form = $("#letterForm");
 	form.submit();
 	}
+
+
+function logout() {
+	ajaxPostAction("/member/logout");
+}
+
+function listLetter(acc_no) {
+	if (acc_no == undefined) {
+   		alert("로그인한 후 이용가능합니다.");
+   		return;
+	}
+
+	var form = $("#letterForm");
+	form.submit();
+}

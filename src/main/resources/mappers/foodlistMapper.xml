@@ -37,4 +37,16 @@
 		 WHERE menu_no_sto = #{sto_no}
       ORDER BY 4 DESC
 	</select>
+	
+	<!-- <select id="review" resultType="reviewVO">
+	    SELECT review_no,
+	    	   , review_level
+	    	   , review_content
+	    	   , review_star
+	    	   , review_date
+	    	   , review_photo
+	    	   , review_like
+    	  FROM review
+    	 WHERE review_no_sto = #{sto_no}
+	</select> -->
 </mapper>
