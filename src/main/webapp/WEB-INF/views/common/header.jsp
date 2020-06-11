@@ -128,9 +128,6 @@
    	<input type="hidden" id="gps_y" name="gps_y" value="${gps_y}"/>
 </form> --%>
 
-<form id="detailForm" action="/foodlist/foodDetail" method="post">
-   	<input type="hidden" id="sto_no" name="sto_no" />
-</form>
 
 <form id="noticeForm" action="/notice/noticeView" method="post">
    	<input type="hidden" id="notice_no" name="notice_no" />
@@ -142,9 +139,4 @@
 
 <form id="letForm" action="/letter/view" method="post">
    	<input type="hidden" id="let_no" name="let_no" />
-</form>
-
-<form id="pageForm" action="/letter/list" method="post">
-   	<input type="hidden" id="num" name="num" />
-   	<input type="hidden" id="let_no_acc" name="let_no_acc" />
 </form>

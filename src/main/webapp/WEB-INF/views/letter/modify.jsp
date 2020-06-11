@@ -11,15 +11,12 @@
 				$("#btnCancel").click(function(){
 					var cancel = confirm("취소하시겠습니까?");
 					if(cancel){
-						document.form.action = "/letter/list";
-						alert("취소되었습니다.");
- 						document.form.submit();
+						history.back();
 					}
 				});
 				
 				$("#btnList").click(function(){
-					document.form.action = "/letter/list";
-					document.form.submit();
+					listLetter(<%= no%>);
 				});
 				
 				$("#btnModify").click(function(){

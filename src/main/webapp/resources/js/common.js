@@ -53,10 +53,17 @@ function foodReserve(sto_no) {
 }
 
 function foodDetail(sto_no) {
-	var form = $("#detailForm");
-	$("#sto_no").val(sto_no);
+	var f = document.createElement("form");
+	f.setAttribute("method","post"); 
+	f.setAttribute("action","/foodlist/foodDetail");
+	document.body.appendChild(f);
+	var i = document.createElement("input");
+	i.setAttribute("type","hidden");
+	i.setAttribute("name","sto_no");
+	i.setAttribute("value", sto_no);
+	f.appendChild(i);
+	f.submit();
 
-	form.submit();
 }
 
 function foodlist() {
@@ -75,11 +82,26 @@ function listView(let_no) {
 }
 
 function listpage(num, let_no_acc) {
-	var form = $("#pageForm");
-	$("#num").val(num);	
-	$("#let_no_acc").val(let_no_acc);	
 	
-	form.submit();
+	var f = document.createElement("form");
+	f.setAttribute("method","post"); 
+	f.setAttribute("action","/letter/list");
+	document.body.appendChild(f);
+	
+	var i = document.createElement("input");
+	i.setAttribute("type","hidden");
+	i.setAttribute("name","num");
+	i.setAttribute("value", let_no_acc);
+	f.appendChild(i);
+	
+	var i = document.createElement("input");
+	i.setAttribute("type","hidden");
+	i.setAttribute("name","let_no_acc");
+	i.setAttribute("value", let_no_acc);
+	f.appendChild(i);
+	
+	f.submit();
+	
 }
 
 function listLetter(acc_no) {
