@@ -10,21 +10,20 @@ public class ReserveVO {
 	private String res_time;
 	private String res_date;
 	private int res_people;
-	private String res_all;
 	private String res_name;
+	private int res_check;
 	
-	
+	public int getRes_check() {
+		return res_check;
+	}
+	public void setRes_check(int res_check) {
+		this.res_check = res_check;
+	}
 	public String getRes_name() {
 		return res_name;
 	}
 	public void setRes_name(String res_name) {
 		this.res_name = res_name;
-	}
-	public String getRes_all() {
-		return res_all;
-	}
-	public void setRes_all(String res_all) {
-		this.res_all = res_all;
 	}
 	public int getRes_no() {
 		return res_no;

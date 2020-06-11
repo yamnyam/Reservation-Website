@@ -9,7 +9,7 @@
 	
 			$(document).ready(function(){
 				$("#btnReserve").click(function(){
-					var form = document.getElementById('reserveForm');
+					var form = document.getElementById('reserveForm1');
 					form.action = "/store/afterReserve";
 					$("#res_no_sto").val('${reserve.sto_no}');
 					$("#res_no_acc").val('<%= no %>');
@@ -24,9 +24,7 @@
 				
 				$("#btnCancel").click(function(){
 					
-					form.action = "/foodlist/foodDetail";
-					form.method = "post";
-					form.submit();
+					history.back();
 				});
 			});
 		</script>
@@ -37,7 +35,7 @@
 				예약 : ${reserve.sto_name}
 		</div>
 		<div id="wrap">
-			<form id="reserveForm">
+			<form id="reserveForm1">
 				<div class="input_row">
 					<input type="hidden" id="res_no_sto" name="res_no_sto"/>
 					<input type="hidden" id="res_no_acc" name="res_no_acc"/>
