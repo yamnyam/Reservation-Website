@@ -23,9 +23,7 @@
 				
 				$("#btnCancel").click(function(){
 					
-					form.action = "/foodlist/foodDetail";
-					form.method = "post";
-					form.submit();
+					history.back();
 				});
 			});
 		</script>
