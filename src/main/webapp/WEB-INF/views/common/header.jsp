@@ -83,7 +83,13 @@
 		</div>
 		<div>내정보 수정</div>
 		<div>내가 쓴 리뷰</div>
-		<div>예약확인</div>
+		<div>
+			<% if (level == 2) { %>
+				<a href="/information/resInfo">예약확인</a>	
+			<% } else if (level == 1) {%>
+				예약 관리
+			<% } %>
+		</div>
 		<div>
 			<% if (level == 1) { %>
 				<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">밥집등록</a>	
@@ -91,6 +97,7 @@
 		</div>
 	</div>
 </nav>
+
 
 <!-- Bottom_bar -->
 <div id="bottom_bar">
