@@ -87,7 +87,7 @@
 			<% if (level == 2) { %>
 				<a href="/information/resInfo">예약확인</a>	
 			<% } else if (level == 1) {%>
-				예약 관리
+				<a href="/information/resManage">예약관리</a>
 			<% } %>
 		</div>
 		<div>

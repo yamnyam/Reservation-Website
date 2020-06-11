@@ -18,4 +18,6 @@ public interface InformationService {
 	public void averagePrice(int no) throws Exception;
 	
 	public List<ReserveVO> resInfo (int no) throws Exception;
+	
+	public List<ReserveVO> resManage (int no) throws Exception;
 }

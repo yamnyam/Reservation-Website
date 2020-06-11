@@ -1,6 +1,7 @@
 package kr.website.reserve.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,11 @@ public class ReserveController {
 	ReserveService service;
 	
 	@RequestMapping(value = "/afterReserve", method=RequestMethod.POST)
-	public String afterReserve(ReserveVO vo) throws Exception {
+	public String afterReserve(ReserveVO vo, HttpSession session) throws Exception {
+		
+		int no = (int) session.getAttribute("acc_no");
+		
+		vo.setRes_no_acc(no);
 		
 		service.reserve(vo);
 		

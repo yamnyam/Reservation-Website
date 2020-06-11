@@ -91,7 +91,7 @@ function listpage(num, let_no_acc) {
 	var i = document.createElement("input");
 	i.setAttribute("type","hidden");
 	i.setAttribute("name","num");
-	i.setAttribute("value", let_no_acc);
+	i.setAttribute("value", num);
 	f.appendChild(i);
 	
 	var i = document.createElement("input");

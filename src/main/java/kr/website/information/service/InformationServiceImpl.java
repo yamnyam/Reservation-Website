@@ -45,4 +45,9 @@ public class InformationServiceImpl implements InformationService {
 	public List<ReserveVO> resInfo(int no) throws Exception {
 		return dao.resInfo(no);
 	}
+	
+	@Override
+	public List<ReserveVO> resManage (int no) throws Exception {
+		return dao.resManage(no);
+	}
 }

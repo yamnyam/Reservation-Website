@@ -91,4 +91,17 @@ public class InformationController {
 		
 		return "/information/resInfo";
 	}
+	
+	@RequestMapping(value = "/resManage")
+	public String resManage(HttpSession session) throws Exception {
+		
+		int no = (int) session.getAttribute("sto_no");
+		
+		List<ReserveVO> vo = null;
+		
+		vo = service.resManage(no);
+		
+		return "/information/resManage";
+	}
+	
 }

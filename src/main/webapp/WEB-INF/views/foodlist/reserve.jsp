@@ -9,10 +9,9 @@
 	
 			$(document).ready(function(){
 				$("#btnReserve").click(function(){
-					var form = document.getElementById('reserveForm');
+					var form = document.getElementById('afterReserveForm');
 					form.action = "/store/afterReserve";
 					$("#res_no_sto").val('${reserve.sto_no}');
-					$("#res_no_acc").val('<%= no %>');
 					form.method = "post";
 					
 					form.submit();
@@ -37,12 +36,11 @@
 				예약 : ${reserve.sto_name}
 		</div>
 		<div id="wrap">
-			<form id="reserveForm">
+			<form id="afterReserveForm">
 				<div class="input_row">
 					<input type="hidden" id="res_no_sto" name="res_no_sto"/>
-					<input type="hidden" id="res_no_acc" name="res_no_acc"/>
 	                <h2 class="input_row_tit">예약자 성명<span class="point"></span></h2>
-	                <input class="input" id="let_title" name="res_name" type="text" placeholder="이름을 입력해주세요.">
+	                <input class="input" id="res_name" name="res_name" type="text" placeholder="이름을 입력해주세요.">
 	            </div>
 	            <div class="input_row">
 	                <h2 class="input_row_tit">예약 인원<span class="point"></span></h2>
