@@ -21,6 +21,7 @@
 				, #{res_time}
 				, #{res_no_acc}
 				, #{res_no_sto}
+				, #{res_all}
 				, NOW()
 				, #{res_people}
 			   )

@@ -4,95 +4,11 @@
 <html>
 	<head>
 		<title>보통밥집 : 내주변 밥집</title>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a&libraries=services"></script>
-		
-		<script type="text/javascript">
-			function listLetter(acc_no) {
-            
-				if (acc_no == undefined) {
-               		alert("로그인한 후 이용가능합니다.");
-               		return;
-            	}
-            
-            	var form = $("#letterForm");
-            	form.submit();
-         	}
-
-			function foodDetail(sto_no) {
-				var form = $("#detailForm");
-				$("#sto_no").val(sto_no);
-
-				form.submit();
-			}
-			
-			function foodlist() {
-				var form = $("#foodlistForm");
-
-				form.submit();
-			}
-			
-			function onClickSearch(){
-				
-				var places = new kakao.maps.services.Places();
-				
-				var callback = function(result, status) {
-				    if (status === kakao.maps.services.Status.OK) {
-				        console.log(result);
-				        $("#search_gps_x").val(result[0].x);
-				        $("#search_gps_y").val(result[0].y);
-				    }
-				};
-				
-				var options ={
-						location: new kakao.maps.LatLng($("gps_x").val(), $("gps_y").val())
-				};
-	
-				places.keywordSearch($("#search").val(), callback);
-				$("#searchForm").submit();
-			}
-			
-      	</script>
 	</head>
 	<body>
 
-		<!-- Header -->
-		<header id="header">
-			<nav class="left">
-				<a href="#menu"><span>Menu</span></a>
-			</nav>
-			<a href="/"><img class="logo" src="/resources/images/home.png"></a>
-			<nav class="right">	
-				<% if (no == null || no == "") { %>
-					<a href="/member/login" class="button alt">Login</a>
-				<% } else { %>
-					<a href="javascript:logout()" class="button alt">Logout</a>
-				<% } %>
-			</nav>
-		</header>
-
-		<!-- Menu -->
-		<nav id="menu">
-			<div class="acc_img"><img src="/resources/images/medical-mask.png"></div>
-			<div class="acc_info">
-				<div class="nick">
-					<% if (no == null || no == "") { %>
-						<a href="/member/login" class="button alt">로그인하세요</a>
-					<% } else { %>	
-					<%= session.getAttribute("acc_name") %>님
-					<% } %>
-				</div>
-				<div>내정보 수정</div>
-				<div>내가 쓴 리뷰</div>
-				<div>예약확인</div>
-				<div>
-					<% if (level == 1) { %>
-						<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">밥집등록</a>	
-					<% } %>
-				</div>
-			</div>
-		</nav>
 		<!-- Wrap -->
-			<div id="wrap">
+		<div id="wrap">
 			<!-- Search -->
 			<div id="search-box">
 				<div class="search-area">
@@ -131,16 +47,6 @@
 					console.error('geo error');
 				}
 				
-// 				$(document).ready(function(){
-// 					$("#btnAround").click(function(){
-// 						var formData = $("#aroundForm");
-					    
-// 				        var locPosition = new kakao.maps.LatLng($("#gps_x").val(), $("#gps_y").val());
-// 				        map.setCenter(locPosition);   
-						
-// 					    formData.submit();
-// 					});
-// 				});
 				var map = new kakao.maps.Map(container, options);
 				
 				var geocoder = new kakao.maps.services.Geocoder();
@@ -156,10 +62,8 @@
 			            position: coords
 			        });
 					}
-			};
-		</script>
-<!-- 			<input type="button" id="btnAround" name="btnAround" value="GPS" /> -->
-			
+				};
+			</script>
 			<c:forEach items="${list}" var="list">
 			 	<div class="contents">
 					<div class="contents_info" onclick="javascript:foodDetail('${list.sto_no}')">
@@ -185,34 +89,5 @@
 			</script>
 			<p style="border-top: 1px solid #ededed"></p>
 		</div>
-		<!-- Bottom_bar -->
-
-		<div id="bottom_bar">
-			<ul>
-				<li onclick="location.href='/'"><img src="/resources/images/bar_home.png" alt="HOME">HOME</li>
-				<li onclick="javascript:foodlist()"><img src="/resources/images/bar_food.png" alt="내주변밥집">내주변밥집</li>
-				<li onclick="location.href='#'"><img src="/resources/images/bar_hash.png" alt="해시태그">해시태그</li>
-				<li onclick="javascript:listLetter(<%= no %>)"><img src="/resources/images/bar_food2.png" alt="기능4">마음의편지</li>
-		    </ul>
-		</div>
-		
-		<!-- Hidden Form -->
-		<form id="letterForm" action="/letter/list" method="post">
-	    	<input type="hidden" id="let_no_acc" name="let_no_acc" value="<%= no %>" />
-		</form>
-		
-		<form id="detailForm" action="/foodlist/foodDetail" method="post">
-	    	<input type="hidden" id="sto_no" name="sto_no" />
-		</form>
-		
-<!-- 		<form id="aroundForm" action="/search/searchList" method="post"> -->
-<!-- 	    	<input type="hidden" id="gps_x" name="gps_x"/> -->
-<!-- 	    	<input type="hidden" id="gps_y" name="gps_y"/> -->
-<!-- 		</form> -->
-		
-		<form id="foodlistForm" action="/foodlist/foodView" method="post">
-	    	<input type="hidden" id="gps_x" name="gps_x" value="37.322843"/>
-	    	<input type="hidden" id="gps_y" name="gps_y" value="127.127846"/>
-		</form>
 	</body>
 </html>
