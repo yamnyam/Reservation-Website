@@ -1,11 +1,14 @@
 package kr.website.information.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import kr.website.information.dao.InformationDAO;
 import kr.website.information.vo.InformationVO;
+import kr.website.reserve.vo.ReserveVO;
 
 @Service
 public class InformationServiceImpl implements InformationService {
@@ -36,5 +39,10 @@ public class InformationServiceImpl implements InformationService {
 	@Override
 	public void averagePrice(int no) throws Exception{
 		dao.averagePrice(no);
+	}
+	
+	@Override
+	public List<ReserveVO> resInfo(int no) throws Exception {
+		return dao.resInfo(no);
 	}
 }

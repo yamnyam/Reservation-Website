@@ -1,11 +1,14 @@
 package kr.website.information.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.website.information.vo.InformationVO;
+import kr.website.reserve.vo.ReserveVO;
 
 @Repository
 public class InformationDAOImpl implements InformationDAO {
@@ -36,5 +39,10 @@ public class InformationDAOImpl implements InformationDAO {
 	@Override
 	public void averagePrice(int no) throws Exception {
 		sql.update("information.averagePrice", no);
+	}
+	
+	@Override
+	public List<ReserveVO> resInfo (int no) throws Exception {
+		return sql.selectList("information.resInfo", no);
 	}
 }

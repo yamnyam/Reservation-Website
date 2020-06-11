@@ -8,14 +8,17 @@
 		  INTO RESERVATION
 		  	   (
 				res_name
+				, res_date
+				, res_time
 				, res_no_acc
 				, res_no_sto
-		  		, res_time
 		  		, res_cur_time
 		  		, res_people
 		  	   ) 
 		VALUES (
 				#{res_name}
+				, #{res_date}
+				, #{res_time}
 				, #{res_no_acc}
 				, #{res_no_sto}
 				, #{res_all}

@@ -19,12 +19,8 @@ public class ReserveController {
 	@RequestMapping(value = "/afterReserve", method=RequestMethod.POST)
 	public String afterReserve(ReserveVO vo) throws Exception {
 		
-		String date = vo.getRes_date() + vo.getRes_time();
-		
-		vo.setRes_all(date);
-		
 		service.reserve(vo);
 		
-		return "/foodlist/foodDetail";
+		return "redirect:/";
 	}
 }

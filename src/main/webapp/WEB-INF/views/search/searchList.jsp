@@ -4,7 +4,6 @@
 <html>
 	<head>
 		<title>보통밥집 : 내주변 밥집</title>
-		
 	</head>
 	<body>
 

@@ -70,4 +70,14 @@
 		 WHERE store.sto_no = #{sto_no};
 	</update>
     
+    <select id="resInfo" resultType="reserveVO">
+		SELECT res_no_sto
+			   , res_cur_time
+			   , res_date
+			   , res_time
+			   , res_name
+			   , res_people
+		  FROM reservation
+		 WHERE res_no_acc = #{res_no_acc}
+	</select>
 </mapper>
