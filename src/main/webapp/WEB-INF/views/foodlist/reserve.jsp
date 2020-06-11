@@ -15,6 +15,8 @@
 				$("#btnReserve").click(function(){
 					var form = document.getElementById('reserveForm');
 					form.action = "/store/afterReserve";
+					$("#res_no_sto").val('${reserve.sto_no}');
+					$("#res_no_acc").val('<%= no %>');
 					form.method = "post";
 					
 					form.submit();
@@ -22,6 +24,13 @@
 				
 				$( "#res_date" ).datepicker({
 					dateFormat: 'yy-mm-dd' 
+				});
+				
+				$("#btnCancel").click(function(){
+					
+					form.action = "/foodlist/foodDetail";
+					form.method = "post";
+					form.submit();
 				});
 			});
 			
@@ -75,7 +84,8 @@
 		<div id="wrap">
 			<form id="reserveForm">
 				<div class="input_row">
-					<input type="hidden" name="let_no_acc" id="let_no_acc" value="<%= no%>">
+					<input type="hidden" id="res_no_sto" name="res_no_sto"/>
+					<input type="hidden" id="res_no_acc" name="res_no_acc"/>
 	                <h2 class="input_row_tit">예약자 성명<span class="point"></span></h2>
 	                <input class="input" id="let_title" name="res_name" type="text" placeholder="이름을 입력해주세요.">
 	            </div>
