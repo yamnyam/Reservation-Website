@@ -131,7 +131,7 @@ public class LetterController {
 
 	// 게시글 목록 + 페이징
 	@RequestMapping(value = "list", method = RequestMethod.POST)
-	public void getlist(Model model, LetterVO vo) throws Exception {
+	public void getlist(LetterVO vo, Model model) throws Exception {
 		
 		int num = (vo.getNum() == 0) ? 1 : vo.getNum();
 		int let_no_acc = vo.getLet_no_acc();
