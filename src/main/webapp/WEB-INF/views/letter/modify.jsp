@@ -16,7 +16,7 @@
 				});
 				
 				$("#btnList").click(function(){
-					listLetter(<%= no %>);
+					listLetter(<%= no%>);
 				});
 				
 				$("#btnModify").click(function(){
