@@ -81,6 +81,12 @@
 		 WHERE res_no_acc = #{res_no_acc}
 	</select>
 	
+	<select id="resManage_no" resultType="int">
+		SELECT sto_no
+		  FROM store
+		 WHERE sto_no_acc = #{sto_no_acc}
+	</select>
+	
 	<select id="resManage" resultType="reserveVO">
 		SELECT res_no_acc
 			   , res_cur_time
