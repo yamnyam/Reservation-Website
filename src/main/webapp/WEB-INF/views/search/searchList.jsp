@@ -50,6 +50,7 @@
 				places.keywordSearch($("#search").val(), callback);
 				$("#searchForm").submit();
 			}
+			
       	</script>
 	</head>
 	<body>
@@ -176,7 +177,12 @@
 					 </div>
 				</div>	
 			</c:forEach>
-			
+			<script>
+				if(!document.getElementsByClassName("contents")[0]){
+					alert("검색결과가 없습니다.");
+					location.href="/";
+				}
+			</script>
 			<p style="border-top: 1px solid #ededed"></p>
 		</div>
 		<!-- Bottom_bar -->

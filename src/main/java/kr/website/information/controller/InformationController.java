@@ -1,25 +1,23 @@
 package kr.website.information.controller;
 
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.website.information.service.InformationService;
 import kr.website.information.vo.InformationVO;
+import kr.website.reserve.vo.ReserveVO;
 import kr.website.utils.UploadFileUtils;
 
 @Controller
@@ -82,5 +80,15 @@ public class InformationController {
 		return "redirect:/";
 	}
 	
-	
+	@RequestMapping(value = "/resInfo")
+	public String resInfo(HttpSession session) throws Exception {
+		
+		int no = (int) session.getAttribute("acc_no");
+		
+		List<ReserveVO> vo = null;
+		
+		vo = service.resInfo(no);
+		
+		return "/information/resInfo";
+	}
 }

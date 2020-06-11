@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -13,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.website.foodlist.vo.foodListVO;
 import kr.website.search.service.SearchService;
@@ -34,9 +31,9 @@ public class SearchController {
 		Logger.info("search");
 		
 		if(search == "" || search == null) return "/search/searchList";
-		
 		List<foodListVO> list = service.list(search);
 		
+		if(list.isEmpty()) return "/search/searchList";
 		String x = list.get(0).getSto_gps_x();
 		String y = list.get(0).getSto_gps_y();
 		
@@ -48,5 +45,4 @@ public class SearchController {
 		
 		return "/search/searchList";
 	}
-	
 }
