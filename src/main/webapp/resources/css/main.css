@@ -876,8 +876,8 @@
    		padding: 10px;
 	}
 	.stoDetail .sto_sub{
-		font-size: 0.9em;
-		padding: 2px;
+		font-size: 1.1em;
+		padding: 10px;
 	}
 		
 	.menu_title{
@@ -957,3 +957,16 @@
 	    padding: 7px 0 2px;
 	}
 	
+	
+	
+	
+	.resInfoBox{
+		border: 2px solid #ededed;
+		border-radius: 10px;
+	}
+		.resInfoBox .resState{
+			width: 100%;
+			height: 2em;
+			background-color: #ededde;
+			border-radius: 8px 8px 0 0;
+		}
