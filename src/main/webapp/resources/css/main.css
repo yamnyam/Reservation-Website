@@ -803,6 +803,24 @@
 		    background-color: #a2a2a2;
 		    -webkit-appearance: none;
 		}
+		.btn_global_small{
+		    position: relative;
+		    display: block;
+		    height: 54px;
+		    margin: 6px 0 6px;
+		    padding: 15px 0 15px;
+		    font-size: 18px;
+		    font-weight: 700;
+		    cursor: pointer;
+		    text-align: center;
+		    color: #fff;
+		    border: none;
+		    border-radius: 0;
+		    background-color: #a2a2a2;
+		    -webkit-appearance: none;
+			width: 40%;
+			float: right;
+		}
 	.list_header {
 	    height: 30px;
 	    line-height: 31px;
@@ -965,8 +983,12 @@
 		border-radius: 10px;
 	}
 		.resInfoBox .resState{
+			line-height: 35px;
 			width: 100%;
 			height: 2em;
 			background-color: #ededde;
 			border-radius: 8px 8px 0 0;
+		}
+		.resInfoBox span{
+			padding: 0 20px;
 		}
