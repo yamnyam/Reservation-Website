@@ -58,4 +58,9 @@ public class InformationDAOImpl implements InformationDAO {
 	public void resCheck(ReserveVO vo) throws Exception {
 		sql.update("information.resCheck", vo);
 	}
+	
+	@Override
+	public void resCancel (ReserveVO vo) throws Exception{
+		sql.delete("information.resCancel", vo);
+	}
 }

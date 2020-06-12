@@ -71,7 +71,8 @@
 	</update>
     
     <select id="resInfo" resultType="reserveVO">
-		SELECT res_no_sto
+		SELECT res_no
+			   , res_no_sto
 			   , res_cur_time
 			   , res_date
 			   , res_time
@@ -99,6 +100,11 @@
 		  FROM reservation
 		 WHERE res_no_sto = #{res_no_sto}
 	</select>
+	
+	<delete id="resCancel">
+		DELETE FROM RESERVATION
+		 WHERE res_no = #{res_no} and res_no_acc = #{res_no_acc}
+	</delete>
 	
 	<update id="resCheck">
 		UPDATE information 

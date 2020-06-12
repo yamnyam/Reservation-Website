@@ -21,5 +21,7 @@ public interface InformationDAO {
 	
 	public List<ReserveVO> resManage (int no) throws Exception;
 	
+	public void resCancel(ReserveVO vo) throws Exception;
+	
 	public void resCheck(ReserveVO vo) throws Exception;
 }
