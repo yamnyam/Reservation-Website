@@ -20,4 +20,6 @@ public interface InformationService {
 	public List<ReserveVO> resInfo (int no) throws Exception;
 	
 	public List<ReserveVO> resManage (int no) throws Exception;
+	
+	public void resCheck (ReserveVO vo) throws Exception;
 }

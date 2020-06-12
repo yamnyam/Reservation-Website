@@ -105,4 +105,12 @@ public class InformationController {
 		return "/information/resManage";
 	}
 	
+	@RequestMapping(value = "/resCheck")
+	public String resCheck(ReserveVO vo) throws Exception {
+		
+		service.resCheck(vo);
+		
+		return "redirect:/information/resManage";
+	}
+	
 }

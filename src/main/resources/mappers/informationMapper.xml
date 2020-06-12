@@ -89,7 +89,8 @@
 	</select>
 	
 	<select id="resManage" resultType="reserveVO">
-		SELECT res_no_acc
+		SELECT res_no
+			   , res_no_acc
 			   , res_cur_time
 			   , res_date
 			   , res_time
@@ -98,4 +99,10 @@
 		  FROM reservation
 		 WHERE res_no_sto = #{res_no_sto}
 	</select>
+	
+	<update id="resCheck">
+		UPDATE information 
+		   SET res_check = #{res_check}
+		 WHERE res_no = #{res_no}
+	</update>
 </mapper>
