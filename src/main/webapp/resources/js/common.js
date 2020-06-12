@@ -195,3 +195,21 @@ function findAddress() {
         }
     }).open();
 }
+
+
+function resCancel(res_no){
+	var f = document.createElement("form");
+	f.setAttribute("method","post"); 
+	f.setAttribute("action","/information/resCancel");
+	document.body.appendChild(f);
+	
+	var i = document.createElement("input");
+	i.setAttribute("type","hidden");
+	i.setAttribute("name","res_no");
+	i.setAttribute("value", res_no);
+	f.appendChild(i);
+	
+	
+	f.submit();
+	
+}

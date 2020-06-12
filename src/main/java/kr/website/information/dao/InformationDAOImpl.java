@@ -50,4 +50,9 @@ public class InformationDAOImpl implements InformationDAO {
 	public List<ReserveVO> resManage (int no) throws Exception {
 		return sql.selectList("information.resManage", no);
 	}
+	
+	@Override
+	public void resCancel (ReserveVO vo) throws Exception{
+		sql.delete("information.resCancel", vo);
+	}
 }

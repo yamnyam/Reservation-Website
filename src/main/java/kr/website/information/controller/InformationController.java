@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.website.information.service.InformationService;
@@ -93,6 +94,20 @@ public class InformationController {
 		return "/information/resInfo";
 	}
 	
+	@RequestMapping(value = "/resCancel")
+	public String resCancel(HttpSession session, @RequestParam("res_no") int res_no) throws Exception{
+		
+		int no = (int) session.getAttribute("acc_no");
+		
+		ReserveVO vo = new ReserveVO();
+		vo.setRes_no_acc(no);
+		vo.setRes_no(res_no);
+		
+		service.resCancel(vo);
+		
+		return "redirect:/information/resInfo";
+	}
+	
 	@RequestMapping(value = "/resManage")
 	public String resManage(HttpSession session) throws Exception {
 		
@@ -104,5 +119,6 @@ public class InformationController {
 		
 		return "/information/resManage";
 	}
+	
 	
 }
