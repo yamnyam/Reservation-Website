@@ -81,17 +81,11 @@ public class InformationController {
 	@RequestMapping(value = "/resInfo")
 	public String resInfo(HttpSession session, Model model) throws Exception {
 		
-		int acc_no = (int) session.getAttribute("acc_no");
-		
-		int sto_no = (int) session.getAttribute("sto_no");
-		
-		ReserveVO vo = new ReserveVO();
-		vo.setRes_no_acc(acc_no);
-		vo.setRes_no_sto(sto_no);
+		int no = (int) session.getAttribute("acc_no");
 		
 		List<ReserveVO> list = null;
 		
-		list = service.resInfo(vo);
+		list = service.resInfo(no);
 		
 		model.addAttribute("list",list);
 		

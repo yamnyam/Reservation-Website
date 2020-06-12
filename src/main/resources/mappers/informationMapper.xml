@@ -82,7 +82,7 @@
 			   , sto_name
 		  FROM reservation, store
 		 WHERE res_no_acc = #{res_no_acc}
-		   AND res_no_sto = #{res_sto_no}
+		   AND res_no_sto = sto_no
 	</select>
 	
 	<select id="resManage_no" resultType="int">
