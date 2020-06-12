@@ -51,13 +51,10 @@ public class InformationController {
 
 		if(file != null) {
 		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes()); 
-		} else {
-		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-		}
-
+		
 		vo.setSto_photo(File.separator + "imgUpload" + File.separator + fileName);
 		vo.setSto_thumbPhoto(File.separator + "imgUpload" + File.separator + "s" + File.separator + "s_" + fileName);
-		
+		}
 		service.stoInfo(vo);
 		
 		int sto_no = service.stoNo(vo.getSto_no_acc());
@@ -84,11 +81,18 @@ public class InformationController {
 	@RequestMapping(value = "/resInfo")
 	public String resInfo(HttpSession session, Model model) throws Exception {
 		
-		int no = (int) session.getAttribute("acc_no");
+		int acc_no = (int) session.getAttribute("acc_no");
+		
+		int sto_no = (int) session.getAttribute("sto_no");
+		
+		ReserveVO vo = new ReserveVO();
+		vo.setRes_no_acc(acc_no);
+		vo.setRes_no_sto(sto_no);
 		
 		List<ReserveVO> list = null;
 		
-		list = service.resInfo(no);
+		list = service.resInfo(vo);
+		
 		model.addAttribute("list",list);
 		
 		return "/information/resInfo";
@@ -109,13 +113,15 @@ public class InformationController {
 	}
 	
 	@RequestMapping(value = "/resManage")
-	public String resManage(HttpSession session) throws Exception {
+	public String resManage(HttpSession session, Model model) throws Exception {
 		
 		int acc_no = (int) session.getAttribute("acc_no");
 		
 		List<ReserveVO> vo = null;
 		
-		vo = service.resManage(acc_no);
+		vo = service.resManage(acc_no); // 나중에 try catch 문으로 묶을 수 있도록
+		
+		model.addAttribute("list",vo);
 		
 		return "/information/resManage";
 	}
