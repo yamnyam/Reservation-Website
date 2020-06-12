@@ -11,10 +11,15 @@
 		
 			<c:forEach items="${list}" var="list">	
 				<div class="resInfoBox">
-					<div class="resState">
+					<div class="resState" >
+						<span style="font-size: 1.7em; float: left; ">${list.sto_name}</span>
+					</div>
+				
+					<div class="resState" style="border-radius: 0;">
 						<span style="float: left;">
 						<c:choose>
-							<c:when test="${empty list.res_check} ">${list.res_name}님 예약신청중</c:when>
+						
+							<c:when test="${list.res_check eq 0}">${list.res_name}님 예약신청중</c:when>
 							<c:otherwise>${list.res_name}님 예약완료</c:otherwise>
 						</c:choose>
 						</span>
@@ -26,16 +31,7 @@
 							<span class="resTime">시간 ${list.res_time}</span>
 							<span>${list.res_people}명</span>
 						</div>
-						<input type="button" class="btn_global" name="res_no" onClick="javascript:resCancel('${list.res_no}')">
-						<span>
-						예약번호
-						${list.res_no}
-						</span>
-						<span>
-						예약밥집
-						${list.sto_name}
-						</span>
-						
+						<input type="button" class="btn_global" name="res_no" value="예약취소" onClick="javascript:resCancel('${list.res_no}')">						
 					</div>	
 				</div>
 			</c:forEach>

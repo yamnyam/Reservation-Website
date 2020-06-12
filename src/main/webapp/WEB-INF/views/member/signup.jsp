@@ -18,6 +18,7 @@
 		<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=efac78643eb016816e0a0d506200b05a&libraries=services"></script>		
 		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script type="text/javascript">
+			// Ajax Post
 			function ajaxPostAction(url, formData) {
 				$.ajax({
 			        url: url,
