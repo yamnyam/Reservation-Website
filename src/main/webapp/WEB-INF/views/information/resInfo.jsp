@@ -32,7 +32,8 @@
 						예약번호
 						${list.res_no}
 						예약밥집
-						${list.res_no_sto}
+						${list.sto_name}
+						</span>
 						
 					</div>	
 				</div>

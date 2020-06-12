@@ -12,6 +12,7 @@ public class ReserveVO {
 	private int res_people;
 	private String res_name;
 	private int res_check;
+	private String sto_name;
 	
 	public int getRes_check() {
 		return res_check;
@@ -67,6 +68,10 @@ public class ReserveVO {
 	public void setRes_people(int res_people) {
 		this.res_people = res_people;
 	}
-	
-	
+	public String getSto_name() {
+		return sto_name;
+	}
+	public void setSto_name(String sto_name) {
+		this.sto_name = sto_name;
+	}
 }

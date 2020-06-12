@@ -39,6 +39,7 @@
 			        }
 			    });
 			}
+			
 			function callbackPage(url, data) {
 				if (url == null || url == undefined)
 					return;
@@ -61,6 +62,7 @@
 				document.body.appendChild(form);
 			    form.submit();
 			}
+
 			//TODO 1 기본적인 입력값 체크
 			//TODO 2 비밀번호 확인값 체크
 			$(document).ready(function(){

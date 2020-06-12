@@ -42,8 +42,8 @@ public class InformationServiceImpl implements InformationService {
 	}
 	
 	@Override
-	public List<ReserveVO> resInfo(int no) throws Exception {
-		return dao.resInfo(no);
+	public List<ReserveVO> resInfo(ReserveVO vo) throws Exception {
+		return dao.resInfo(vo);
 	}
 	
 	@Override
@@ -56,6 +56,7 @@ public class InformationServiceImpl implements InformationService {
 		dao.resCancel(vo);
 	}
 	
+	@Override
 	public void resCheck (ReserveVO vo) throws Exception {
 		dao.resCheck(vo);
 	}
