@@ -48,7 +48,15 @@ public class InformationDAOImpl implements InformationDAO {
 	
 	@Override
 	public List<ReserveVO> resManage (int no) throws Exception {
-		return sql.selectList("information.resManage", no);
+		
+		int sto_no = sql.selectOne("information.resManage_no", no);
+		
+		return sql.selectList("information.resManage", sto_no);
+	}
+	
+	@Override
+	public void resCheck(ReserveVO vo) throws Exception {
+		sql.update("information.resCheck", vo);
 	}
 	
 	@Override

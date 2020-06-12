@@ -111,14 +111,21 @@ public class InformationController {
 	@RequestMapping(value = "/resManage")
 	public String resManage(HttpSession session) throws Exception {
 		
-		int no = (int) session.getAttribute("sto_no");
+		int acc_no = (int) session.getAttribute("acc_no");
 		
 		List<ReserveVO> vo = null;
 		
-		vo = service.resManage(no);
+		vo = service.resManage(acc_no);
 		
 		return "/information/resManage";
 	}
 	
+	@RequestMapping(value = "/resCheck")
+	public String resCheck(ReserveVO vo) throws Exception {
+		
+		service.resCheck(vo);
+		
+		return "redirect:/information/resManage";
+	}
 	
 }

@@ -54,5 +54,8 @@ public class InformationServiceImpl implements InformationService {
 	@Override
 	public void resCancel(ReserveVO vo) throws Exception{
 		dao.resCancel(vo);
+		
+	public void resCheck (ReserveVO vo) throws Exception {
+		dao.resCheck(vo);
 	}
 }

@@ -83,8 +83,15 @@
 		 WHERE res_no_acc = #{res_no_acc}
 	</select>
 	
+	<select id="resManage_no" resultType="int">
+		SELECT sto_no
+		  FROM store
+		 WHERE sto_no_acc = #{sto_no_acc}
+	</select>
+	
 	<select id="resManage" resultType="reserveVO">
-		SELECT res_no_acc
+		SELECT res_no
+			   , res_no_acc
 			   , res_cur_time
 			   , res_date
 			   , res_time
@@ -98,4 +105,10 @@
 		DELETE FROM RESERVATION
 		 WHERE res_no = #{res_no} and res_no_acc = #{res_no_acc}
 	</delete>
+	
+	<update id="resCheck">
+		UPDATE information 
+		   SET res_check = #{res_check}
+		 WHERE res_no = #{res_no}
+	</update>
 </mapper>
