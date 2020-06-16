@@ -3,6 +3,7 @@ package kr.website.information.service;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -47,8 +48,8 @@ public class InformationServiceImpl implements InformationService {
 	}
 	
 	@Override
-	public List<ReserveVO> resManage (int no) throws Exception {
-		return dao.resManage(no);
+	public List<ReserveVO> resManage (HttpSession session, int no) throws Exception {
+		return dao.resManage(session, no);
 	}
 	
 	@Override
@@ -57,7 +58,12 @@ public class InformationServiceImpl implements InformationService {
 	}
 	
 	@Override
-	public void resCheck (ReserveVO vo) throws Exception {
-		dao.resCheck(vo);
+	public int resCheck (ReserveVO vo) throws Exception {
+		return dao.resCheck(vo);
+	}
+	
+	@Override
+	public void tbUpdate (ReserveVO vo) throws Exception {
+		dao.tbUpdate(vo);
 	}
 }

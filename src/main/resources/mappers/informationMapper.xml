@@ -115,4 +115,17 @@
 		   SET res_check = #{res_check}
 		 WHERE res_no = #{res_no}
 	</update>
+	
+	<update id="tbUpdate">
+		UPDATE TB, store
+		   SET tb_curTable = tb_curTable + 1
+		 WHERE store = #{res_no_sto}
+		   AND store.sto_no = tb.sto_no_tb;   
+	</update>
+	
+	<select id="maxTable" resultType="int">
+		SELECT tb_maxTable
+		  FROM TB
+		 WHERE sto_no_tb = #{res_no_sto};
+	</select>
 </mapper>

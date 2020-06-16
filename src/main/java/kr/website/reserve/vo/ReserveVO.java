@@ -14,6 +14,9 @@ public class ReserveVO {
 	private int res_check;
 	private String sto_name;
 	
+	private int tb_maxTable;
+	private int tb_curTable;
+	
 	public int getRes_check() {
 		return res_check;
 	}
@@ -73,5 +76,17 @@ public class ReserveVO {
 	}
 	public void setSto_name(String sto_name) {
 		this.sto_name = sto_name;
+	}
+	public int getTb_maxTable() {
+		return tb_maxTable;
+	}
+	public void setTb_maxTable(int tb_maxTable) {
+		this.tb_maxTable = tb_maxTable;
+	}
+	public int getTb_curTable() {
+		return tb_curTable;
+	}
+	public void setTb_curTable(int tb_curTable) {
+		this.tb_curTable = tb_curTable;
 	}
 }

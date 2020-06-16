@@ -3,6 +3,7 @@ package kr.website.information.dao;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -47,20 +48,30 @@ public class InformationDAOImpl implements InformationDAO {
 	}
 	
 	@Override
-	public List<ReserveVO> resManage (int no) throws Exception {
+	public List<ReserveVO> resManage (HttpSession session, int no) throws Exception {
 		
 		int sto_no = sql.selectOne("information.resManage_no", no);
+		
+		session.setAttribute("sto_no", sto_no);
 		
 		return sql.selectList("information.resManage", sto_no);
 	}
 	
 	@Override
-	public void resCheck(ReserveVO vo) throws Exception {
+	public int resCheck(ReserveVO vo) throws Exception {
 		sql.update("information.resCheck", vo);
+		
+		return sql.selectOne("information.maxTable", vo); 
 	}
 	
 	@Override
 	public void resCancel (ReserveVO vo) throws Exception{
 		sql.delete("information.resCancel", vo);
 	}
+	
+	@Override
+	public void tbUpdate(ReserveVO vo) throws Exception {
+		sql.update("information.tbUpdate", vo);
+	}
+	
 }
