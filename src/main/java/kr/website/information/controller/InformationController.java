@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.website.foodlist.service.foodListService;
 import kr.website.information.service.InformationService;
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
@@ -28,6 +31,8 @@ public class InformationController {
 	
 	@Inject
 	InformationService service;
+	@Inject
+	foodListService foodService;
 	
 	@Resource(name="uploadPath")
 	private String uploadPath;
@@ -126,19 +131,24 @@ public class InformationController {
 		return "/information/resManage";
 	}
 	
-	@RequestMapping(value = "/resCheck")
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/resCheck", method=RequestMethod.POST)
+	@ResponseBody
 	public String resCheck(HttpSession session, ReserveVO vo) throws Exception {
-		
-		int check_no = vo.getRes_check();
+		JSONArray array = new JSONArray();
 		int sto_no = (int) session.getAttribute("sto_no");
 		vo.setRes_no_sto(sto_no);
-		int max_Table = service.resCheck(vo);
+		ReserveVO reservevo = foodService.resCheck(sto_no);
 		
-		if (check_no == 1) {
-			service.tbUpdate(vo);
+		if(reservevo.getTb_maxTable()==reservevo.getTb_curTable()){
+			array.add("예약을 초과하였습니다.");
+		} else {
+			service.resCheck(vo);
+			if(vo.getRes_check()==1)
+				service.tbUpdate(vo);
+			array.add("처리가 완료 되었습니다.");
+			array.add("/information/resManage");
 		}
-		
-		return "redirect:/information/resManage";
+		return array.toJSONString();
 	}
-	
 }

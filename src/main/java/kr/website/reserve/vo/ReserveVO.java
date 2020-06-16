@@ -16,9 +16,6 @@ public class ReserveVO {
 	private int tb_maxTable;
 	private int tb_curTable;
 	
-	private int tb_maxTable;
-	private int tb_curTable;
-	
 	public int getRes_check() {
 		return res_check;
 	}

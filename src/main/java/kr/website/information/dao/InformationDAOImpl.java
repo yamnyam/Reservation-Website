@@ -58,10 +58,8 @@ public class InformationDAOImpl implements InformationDAO {
 	}
 	
 	@Override
-	public int resCheck(ReserveVO vo) throws Exception {
-		sql.update("information.resCheck", vo);
-		
-		return sql.selectOne("information.maxTable", vo); 
+	public void resCheck(ReserveVO vo) throws Exception {
+		sql.update("information.resCheck", vo); 
 	}
 	
 	@Override
