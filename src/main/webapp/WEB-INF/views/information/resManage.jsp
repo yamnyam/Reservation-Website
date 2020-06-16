@@ -29,8 +29,8 @@
 							<span>${list.res_people}명</span>
 						</div>
 						<c:if test="${list.res_check eq 0}">
-							<input type="button" class="btn_global" style="border-radius: 0;" name="res_no" value="예약확인" onClick="('${list.res_no}')">
-							<input type="button" class="btn_global" name="res_no" value="예약거절" onClick="('${list.res_no}')">	
+							<input type="button" class="btn_global" style="border-radius: 0;"name="res_check" value="예약확인" onClick="javascript:resConfirm('${list.res_no}', 2)">
+							<input type="button" class="btn_global" name="res_check" value="예약거절" onClick="javascript:resConfirm('${list.res_no}', 1)">			
 						</c:if>					
 					</div>	
 				</div>
