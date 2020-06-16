@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.website.information.service.InformationService;
@@ -23,6 +24,7 @@ import kr.website.utils.UploadFileUtils;
 
 @Controller
 @RequestMapping(value = "/information/*")
+
 public class InformationController {
 	private static final Logger Logger =  LoggerFactory.getLogger(InformationController.class);
 	
@@ -113,14 +115,20 @@ public class InformationController {
 	}
 	
 	@RequestMapping(value = "/resManage")
+	@ResponseBody
 	public String resManage(HttpSession session, Model model) throws Exception {
 		
 		int acc_no = (int) session.getAttribute("acc_no");
+		String sto_no = (String) session.getAttribute("sto_no");
 		
 		List<ReserveVO> vo = null;
 		
-		vo = service.resManage(session, acc_no); // 나중에 try catch 문으로 묶을 수 있도록
-	
+		if(sto_no != null) {
+			vo = service.resManage(session, acc_no);
+		} else {
+			
+		}
+		
 		model.addAttribute("list",vo);
 		
 		return "/information/resManage";
