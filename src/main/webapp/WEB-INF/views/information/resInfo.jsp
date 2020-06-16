@@ -15,8 +15,8 @@
 						<span class="resTitle">${list.sto_name}</span><br>	
 						<span style="float: left;">
 						<c:choose>
-						
-							<c:when test="${list.res_check eq 0}">${list.res_name}님 예약신청중</c:when>
+							<c:when test="${list.res_check eq 0}">${list.res_name }님 예약신청중</c:when>
+							<c:when test="${list.res_check eq 1}">${list.res_name }님 예약거절됨</c:when>
 							<c:otherwise>${list.res_name}님 예약완료</c:otherwise>
 						</c:choose>
 						</span>

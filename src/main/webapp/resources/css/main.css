@@ -981,6 +981,7 @@
 	.resInfoBox{
 		border: 2px solid #ededed;
 		border-radius: 10px;
+		margin-bottom: 5px;
 	}
 		.resInfoBox .resState{
 			line-height: 32px;
