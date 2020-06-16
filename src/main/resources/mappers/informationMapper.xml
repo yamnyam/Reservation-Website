@@ -83,6 +83,7 @@
 		  FROM reservation, store
 		 WHERE res_no_acc = #{res_no_acc}
 		   AND res_no_sto = sto_no
+		   ORDER BY 1 DESC
 	</select>
 	
 	<select id="resManage_no" resultType="int">

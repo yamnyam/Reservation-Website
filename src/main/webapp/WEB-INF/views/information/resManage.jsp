@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>보통밥집 : 예약확인</title>
+		<title>보통밥집 : 예약관리</title>
 	</head>
 	<body>
 		<div id="wrap">
@@ -12,9 +12,11 @@
 			<c:forEach items="${list}" var="list">	
 				<div class="resInfoBox">
 					<div class="resState">
+						<span class="resTitle">${list.sto_name}</span><br>	
 						<span style="float: left;">
 						<c:choose>
-							<c:when test="${empty list.res_check} ">${list.res_name}님 예약신청중</c:when>
+						
+							<c:when test="${list.res_check eq 0}">${list.res_name}님의 예약신청</c:when>
 							<c:otherwise>${list.res_name}님 예약완료</c:otherwise>
 						</c:choose>
 						</span>
@@ -26,16 +28,8 @@
 							<span class="resTime">시간 ${list.res_time}</span>
 							<span>${list.res_people}명</span>
 						</div>
-						<input type="button" class="btn_global" name="res_no" onClick="javascript:resCancel('${list.res_no}')">
-						<span>
-						예약번호
-						${list.res_no}
-						</span>
-						<span>
-						예약밥집
-						${list.res_no_sto}
-						</span>
-						
+						<input type="button" class="btn_global" style="border-radius: 0;" name="res_no" value="예약확인" onClick="('${list.res_no}')">
+						<input type="button" class="btn_global" name="res_no" value="예약거절" onClick="('${list.res_no}')">						
 					</div>	
 				</div>
 			</c:forEach>

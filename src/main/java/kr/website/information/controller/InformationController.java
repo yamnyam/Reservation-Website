@@ -46,7 +46,7 @@ public class InformationController {
 	public String stoInfo(InformationVO vo, MultipartFile file) throws Exception {
 		InformationVO vo1 = new InformationVO();
 		String imgUploadPath = uploadPath + File.separator + "imgUpload";
-
+		
 		String fileName = null;
 
 		if(file != null) {
@@ -77,6 +77,12 @@ public class InformationController {
 		
 		return "redirect:/";
 	}
+//	@RequestMapping(value = "/sto")
+//	public String stoInfo(InformationVO vo, MultipartFile file, HttpSession session) throws Exception {
+//		System.out.println("hihihihi");
+//		System.out.println(session.getServletContext().getRealPath("/"));
+//		return "redirect:/";
+//	}
 	
 	@RequestMapping(value = "/resInfo")
 	public String resInfo(HttpSession session, Model model) throws Exception {

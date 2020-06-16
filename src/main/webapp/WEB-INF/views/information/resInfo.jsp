@@ -11,11 +11,8 @@
 		
 			<c:forEach items="${list}" var="list">	
 				<div class="resInfoBox">
-					<div class="resState" >
-						<span style="font-size: 1.7em; float: left; ">${list.sto_name}</span>
-					</div>
-				
-					<div class="resState" style="border-radius: 0;">
+					<div class="resState">
+						<span class="resTitle">${list.sto_name}</span><br>	
 						<span style="float: left;">
 						<c:choose>
 						
