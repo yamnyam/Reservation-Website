@@ -119,19 +119,24 @@ public class InformationController {
 		
 		List<ReserveVO> vo = null;
 		
-		vo = service.resManage(acc_no); // 나중에 try catch 문으로 묶을 수 있도록
-		
+		vo = service.resManage(session, acc_no); // 나중에 try catch 문으로 묶을 수 있도록
+	
 		model.addAttribute("list",vo);
 		
 		return "/information/resManage";
 	}
 	
 	@RequestMapping(value = "/resCheck")
-	public String resCheck(ReserveVO vo) throws Exception {
+	public String resCheck(HttpSession session, ReserveVO vo) throws Exception {
 		
-		int no = vo.getRes_check();
+		int check_no = vo.getRes_check();
+		int sto_no = (int) session.getAttribute("sto_no");
+		vo.setRes_no_sto(sto_no);
+		int max_Table = service.resCheck(vo);
 		
-		service.resCheck(vo);
+		if (check_no == 1) {
+			service.tbUpdate(vo);
+		}
 		
 		return "redirect:/information/resManage";
 	}
