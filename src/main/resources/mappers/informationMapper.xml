@@ -117,10 +117,9 @@
 	</update>
 	
 	<update id="tbUpdate">
-		UPDATE TB, store
+		UPDATE TB
 		   SET tb_curTable = tb_curTable + 1
-		 WHERE store = #{res_no_sto}
-		   AND store.sto_no = tb.sto_no_tb;   
+		 WHERE tb.sto_no_tb = #{res_no_sto};   
 	</update>
 	
 	<select id="maxTable" resultType="int">

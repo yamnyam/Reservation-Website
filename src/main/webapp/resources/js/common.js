@@ -232,6 +232,7 @@ function resCancel(res_no){
 function resConfirm(res_no, res_check){
 	var f = document.createElement("form");
 	f.setAttribute("method","post"); 
+	f.setAttribute("id", "resConfirm")
 	f.setAttribute("action","/information/resCheck");
 	document.body.appendChild(f);
 	
@@ -247,7 +248,10 @@ function resConfirm(res_no, res_check){
 	j.setAttribute("value", res_no);
 	f.appendChild(j);
 	
-	f.submit();
+	var formData = $("#resConfirm").serialize();
+	
+	ajaxPostAction("/information/resCheck", formData);
+	
 }
 
 

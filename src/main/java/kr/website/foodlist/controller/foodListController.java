@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.website.foodlist.service.foodListService;
 import kr.website.foodlist.vo.foodListVO;
 import kr.website.information.vo.InformationVO;
+import kr.website.reserve.vo.ReserveVO;
 
 @Controller
 @RequestMapping(value = "/foodlist/*")
@@ -67,6 +68,14 @@ public class foodListController {
 		foodListVO detail = service.foodDetail(no);
 		List <InformationVO> menu = null;
 		menu = service.menu(no);
+
+		ReserveVO res = null;
+		res = service.resCheck(vo.getSto_no());
+		
+		if(res.getTb_maxTable()==res.getTb_curTable())
+			model.addAttribute("res", "1");
+		model.addAttribute("res", "2");
+		
 		
 		model.addAttribute("menu", menu);
 		model.addAttribute("detail", detail);

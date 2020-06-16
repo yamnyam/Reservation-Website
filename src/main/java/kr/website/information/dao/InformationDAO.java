@@ -25,7 +25,7 @@ public interface InformationDAO {
 	
 	public void resCancel(ReserveVO vo) throws Exception;
 	
-	public int resCheck(ReserveVO vo) throws Exception;
+	public void resCheck(ReserveVO vo) throws Exception;
 	
 	public void tbUpdate(ReserveVO vo) throws Exception;
 }

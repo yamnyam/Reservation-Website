@@ -13,7 +13,6 @@ public class ReserveVO {
 	private String res_name;
 	private int res_check;
 	private String sto_name;
-	
 	private int tb_maxTable;
 	private int tb_curTable;
 	

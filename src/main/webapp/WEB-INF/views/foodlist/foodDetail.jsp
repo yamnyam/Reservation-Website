@@ -41,7 +41,12 @@
 					</c:forEach>
 				</div>
 			</div>
-			<button type="button" class="btn_global" id="btnReserve" onclick="javascript:foodReserve('${detail.sto_no}')">에약하기</button>
+			
+			<c:choose>
+				<c:when test="${res eq 1 }"><button type="button" class="btn_global" id="btnReserve">예약이 불가능 합니다.</button></c:when>
+				<c:otherwise><button type="button" class="btn_global" id="btnReserve" onclick="javascript:foodReserve('${detail.sto_no}')">예약하기</button></c:otherwise>
+			</c:choose>
+			
 		</div>
 	</body>
 </html>
