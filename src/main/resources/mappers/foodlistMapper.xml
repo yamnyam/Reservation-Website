@@ -38,6 +38,15 @@
       ORDER BY 4 DESC
 	</select>
 	
+	<select id="resCheck" resultType="reserveVO">
+		SELECT tb_maxTable
+			   , tb_curTable
+		  FROM TB
+		 WHERE sto_no_tb = #{sto_no}
+	</select>
+	
+	
+	
 	<!-- <select id="review" resultType="reviewVO">
 	    SELECT review_no,
 	    	   , review_level

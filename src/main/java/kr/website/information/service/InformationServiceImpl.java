@@ -58,8 +58,8 @@ public class InformationServiceImpl implements InformationService {
 	}
 	
 	@Override
-	public int resCheck (ReserveVO vo) throws Exception {
-		return dao.resCheck(vo);
+	public void resCheck (ReserveVO vo) throws Exception {
+		dao.resCheck(vo);
 	}
 	
 	@Override
