@@ -129,6 +129,8 @@ public class InformationController {
 	@RequestMapping(value = "/resCheck")
 	public String resCheck(ReserveVO vo) throws Exception {
 		
+		int no = vo.getRes_check();
+		
 		service.resCheck(vo);
 		
 		return "redirect:/information/resManage";

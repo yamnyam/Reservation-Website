@@ -110,7 +110,7 @@
 	</delete>
 	
 	<update id="resCheck">
-		UPDATE information 
+		UPDATE reservation 
 		   SET res_check = #{res_check}
 		 WHERE res_no = #{res_no}
 	</update>
