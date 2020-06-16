@@ -100,6 +100,7 @@
 			   , res_time
 			   , res_name
 			   , res_people
+			   , res_check
 		  FROM reservation
 		 WHERE res_no_sto = #{res_no_sto}
 	</select>
