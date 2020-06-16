@@ -29,7 +29,6 @@
 		</script>
 	</head>
 	<body>
-		
 		<div class="letter_info" style="padding-left: 30px; text-align: center; font-size: 1.7em;">
 				예약 : ${reserve.sto_name}
 		</div>

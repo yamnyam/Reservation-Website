@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kr.website.foodlist.dao.foodListDAO;
 import kr.website.foodlist.vo.foodListVO;
 import kr.website.information.vo.InformationVO;
+import kr.website.reserve.vo.ReserveVO;
 
 @Service
 public class foodListServiceImpl implements foodListService {
@@ -29,5 +30,10 @@ public class foodListServiceImpl implements foodListService {
 	@Override
 	public List<InformationVO> menu(int no) throws Exception {
 		return dao.menu(no);
+	}
+	
+	@Override
+	public ReserveVO resCheck(int no) throws Exception{
+		return dao.resCheck(no);
 	}
 }
