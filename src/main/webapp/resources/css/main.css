@@ -988,7 +988,16 @@
 			height: 2em;
 			background-color: #ededde;
 			border-radius: 8px 8px 0 0;
+			height: 60px
+		}
+				.resInfoBox .resState .resTitle{
+			float: left;
+			width: 90%;
 		}
 		.resInfoBox span{
-			padding: 0 20px;
+			margin: 0 20px;
+		}
+		.resContent .btn_global{
+			margin: 0;
+			border-radius: 0 0 8px 8px;
 		}

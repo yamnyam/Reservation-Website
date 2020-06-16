@@ -36,7 +36,7 @@
 					<c:forEach items="${menu}" var="menu">
 						<div class="menu_box">
 							<div class="menu_name">${menu.menu_name}</div>
-							<div class="menu_price">${menu.menu_price}원</div>
+							<div class="menu_price">${menu.menu_price} 원</div>
 						</div>
 					</c:forEach>
 				</div>
