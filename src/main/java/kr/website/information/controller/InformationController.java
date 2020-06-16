@@ -119,22 +119,21 @@ public class InformationController {
 	}
 	
 	@RequestMapping(value = "/resManage")
-	@ResponseBody
 	public String resManage(HttpSession session, Model model) throws Exception {
 		
 		int acc_no = (int) session.getAttribute("acc_no");
-		String sto_no = (String) session.getAttribute("sto_no");
-		
 		List<ReserveVO> vo = null;
+
+		Integer sto_no = service.stoNo(acc_no);
 		
-		if(sto_no != null) {
-			vo = service.resManage(session, acc_no);
+		if(sto_no != 0) {
+			session.setAttribute("sto_no", sto_no);
+			vo = service.resManage(session, sto_no);
+			model.addAttribute("list",vo);
 		} else {
-			
+			model.addAttribute("check", "777");
 		}
-		
-		model.addAttribute("list",vo);
-		
+
 		return "/information/resManage";
 	}
 	

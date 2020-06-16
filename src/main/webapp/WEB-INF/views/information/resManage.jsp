@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
+<c:if test="${check eq 777 }">
+	<script>
+		alert("밥집등록을 해주세요.");
+		history.back();
+	</script>
+</c:if>
 <!DOCTYPE html>
 <html>
 	<head>
