@@ -23,6 +23,11 @@ public class InformationServiceImpl implements InformationService {
 	}
 	
 	@Override
+	public void stoUpdate(InformationVO vo) throws Exception {
+		dao.stoUpdate(vo);
+	}
+	
+	@Override
 	public void menuInfo(InformationVO vo) throws Exception {
 		dao.menuInfo(vo);
 	}

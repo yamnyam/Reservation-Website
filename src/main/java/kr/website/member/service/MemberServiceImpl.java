@@ -39,6 +39,12 @@ public class MemberServiceImpl implements MemberService {
 			dao.updateLogin(vo);
 			dao.dateLogin(vo);
 			
+			int sto_no = dao.search(member.getAcc_no());
+			
+			if(sto_no != 0) {
+				session.setAttribute("sto_no", sto_no);
+			}
+			
 			//세션 변수 등록
 			session.setAttribute("acc_no", member.getAcc_no());
 			session.setAttribute("acc_id", member.getAcc_id());

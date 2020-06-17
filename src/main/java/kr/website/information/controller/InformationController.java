@@ -38,15 +38,69 @@ public class InformationController {
 	@Resource(name="uploadPath")
 	private String uploadPath;
 	
-	@RequestMapping(value = "/edit")
-	public String edit(Model model, InformationVO vo) throws Exception {
+	@RequestMapping(value = "/enroll")
+	public String enroll() throws Exception {
 		
-		InformationVO sto_vo = service.selectStore(vo.getSto_no_acc());
+		return "/information/enroll";
+	}
+	
+	@RequestMapping(value = "/edit")
+	public String edit(Model model, HttpSession session) throws Exception {
+		
+		int acc_no = (int) session.getAttribute("acc_no");
+		
+		InformationVO sto_vo = service.selectStore(acc_no);
 		
 		model.addAttribute("store", sto_vo);
 		
 		return "/information/edit";
 	}
+	
+	@RequestMapping(value = "/stoUpdate", method=RequestMethod.POST)
+	public String stoUpdate(InformationVO vo, MultipartFile file, HttpSession session) throws Exception {
+		InformationVO vo1 = new InformationVO();
+		
+		vo.setSto_no((int)session.getAttribute("sto_no"));
+		
+		String imgUploadPath = uploadPath + File.separator + "imgUpload";
+		
+		String fileName = null;
+
+		if(file != null) {
+		 fileName =  UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes()); 
+		
+		vo.setSto_photo(File.separator + "imgUpload" + File.separator + fileName);
+		vo.setSto_thumbPhoto(File.separator + "imgUpload" + File.separator + "s" + File.separator + "s_" + fileName);
+		}
+		service.stoUpdate(vo);
+		
+		int sto_no = service.stoNo(vo.getSto_no_acc());
+		try {	// 메뉴 없을경우 exception
+			String[] menu_name = vo.getMenu_name().split(",");
+			String[] menu_price = vo.getMenu_price().split(",");
+			String[] menu_check = vo.getMenu_check().split(",");
+			
+			for(int i = 0; i < menu_name.length; i++) {
+				vo1.setMenu_name(menu_name[i]);
+				vo1.setMenu_price(menu_price[i]);
+				vo1.setMenu_check(menu_check[i]);
+				vo1.setMenu_no_sto(sto_no);
+				service.menuInfo(vo1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		service.averagePrice(sto_no);
+		
+		return "redirect:/";
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/stoInfo", method=RequestMethod.POST)
 	public String stoInfo(InformationVO vo, MultipartFile file) throws Exception {
@@ -127,7 +181,7 @@ public class InformationController {
 		Integer sto_no = service.stoNo(acc_no);
 		
 		if(sto_no != 0) {
-			session.setAttribute("sto_no", sto_no);
+//			session.setAttribute("sto_no", sto_no);
 			vo = service.resManage(session, sto_no);
 			model.addAttribute("list",vo);
 		} else {

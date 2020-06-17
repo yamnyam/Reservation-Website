@@ -23,6 +23,11 @@ public class InformationDAOImpl implements InformationDAO {
 	}
 	
 	@Override
+	public void stoUpdate(InformationVO vo) throws Exception {
+		sql.update("information.stoUpdate", vo);
+	}
+	
+	@Override
 	public void menuInfo(InformationVO vo) throws Exception {
 		sql.insert("information.menuInfo", vo);
 	}

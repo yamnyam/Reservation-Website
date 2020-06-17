@@ -57,4 +57,13 @@ public class MemberDAOImpl implements MemberDAO {
 	public void logout(HttpSession session) throws Exception {
 		
 	}
+	
+	public int search(int no) throws Exception {
+		
+		if(sql.selectOne("member.search", no) == null) {
+			return 0;
+		}
+		
+		return sql.selectOne("member.search", no);
+	}
 }

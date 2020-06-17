@@ -91,8 +91,10 @@
 			<% } %>
 		</div>
 		<div>
-			<% if (level == 1) { %>
-				<a href="javascript:edit(<%= session.getAttribute("acc_no") %>)">밥집등록</a>	
+			<% if (level == 1 && session.getAttribute("sto_no") == null) { %>
+				<a href="/information/enroll">밥집등록</a>	
+			<% } else if(level == 1 && session.getAttribute("sto_no") != null) {%>
+				<a href="/information/edit">밥집수정</a>	
 			<% } %>
 		</div>
 	</div>

@@ -30,6 +30,13 @@
     		   )
     </insert>
     
+    <update id="stoUpdate">
+		UPDATE STORE 
+		   SET sto_name = #{sto_name}, sto_tel = #{sto_tel}, sto_loc = #{sto_loc}, sto_gps_x = #{sto_gps_x}, sto_gps_y = #{sto_gps_y},
+		   	   sto_comment = #{sto_comment}
+		 WHERE sto_no = #{sto_no}
+	</update>
+    
     <select id="stoNo" resultType="int">
 		SELECT sto_no
 		  FROM STORE

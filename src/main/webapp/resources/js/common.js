@@ -126,13 +126,13 @@ function noticeView(notice_no) {
 	form.submit();
 }
 
-function edit(acc_no) {
-	var editForm = document.getElementById('informationForm');;
-	$("#sto_no_acc").val(acc_no);
-	editForm.action="/information/edit";
-	editForm.method="post";
-	editForm.submit();
-}
+//function enroll(acc_no) {
+//	var editForm = document.getElementById('informationForm');;
+//	$("#sto_no_acc").val(acc_no);
+//	editForm.action="/information/enroll";
+//	editForm.method="post";
+//	editForm.submit();
+//}
 
 function onClickSearch(){
 	
@@ -253,5 +253,6 @@ function resConfirm(res_no, res_check){
 	ajaxPostAction("/information/resCheck", formData);
 	
 }
+
 
 
