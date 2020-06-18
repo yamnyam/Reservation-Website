@@ -66,6 +66,8 @@
 			   , sto_tel
 			   , sto_loc
 			   , sto_comment
+			   , sto_gps_x
+			   , sto_gps_y
 		  FROM STORE
 		 WHERE sto_no_acc = #{sto_no_acc}
 	</select>

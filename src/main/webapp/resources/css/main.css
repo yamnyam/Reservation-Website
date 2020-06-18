@@ -886,7 +886,7 @@
 	
 	.stoDetail{
 		text-align: center;
-		padding: 30px;
+		padding: 5px;
     	
 	}
 	.stoDetail .sto_name{
@@ -1001,4 +1001,47 @@
 		.resContent .btn_global{
 			margin: 0;
 			border-radius: 0 0 8px 8px;
+		}
+		
+		
+	.review{
+		margin: 10px 0;
+	    padding: 5px 0;
+	    border-top: 3px solid #ededed;
+	    border-bottom: 3px solid #ededed;
+	    width: 100%;
+	}
+	.review .reviewContent{
+		
+	}
+	.starRev{
+		padding: 5px 0;
+	}
+	.starR {
+		background:	url('../images/star.png') no-repeat right 0;
+		background-size: auto 100%;
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		text-indent: -9999px;
+		cursor: pointer;
+	}
+
+	.starR.on {
+		background-position:0 0;
+	}
+	.input_content{
+		    font-size: 16px;
+		    line-height: 17px;
+		    position: relative;
+		    z-index: 9;
+		    width: 100%;
+		    color: #222;
+	    	border: 1px solid #bbb;
+		    background: #fff;
+		    display: block;
+		    height: 144px;
+		    box-sizing: border-box;
+		    padding: 5px 0;
+		    resize: none;
 		}

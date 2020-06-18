@@ -172,6 +172,7 @@ public class InformationController {
 	public String resManage(HttpSession session, Model model) throws Exception {
 		
 		int acc_no = (int) session.getAttribute("acc_no");
+		//Integer sto_no = (int) session.getAttribute("sto_no");
 		List<ReserveVO> vo = null;
 
 		Integer sto_no = service.stoNo(acc_no);
@@ -192,11 +193,12 @@ public class InformationController {
 	@ResponseBody
 	public String resCheck(HttpSession session, ReserveVO vo) throws Exception {
 		JSONArray array = new JSONArray();
+
 		int sto_no = (int) session.getAttribute("sto_no");
 		vo.setRes_no_sto(sto_no);
 		ReserveVO reservevo = foodService.resCheck(sto_no);
 		
-		if(reservevo.getTb_maxTable()==reservevo.getTb_curTable()){
+		if(reservevo.getTb_maxTable()==reservevo.getTb_curTable()&&vo.getRes_check()==1){
 			array.add("예약을 초과하였습니다.");
 		} else {
 			service.resCheck(vo);
