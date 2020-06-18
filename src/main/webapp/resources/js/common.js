@@ -256,3 +256,16 @@ function resConfirm(res_no, res_check){
 
 
 
+
+
+
+
+
+
+
+function reviewEnroll(){
+    var formData = $("#reviewForm").serialize();
+	ajaxPostAction("/review/enroll", formData);
+}
+
+
