@@ -47,31 +47,30 @@
 				<form id="reviewForm" method="post">
 					<div class="menu_title">리 뷰 등 록</div>
 					<div class="review">
-						
-						<div class="revieContent"><!-- 리뷰 반복 -->
-						<div id="starRev" class="starRev">
-							<span class="starR on">1</span>
-							<span class="starR">2</span> 
-							<span class="starR">3</span> 
-							<span class="starR">4</span> 
-							<span class="starR">5</span>
-							<input type="hidden" name="review_star" id="review_star" value="1">
-							<script>
-								$('.starRev span').click(function(){
-								  	$(this).parent().children('span').removeClass('on');
-								  	$(this).addClass('on').prevAll('span').addClass('on');
-								  	$('#review_star').val($(this).text());
-								  	console.log($(this).text());
-								  	return false;
-								});
-							</script>
+						<div class="reviewContent">
+							<div id="starRev" class="starRev">
+								<span class="starR on">1</span>
+								<span class="starR">2</span> 
+								<span class="starR">3</span> 
+								<span class="starR">4</span> 
+								<span class="starR">5</span>
+								<input type="hidden" name="review_star" id="review_star" value="1">
+								<script>
+									$('.starRev span').click(function(){
+									  	$(this).parent().children('span').removeClass('on');
+									  	$(this).addClass('on').prevAll('span').addClass('on');
+									  	$('#review_star').val($(this).text());
+									  	console.log($(this).text());
+									  	return false;
+									});
+								</script>
+							</div>
+							<textarea class="input_content" name="review_content" maxlength="400" placeholder="내용을 입력해주세요 (최대400자)"></textarea>
+							<div class="input_row">
+								<input class="input" name="review_tag" placeholder="해시태그를 입력해주세요.">
+							</div>
+							<input type="button" class="btn_global" value="등록하기" onClick="reviewEnroll()">
 						</div>
-						<textarea class="input_content" name="review_content" maxlength="400" placeholder="내용을 입력해주세요 (최대400자)"></textarea>
-						<div class="input_row">
-							<input class="input" name="review_tag" placeholder="해시태그를 입력해주세요.">
-						</div>
-						<input type="button" class="btn_global" value="등록하기" onClick="reviewEnroll()">
-					</div>
 					</div>
 				</form>
 			</div>
