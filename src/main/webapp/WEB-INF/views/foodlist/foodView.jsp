@@ -73,7 +73,6 @@
 				
 				function marke1(sto_gps_x, sto_gps_y) {
 				    if ("OK" == kakao.maps.services.Status.OK) {
-				        console.log("1");
 					    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
 					    	coords = new kakao.maps.LatLng(sto_gps_x, sto_gps_y);
 							console.log(imageSrc);
@@ -84,23 +83,18 @@
 				        });
 				        marker.setMap(map);
 					}
-				    else{
-				    	console.log("2");
-				    }
+				    
 				};
 				
 				function marke(congest, sto_gps_x, sto_gps,y){
 					if(congest == 100) {
 						imageSrc = '/resources/images/red_color.png',
-						console.log("con: "+congest+"  1");
 					}
 					else if( congest >= 50) {
 						imageSrc = '/resources/images/yellow_color.png',
-						console.log("con: "+congest+"  2");
 					}
 					 else{
 						imageSrc = '/resources/images/green_color.png',
-						console.log("con: "+congest+"  3");
 					}
 					marke1(sto_gps_x, sto_gps,y);
 				};
@@ -111,7 +105,6 @@
 					<div class="contents_info" onclick="javascript:foodDetail('${view.sto_no}')">
 					 	<ul>
 						 	<li>${view.sto_name}</li>
-						 	<li>음식종류 #해시태그</li>
 		                    <li>${view.sto_comment}</li>
 		                    <li>평균가격: ${view.average_price}</li> 
 		                    <li>${view.tag}</li>
