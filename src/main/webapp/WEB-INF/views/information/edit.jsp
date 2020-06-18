@@ -23,15 +23,15 @@
 					<span class="input_box">
 						<input class="input" type="text" id="sto_loc" name="sto_loc" placeholder="주소" maxlength="100" style="float: left; width:90%;" value="${store.sto_loc}">
 						<input class="input" type="text" onclick="findAddress()" value="검색" style="float: right; width: 10%; border: 1px solid #dadada; text-align-last: center;">
-						<input type="hidden" id="sto_gps_x" name="sto_gps_x" value="">
-						<input type="hidden" id="sto_gps_y" name="sto_gps_y" value="">
+						<input type="hidden" id="sto_gps_x" name="sto_gps_x" value="${store.sto_gps_x}">
+						<input type="hidden" id="sto_gps_y" name="sto_gps_y" value="${store.sto_gps_y}">
 					</span>
 				</div>
 				<div id="map" style="width:100%;height:300px;margin-top:10px;display:none;"></div>
 				<script>
 					var mapContainer = document.getElementById('map');
 					var options = {
-							center: new kakao.maps.LatLng(37.322843, 127.127846),
+							center: new kakao.maps.LatLng(${store.sto_gps_x}, ${store.sto_gps_y}),
 							level: 4
 						};
 					
@@ -40,7 +40,7 @@
 					    var geocoder = new kakao.maps.services.Geocoder();
 					    //마커를 미리 생성
 					    var marker = new kakao.maps.Marker({
-					        position: new kakao.maps.LatLng(37.322843, 127.127846),
+					        position: new kakao.maps.LatLng(${store.sto_gps_x}, ${store.sto_gps_y}),
 					        map: map
 					    });
 			    </script>
@@ -51,6 +51,17 @@
 				</div>
 			    <div id="sto_menu">
 			    	<input type="button" onclick="javascript:addMenu()">
+			    	<c:forEach items="${menu}" var="menu">
+			    		<div>
+			    			<div class='input_row' id='menu1' style='height: fit-content;'>
+				    			<span class='input_box'>
+					    			<input class='input' type='text' id='menu_name1' name='menu_name' placeholder='메뉴이름' maxlength='35' value="${menu.menu_name} ">
+					    			<input class='input' type='text' id='menu_price1' name='menu_price' style='float: left; width: 85%;' placeholder='가격' maxlength='35' value="${menu.menu_price}">
+					    			<input class='input' type='text' id='menu_check1' style='float: right; width: fit-content;' name='menu_check' value="${menu.menu_check}">
+				    			</span>
+			    			</div>
+			    		</div>
+			    	</c:forEach>
 				</div>
 <!-- 				<div class="inputArea"> -->
 <!-- 					<label for="sto_photo">이미지</label> -->
