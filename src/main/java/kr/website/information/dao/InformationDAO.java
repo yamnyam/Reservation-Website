@@ -19,6 +19,8 @@ public interface InformationDAO {
 	
 	public InformationVO selectStore(int no) throws Exception;
 	
+	public List<InformationVO> selectMenu(int no) throws Exception;
+	
 	public void averagePrice(int no) throws Exception;
 	
 	public List<ReserveVO> resInfo (int no) throws Exception;

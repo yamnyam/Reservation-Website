@@ -61,12 +61,22 @@
     </insert>
     
     <select id="selectStore" resultType="informationVO">
-		SELECT sto_name
+		SELECT sto_no
+			   , sto_name
 			   , sto_tel
 			   , sto_loc
 			   , sto_comment
 		  FROM STORE
 		 WHERE sto_no_acc = #{sto_no_acc}
+	</select>
+	
+	<select id="selectMenu" resultType="informationVO">
+		SELECT menu_no
+			   , menu_name
+			   , menu_price
+			   , menu_check
+		  FROM menu
+		 WHERE menu_no_sto = #{sto_no}
 	</select>
 	
 	<update id="averagePrice">
