@@ -54,7 +54,7 @@ function foodReserve(sto_no) {
 
 function foodDetail(sto_no) {
 	var f = document.createElement("form");
-	f.setAttribute("method","post"); 
+	f.setAttribute("method","get"); 
 	f.setAttribute("action","/foodlist/foodDetail");
 	document.body.appendChild(f);
 	var i = document.createElement("input");
