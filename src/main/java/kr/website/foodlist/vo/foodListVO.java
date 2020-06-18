@@ -17,6 +17,7 @@ public class foodListVO {
 	private String gps_x;
 	private String gps_y;
 	
+	private String tag;
 	
 	public int getSto_no() {
 		return sto_no;
@@ -102,5 +103,11 @@ public class foodListVO {
 	}
 	public void setSto_thumbPhoto(String sto_thumbPhoto) {
 		this.sto_thumbPhoto = sto_thumbPhoto;
+	}
+	public String getTag() {
+		return tag;
+	}
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 }

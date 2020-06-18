@@ -42,4 +42,9 @@ public class foodListDAOImpl implements foodListDAO {
 	public List<ReviewVO> review(int no) throws Exception {
 		return sql.selectList("foodlist.review", no);
 	}
+	
+	@Override
+	public List<String> tag(int no) throws Exception {
+		return sql.selectList("foodlist.tag", no);
+	}
 }

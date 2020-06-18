@@ -52,5 +52,12 @@
     	   AND review_no_sto = #{sto_no}
 	</select>
 	
-	
+	<select id="tag" resultType="String">
+		SELECT tag_name
+		  FROM HASHTAG
+		 WHERE tag_no_sto = #{tag_no_sto}
+	  GROUP BY tag_name
+	  ORDER BY count(tag_name) DESC
+	     LIMIT 3
+	</select>
 </mapper>

@@ -42,4 +42,9 @@ public class foodListServiceImpl implements foodListService {
 	public List<ReviewVO> review(int no) throws Exception {
 		return dao.review(no);
 	}
+	
+	@Override
+	public List<String> tag(int no) throws Exception {
+		return dao.tag(no);
+	}
 }

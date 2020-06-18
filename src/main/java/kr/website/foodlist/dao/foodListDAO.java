@@ -21,4 +21,5 @@ public interface foodListDAO {
 	
 	public List<ReviewVO> review(int no) throws Exception;
 	
+	public List<String> tag(int no) throws Exception;
 }

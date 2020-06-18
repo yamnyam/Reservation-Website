@@ -91,7 +91,7 @@
 						 	<li>음식종류 #해시태그</li>
 		                    <li>${view.sto_comment}</li>
 		                    <li>평균가격: ${view.average_price}</li> 
-		                    <li>#해시태그 #해시태그 #해시태그</li>
+		                    <li>${view.tag}</li>
 						  	<li><script>geocoder.addressSearch('${view.sto_loc}', callback);</script></li>
 					 	</ul>
 					 </div>
