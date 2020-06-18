@@ -14,6 +14,7 @@ public class ReviewVO {
 	private String review_tag;
 	private int review_like;
 	private int review_his_no;
+	private String acc_name;
 	
 	public int getReview_no() {
 		return review_no;
@@ -81,4 +82,12 @@ public class ReviewVO {
 	public void setReview_his_no(int review_his_no) {
 		this.review_his_no = review_his_no;
 	}
+	
+	public String getAcc_name() {
+		return acc_name;
+	}
+	public void setAcc_name(String acc_name) {
+		this.acc_name = acc_name;
+	}
+	
 }

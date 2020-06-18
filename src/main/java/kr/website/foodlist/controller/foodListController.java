@@ -83,6 +83,7 @@ public class foodListController {
 		
 		List<ReviewVO> review = service.review(no);
 		
+		model.addAttribute("review", review);
 		model.addAttribute("detail", detail);
 		model.addAttribute("menu", menu);
 		session.setAttribute("cur_store_no", no);

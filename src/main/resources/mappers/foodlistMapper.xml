@@ -46,8 +46,11 @@
 	</select>
 	
 	<select id="review" resultType="reviewVO">
-	    SELECT *
-    	  FROM review
-    	 WHERE review_no_sto = #{sto_no}
+	    SELECT review.*, account.acc_name
+    	  FROM review, account
+    	 WHERE review_no_acc = acc_no
+    	   AND review_no_sto = #{sto_no}
 	</select>
+	
+	
 </mapper>
