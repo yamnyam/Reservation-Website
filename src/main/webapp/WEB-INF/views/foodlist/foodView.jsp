@@ -22,7 +22,8 @@
 			</div>
 			
 			<!-- One -->
-			<div id = "map"></div>
+			<div id = "map"><img src="/resources/images/location.png" id="btnAround" name="btnAround" style="display: block;position: absolute;bottom: 25px;left: 10px;z-index: 100;width: 30px;">
+			</div>
 			<script>
 	
 				var container = document.getElementById('map');
@@ -73,7 +74,6 @@
 				
 				function marke1(sto_gps_x, sto_gps_y) {
 				    if ("OK" == kakao.maps.services.Status.OK) {
-				        console.log("1");
 					    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
 					    	coords = new kakao.maps.LatLng(sto_gps_x, sto_gps_y);
 							console.log(imageSrc);
@@ -84,37 +84,30 @@
 				        });
 				        marker.setMap(map);
 					}
-				    else{
-				    	console.log("2");
-				    }
+				    
 				};
 				
 				function marke(congest, sto_gps_x, sto_gps,y){
 					if(congest == 100) {
-						imageSrc = '/resources/images/red_color.png',
-						console.log("con: "+congest+"  1");
+						imageSrc = '/resources/images/red_color.png'
 					}
 					else if( congest >= 50) {
-						imageSrc = '/resources/images/yellow_color.png',
-						console.log("con: "+congest+"  2");
+						imageSrc = '/resources/images/yellow_color.png'
 					}
 					 else{
-						imageSrc = '/resources/images/green_color.png',
-						console.log("con: "+congest+"  3");
+						imageSrc = '/resources/images/green_color.png'
 					}
 					marke1(sto_gps_x, sto_gps,y);
 				};
 			</script>
-			<input type="button" id="btnAround" name="btnAround" value="GPS" />
 			<c:forEach items="${view}" var="view">
 			 	<div class="contents">
 					<div class="contents_info" onclick="javascript:foodDetail('${view.sto_no}')">
 					 	<ul>
 						 	<li>${view.sto_name}</li>
-						 	<li>음식종류 #해시태그</li>
-		                    <li>${view.sto_comment}</li>
-		                    <li>평균가격: ${view.average_price}</li> 
-		                    <li>${view.tag}</li>
+		                    <li>${view.sto_comment}ㅤ</li>
+		                    <li>평균가격: ${view.average_price}</li>
+		                    <li>${view.tag}ㅤ</li>
 					 	</ul>
 					 	<script>marke('${view.congest}','${view.sto_gps_x}','${view.sto_gps_y}')</script>
 					 </div>

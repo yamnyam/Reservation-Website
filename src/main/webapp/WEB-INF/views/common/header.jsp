@@ -121,8 +121,8 @@
 </form>
 
 <form id="foodlistForm" action="/foodlist/foodView" method="post">
-   	<input type="hidden" id="gps_x" name="gps_x" value="37.322843"/>
-   	<input type="hidden" id="gps_y" name="gps_y" value="127.127846"/>
+   	<input type="hidden" id="gps_x" name="gps_x" value="37.323442"/>
+   	<input type="hidden" id="gps_y" name="gps_y" value="127.124766"/>
 </form>
 <%-- 
 <form id="foodlistForm" action="/foodlist/foodView" method="post">
