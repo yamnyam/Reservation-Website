@@ -62,7 +62,7 @@ public class ReviewController {
 				array.add("예약을 하신분만 가능합니다.");
 			}
 				
-		}catch(Exception e) {}		
+		}catch(Exception e) {}
 		return array.toJSONString();
 	}
 }

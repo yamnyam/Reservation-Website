@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import kr.website.foodlist.vo.foodListVO;
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
+import kr.website.review.vo.ReviewVO;
 
 @Repository
 public class foodListDAOImpl implements foodListDAO {
@@ -37,4 +38,8 @@ public class foodListDAOImpl implements foodListDAO {
 		return sql.selectOne("foodlist.resCheck", no);
 	}
 	
+	@Override
+	public List<ReviewVO> review(int no) throws Exception {
+		return sql.selectList("foodlist.review", no);
+	}
 }
