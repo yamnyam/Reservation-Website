@@ -26,4 +26,6 @@ public interface MemberDAO {
 	
 	// 회원 로그아웃
 	public void logout(HttpSession session) throws Exception;
+	
+	public int search(int no) throws Exception; 
 }

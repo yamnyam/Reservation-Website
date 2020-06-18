@@ -7,21 +7,21 @@
    	</head>
    	<body>
 		<div id="wrap">
-			<form id="signupForm" enctype="multipart/form-data" action="/information/stoUpdate" method="post">
+			<form id="signupForm" enctype="multipart/form-data" action="/information/stoInfo" method="post">
 				<div class="input_row" id="sto_name_box">
 					<span class="input_box">
 						<input type="hidden" id="sto_no_acc" name="sto_no_acc" value="<%= session.getAttribute("acc_no") %>" />
-						<input class="input" type="text" id="sto_name" name="sto_name" placeholder="밥집명" maxlength="35" value="${store.sto_name}">
+						<input class="input" type="text" id="sto_name" name="sto_name" placeholder="밥집명" maxlength="35" />
 					</span>
 				</div>
 				<div class="input_row" id="sto_tel_box">
 					<span class="input_box">
-						<input class="input" type="text" id="sto_tel" name="sto_tel" placeholder="전화번호" maxlength="35" value="${store.sto_tel}">
+						<input class="input" type="text" id="sto_tel" name="sto_tel" placeholder="전화번호" maxlength="35" />
 					</span>
 				</div>
 				<div class="input_row" id="sto_loc_box">
 					<span class="input_box">
-						<input class="input" type="text" id="sto_loc" name="sto_loc" placeholder="주소" maxlength="100" style="float: left; width:90%;" value="${store.sto_loc}">
+						<input class="input" type="text" id="sto_loc" name="sto_loc" placeholder="주소" maxlength="100" style="float: left; width:90%;" />
 						<input class="input" type="text" onclick="findAddress()" value="검색" style="float: right; width: 10%; border: 1px solid #dadada; text-align-last: center;">
 						<input type="hidden" id="sto_gps_x" name="sto_gps_x" value="">
 						<input type="hidden" id="sto_gps_y" name="sto_gps_y" value="">
@@ -52,13 +52,13 @@
 			    <div id="sto_menu">
 			    	<input type="button" onclick="javascript:addMenu()">
 				</div>
-<!-- 				<div class="inputArea"> -->
-<!-- 					<label for="sto_photo">이미지</label> -->
-<!-- 					<input type="file" id="sto_photo" name="file" /> -->
-<!-- 					<div class="select_img"><img src="" /></div> -->
-<!-- 				</div> -->
+				<div class="inputArea">
+					<label for="sto_photo">이미지</label>
+					<input type="file" id="sto_photo" name="file" />
+					<div class="select_img"><img src="" /></div>
+				</div>
 				
-				<div class="btn_login"><input type="submit" title="수정하기" alt="수정하기" value="수정하기" class="btn_global" id="stoInfoBtn"></div>
+				<div class="btn_login"><input type="submit" title="등록하기" alt="등록하기" value="등록하기" class="btn_global" id="stoInfoBtn"></div>
 			    <script>
 			    	var count = 0;
 			    	

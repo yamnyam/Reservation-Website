@@ -23,12 +23,20 @@ public class InformationDAOImpl implements InformationDAO {
 	}
 	
 	@Override
+	public void stoUpdate(InformationVO vo) throws Exception {
+		sql.update("information.stoUpdate", vo);
+	}
+	
+	@Override
 	public void menuInfo(InformationVO vo) throws Exception {
 		sql.insert("information.menuInfo", vo);
 	}
 	
 	@Override
 	public int stoNo(int no) throws Exception {
+		if(sql.selectOne("information.stoNo", no) == null) {
+			return 0;
+		}
 		return sql.selectOne("information.stoNo", no);
 	}
 	
@@ -50,12 +58,10 @@ public class InformationDAOImpl implements InformationDAO {
 	@Override
 	public List<ReserveVO> resManage (HttpSession session, int no) throws Exception {
 		
-		int sto_no = sql.selectOne("information.resManage_no", no);
-		
-		session.setAttribute("sto_no", sto_no);
-		
-		return sql.selectList("information.resManage", sto_no);
+		return sql.selectList("information.resManage", no);
 	}
+	
+	
 	
 	@Override
 	public void resCheck(ReserveVO vo) throws Exception {

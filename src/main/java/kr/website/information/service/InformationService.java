@@ -11,6 +11,8 @@ public interface InformationService {
 	
 	public void stoInfo(InformationVO vo) throws Exception;
 	
+	public void stoUpdate(InformationVO vo) throws Exception;
+	
 	public void menuInfo(InformationVO vo) throws Exception;
 	
 	public int stoNo(int no) throws Exception;

@@ -60,5 +60,11 @@
 		SELECT COUNT(*)
 		  FROM ACCOUNT
 		 WHERE acc_id = #{acc_id}
+	</select>
+	
+	<select id="search" resultType="int">
+		SELECT sto_no
+		  FROM store
+		 WHERE sto_no_acc = #{acc_no}
 	</select>	
 </mapper>
