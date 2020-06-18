@@ -31,6 +31,7 @@ public class ReviewController {
 	@RequestMapping(value = "/enroll", method=RequestMethod.POST)
 	@ResponseBody
 	public String revEnroll (ReviewVO vo, HttpSession session) throws Exception {
+		JSONArray array = new JSONArray();
 		
 		int cur_sto_no = (int)session.getAttribute("cur_store_no");
 		int acc_no = (int)session.getAttribute("acc_no");
@@ -53,16 +54,15 @@ public class ReviewController {
 					tag_vo.setTag_no_sto(cur_sto_no);
 					service.insertTag(tag_vo);
 				}
-		
+				array.add("리뷰 등록 완료.");
+				array.add("foodDetail?sto_no="+vo.getReview_no_sto());
+				
+				
+			}else {
+				array.add("예약을 하신분만 가능합니다.");
 			}
 				
-		}catch(Exception e) {
-			
-		}
-		
-		
-		JSONArray array = new JSONArray();
-		
+		}catch(Exception e) {}		
 		return array.toJSONString();
 	}
 }

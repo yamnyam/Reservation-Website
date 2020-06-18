@@ -62,7 +62,7 @@ public class foodListController {
 //		return array.toJSONString(); 
 //	}
 	
-	@RequestMapping(value = "/foodDetail", method=RequestMethod.POST)
+	@RequestMapping(value = "/foodDetail")
 	public String foodDetail(Model model, foodListVO vo, HttpSession session) throws Exception {
 		
 		int no = vo.getSto_no();
