@@ -27,22 +27,24 @@
 						<input type="hidden" id="sto_gps_y" name="sto_gps_y" value="${store.sto_gps_y}">
 					</span>
 				</div>
-				<div id="map" style="width:100%;height:300px;margin-top:10px;display:none;"></div>
+				<div id="map" style="width:100%;height:300px;margin-top:10px;display: block;"></div>
 				<script>
 					var mapContainer = document.getElementById('map');
 					var options = {
-							center: new kakao.maps.LatLng(${store.sto_gps_x}, ${store.sto_gps_y}),
-							level: 4
-						};
+						center: new kakao.maps.LatLng('${store.sto_gps_x}', '${store.sto_gps_y}'),
+						level: 3
+					};
 					
-						var map = new kakao.maps.Map(mapContainer, options);
-						//주소-좌표 변환 객체를 생성
-					    var geocoder = new kakao.maps.services.Geocoder();
-					    //마커를 미리 생성
-					    var marker = new kakao.maps.Marker({
-					        position: new kakao.maps.LatLng(${store.sto_gps_x}, ${store.sto_gps_y}),
-					        map: map
-					    });
+					var map = new kakao.maps.Map(mapContainer, options);
+					console.log('${store.sto_gps_x}', '${store.sto_gps_y}');
+					//주소-좌표 변환 객체를 생성
+				    var geocoder = new kakao.maps.services.Geocoder();
+				   
+					//마커를 미리 생성
+				    var marker = new kakao.maps.Marker({
+				        position: new kakao.maps.LatLng('${store.sto_gps_x}', '${store.sto_gps_y}'),
+				        map: map
+				    });					    
 			    </script>
 			    <div class="input_row" id="sto_comment">
 					<span class="input_box">
