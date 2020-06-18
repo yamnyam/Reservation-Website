@@ -67,17 +67,24 @@
 				});
 				var map = new kakao.maps.Map(container, options);
 				
+				var imageSrc = '/resources/images/green_color.jpg',
+					imageSize = new kakao.maps.Size(10, 10),
+					imageOption = {offset: new kakao.maps.Point(27, 69)};
+				
+				
 				var geocoder = new kakao.maps.services.Geocoder();
 	
 				var callback = function(result, status) {
 				    if (status === kakao.maps.services.Status.OK) {
 				        console.log(result);
-				    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+				    	coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 	
 			        // 결과값으로 받은 위치를 마커로 표시합니다
 			        var marker = new kakao.maps.Marker({
 			            map: map,
-			            position: coords
+			            position: coords,
+			            image: markerImage
 			        });
 					}
 			};
