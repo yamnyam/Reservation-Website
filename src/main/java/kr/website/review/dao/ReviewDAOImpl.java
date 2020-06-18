@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
+import kr.website.hashtag.vo.HashtagVO;
 import kr.website.review.vo.ReviewVO;
-
 
 @Service
 public class ReviewDAOImpl implements ReviewDAO {
@@ -36,6 +36,10 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public void enroll(ReviewVO vo) throws Exception {
 		sql.insert("review.enroll", vo);
-		
+	}	
+	
+	@Override
+	public void insertTag(HashtagVO vo) throws Exception {
+		sql.insert("review.insertTag", vo);
 	}
 }

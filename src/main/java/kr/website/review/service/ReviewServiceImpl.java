@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import kr.website.hashtag.vo.HashtagVO;
 import kr.website.review.dao.ReviewDAO;
 import kr.website.review.vo.ReviewVO;
 
@@ -36,4 +37,8 @@ public class ReviewServiceImpl implements ReviewService{
 		dao.enroll(vo);
 	}
 	
+	@Override
+	public void insertTag(HashtagVO vo) throws Exception {
+		dao.insertTag(vo);
+	}
 }

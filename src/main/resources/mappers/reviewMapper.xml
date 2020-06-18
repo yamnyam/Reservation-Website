@@ -16,13 +16,12 @@
 		  FROM review
 		 WHERE review_no_acc = #{review_no_acc}
 		   AND review_no_sto = #{review_no_sto}
-
 	</select>
 	
 	<insert id="enroll">
 		INSERT 
     	  INTO REVIEW
-    		   (
+    		(
     			review_no_sto
     			, review_no_acc
     			, review_level_acc
@@ -31,8 +30,8 @@
     			, review_date
     			, review_tag
     			, review_like
-    		   )
-        VALUES (
+			)
+        	VALUES (
         		#{review_no_sto}
         		, #{review_no_acc}
         		, #{review_level_acc}
@@ -41,6 +40,20 @@
         		, now()
         		, #{review_tag}
         		, #{review_like}
-    		   )
+		)
+	</insert>
+
+	<insert id="insertTag">
+		INSERT 
+    	  	INTO HASHTAG
+			(
+				tag_name
+				, tag_no_sto
+			)
+        	VALUES 
+			(
+        		#{tag_name}
+        		, #{tag_no_sto}
+			)
 	</insert>
 </mapper>
