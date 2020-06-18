@@ -51,7 +51,10 @@ public class InformationController {
 		
 		InformationVO sto_vo = service.selectStore(acc_no);
 		
+		List<InformationVO> menu = service.selectMenu(sto_vo.getSto_no());
+		
 		model.addAttribute("store", sto_vo);
+		model.addAttribute("menu", menu);
 		
 		return "/information/edit";
 	}
@@ -94,13 +97,6 @@ public class InformationController {
 		
 		return "redirect:/";
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	@RequestMapping(value = "/stoInfo", method=RequestMethod.POST)
 	public String stoInfo(InformationVO vo, MultipartFile file) throws Exception {

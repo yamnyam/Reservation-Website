@@ -43,6 +43,11 @@ public class InformationServiceImpl implements InformationService {
 	}
 	
 	@Override
+	public List<InformationVO> selectMenu (int no) throws Exception{
+		return dao.selectMenu(no);
+	}
+	
+	@Override
 	public void averagePrice(int no) throws Exception{
 		dao.averagePrice(no);
 	}

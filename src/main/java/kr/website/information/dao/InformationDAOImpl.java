@@ -46,6 +46,11 @@ public class InformationDAOImpl implements InformationDAO {
 	}
 	
 	@Override
+	public List<InformationVO> selectMenu(int no) throws Exception{
+		return sql.selectList("information.selectMenu", no);
+	}
+	
+	@Override
 	public void averagePrice(int no) throws Exception {
 		sql.update("information.averagePrice", no);
 	}

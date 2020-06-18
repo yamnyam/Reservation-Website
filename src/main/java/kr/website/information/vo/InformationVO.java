@@ -4,6 +4,7 @@ import kr.website.foodlist.vo.foodListVO;
 
 public class InformationVO extends foodListVO{
 	
+	private int menu_no;
 	private String menu_name;
 	private int menu_no_sto;
 	private String menu_price;
@@ -33,5 +34,10 @@ public class InformationVO extends foodListVO{
 	public void setMenu_check(String menu_check) {
 		this.menu_check = menu_check;
 	}
-
+	public int getMenu_no() {
+		return menu_no;
+	}
+	public void setMenu_no(int menu_no) {
+		this.menu_no = menu_no;
+	}
 }
