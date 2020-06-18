@@ -19,6 +19,8 @@ public class foodListVO {
 	
 	private String tag;
 	
+	private int congest;
+	
 	public int getSto_no() {
 		return sto_no;
 	}
@@ -109,5 +111,12 @@ public class foodListVO {
 	}
 	public void setTag(String tag) {
 		this.tag = tag;
+	}
+	
+	public int getCongest() {
+		return congest;
+	}
+	public void setCongest(int congest) {
+		this.congest = congest;
 	}
 }

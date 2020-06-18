@@ -47,4 +47,9 @@ public class foodListDAOImpl implements foodListDAO {
 	public List<String> tag(int no) throws Exception {
 		return sql.selectList("foodlist.tag", no);
 	}
+	
+	@Override
+	public int congest(int no) throws Exception {
+		return sql.selectOne("foodlist.congest", no);
+	}
 }

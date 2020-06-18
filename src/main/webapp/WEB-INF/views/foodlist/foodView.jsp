@@ -67,11 +67,6 @@
 				});
 				var map = new kakao.maps.Map(container, options);
 				
-				var imageSrc = '/resources/images/green_color.png',
-					imageSize = new kakao.maps.Size(25, 15),
-					imageOption = {offset: new kakao.maps.Point(15, 9)};
-				
-				
 				var geocoder = new kakao.maps.services.Geocoder();
 	
 				var callback = function(result, status) {
@@ -99,7 +94,26 @@
 		                    <li>${view.sto_comment}</li>
 		                    <li>평균가격: ${view.average_price}</li> 
 		                    <li>${view.tag}</li>
-						  	<li><script>geocoder.addressSearch('${view.sto_loc}', callback);</script></li>
+						  	<li>
+						  		<script>
+									if("${view.congest}" == "100") {
+										var imageSrc = '/resources/images/red_color.png',
+											imageSize = new kakao.maps.Size(15, 15),
+											imageOption = {offset: new kakao.maps.Point(15, 9)};
+									}
+									if( "${view.congest}" >= "50" && "${view.congest}" < "100") {
+										var imageSrc = '/resources/images/yellow_color.png',
+										imageSize = new kakao.maps.Size(15, 15),
+										imageOption = {offset: new kakao.maps.Point(15, 9)};
+									}
+									if( "${view.congest}" >= "0" && "${view.congest}" < "50") {
+										var imageSrc = '/resources/images/green_color.png',
+											imageSize = new kakao.maps.Size(15, 15),
+											imageOption = {offset: new kakao.maps.Point(15, 9)};
+									}
+						  			geocoder.addressSearch('${view.sto_loc}', callback);
+						  		</script>
+						  	</li>
 					 	</ul>
 					 </div>
 					 <div class="contents_img_box">

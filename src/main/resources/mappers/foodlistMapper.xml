@@ -60,4 +60,10 @@
 	  ORDER BY count(tag_name) DESC
 	     LIMIT 3
 	</select>
+	
+	<select id="congest" resultType="int">
+		SELECT FLOOR(( tb_curTable / tb_maxTable ) * 100 )
+		  FROM TB
+		 WHERE sto_no_tb = #{sto_no}
+	</select>
 </mapper>

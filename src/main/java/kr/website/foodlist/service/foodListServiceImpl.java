@@ -47,4 +47,9 @@ public class foodListServiceImpl implements foodListService {
 	public List<String> tag(int no) throws Exception {
 		return dao.tag(no);
 	}
+	
+	@Override
+	public int congest(int no) throws Exception {
+		return dao.congest(no);
+	}
 }
