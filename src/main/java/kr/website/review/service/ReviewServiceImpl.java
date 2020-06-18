@@ -33,6 +33,11 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 	
 	@Override
+	public void enroll(ReviewVO vo) throws Exception {
+		dao.enroll(vo);
+	}
+	
+	@Override
 	public void insertTag(HashtagVO vo) throws Exception {
 		dao.insertTag(vo);
 	}

@@ -32,6 +32,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public int count(ReviewVO vo) throws Exception {
 		return sql.selectOne("review.count", vo);
 	}
+
+	@Override
+	public void enroll(ReviewVO vo) throws Exception {
+		sql.insert("review.enroll", vo);
+	}	
 	
 	@Override
 	public void insertTag(HashtagVO vo) throws Exception {

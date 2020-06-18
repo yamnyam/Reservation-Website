@@ -32,23 +32,34 @@ public class ReviewController {
 	@ResponseBody
 	public String revEnroll (ReviewVO vo, HttpSession session) throws Exception {
 		
-		int cur_sto_no = (int) session.getAttribute("cur_store_no");
-		int acc_no = (int) session.getAttribute("acc_no");
+		int cur_sto_no = (int)session.getAttribute("cur_store_no");
+		int acc_no = (int)session.getAttribute("acc_no");
 		vo.setReview_no_acc(acc_no);
 		vo.setReview_no_sto(cur_sto_no);
-		
 		List<String> res_no = service.check(vo);
-		
-		int count = service.count(vo);
-		
+
 		HashtagVO tag_vo = new HashtagVO();
 		String[] hashtag = vo.getReview_tag().trim().split("#");
 		
-		for(int i=1; i < hashtag.length; i++) {
-			tag_vo.setTag_name(hashtag[i]);
-			tag_vo.setTag_no_sto(cur_sto_no);
-			service.insertTag(tag_vo);
+		int count = service.count(vo);
+		try {
+			if(count < res_no.size()) {
+				vo.setReview_level_acc((int)session.getAttribute("acc_level"));
+
+				service.enroll(vo);
+
+				for(int i=1; i < hashtag.length; i++) {
+					tag_vo.setTag_name(hashtag[i]);
+					tag_vo.setTag_no_sto(cur_sto_no);
+					service.insertTag(tag_vo);
+				}
+		
+			}
+				
+		}catch(Exception e) {
+			
 		}
+		
 		
 		JSONArray array = new JSONArray();
 		

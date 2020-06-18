@@ -14,5 +14,7 @@ public interface ReviewDAO {
 	
 	public int count(ReviewVO vo) throws Exception;
 	
+	public void enroll(ReviewVO vo) throws Exception;
+	
 	public void insertTag(HashtagVO vo) throws Exception;
 }

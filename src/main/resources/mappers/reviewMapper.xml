@@ -18,16 +18,42 @@
 		   AND review_no_sto = #{review_no_sto}
 	</select>
 	
+	<insert id="enroll">
+		INSERT 
+    	  INTO REVIEW
+    		(
+    			review_no_sto
+    			, review_no_acc
+    			, review_level_acc
+    			, review_content
+    			, review_star
+    			, review_date
+    			, review_tag
+    			, review_like
+			)
+        	VALUES (
+        		#{review_no_sto}
+        		, #{review_no_acc}
+        		, #{review_level_acc}
+        		, #{review_content}
+        		, #{review_star}
+        		, now()
+        		, #{review_tag}
+        		, #{review_like}
+		)
+	</insert>
+
 	<insert id="insertTag">
 		INSERT 
-    	  INTO HASHTAG
-    		   (
+    	  	INTO HASHTAG
+			(
 				tag_name
 				, tag_no_sto
-    		   )
-        VALUES (
+			)
+        	VALUES 
+			(
         		#{tag_name}
         		, #{tag_no_sto}
-    		   )
+			)
 	</insert>
 </mapper>
