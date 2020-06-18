@@ -70,8 +70,8 @@
 					 	<ul>
 						 	<li>${list.sto_name}</li>
 						 	<li>음식종류 #해시태그</li>
-		                    <li>사장 한마디</li>
-		                    <li>"       "</li> 
+		                    <li>${list.sto_comment}</li>
+		                    <li>${list.average_price}</li> 
 		                    <li>#해시태그 #해시태그 #해시태그</li>
 						  	<li><script>geocoder.addressSearch('${list.sto_loc}', callback);</script></li>
 					 	</ul>
