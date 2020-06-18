@@ -73,6 +73,20 @@
 						</div>
 					</div>
 				</form>
+				<div id="reviewList">
+					<c:forEach items="${review}" var="review">
+						<div id="reviewContent">
+							<div>
+								<span class="rev_name">이름 : ${review.acc_name}</span>
+								<span class="rev_star">별점 : ${review.review_star}</span>
+								<span class="rev_date"><fmt:formatDate value="${review.review_date}" pattern="yyyy년 MM월 dd일 " /></span>
+								<span class="rev_cont">내용 : ${review.review_content}</span>
+								<span class="rev_tag">태그 : ${review.review_tag}</span>
+							</div>
+						</div>	
+					</c:forEach>
+				</div>
+				
 			</div>
 		</div>
 	</body>
