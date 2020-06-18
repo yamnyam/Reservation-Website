@@ -67,23 +67,44 @@
 				});
 				var map = new kakao.maps.Map(container, options);
 				
-				var geocoder = new kakao.maps.services.Geocoder();
-	
-				var callback = function(result, status) {
-				    if (status === kakao.maps.services.Status.OK) {
-				        console.log(result);
-				    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-				    	coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-	
-			        // 결과값으로 받은 위치를 마커로 표시합니다
-			        var marker = new kakao.maps.Marker({
-			            map: map,
-			            position: coords,
-			            image: markerImage
-			        });
+				var imageSrc = "";
+				var imageSize = new kakao.maps.Size(10, 10);
+				var imageOption = {offset: new kakao.maps.Point(5, 5)};
+				
+				function marke1(sto_gps_x, sto_gps_y) {
+				    if ("OK" == kakao.maps.services.Status.OK) {
+				        console.log("1");
+					    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+					    	coords = new kakao.maps.LatLng(sto_gps_x, sto_gps_y);
+							console.log(imageSrc);
+				        // 결과값으로 받은 위치를 마커로 표시합니다
+				        var marker = new kakao.maps.Marker({
+				            position: coords,
+				            image: markerImage
+				        });
+				        marker.setMap(map);
 					}
-			};
-		</script>
+				    else{
+				    	console.log("2");
+				    }
+				};
+				
+				function marke(congest, sto_gps_x, sto_gps,y){
+					if(congest == 100) {
+						imageSrc = '/resources/images/red_color.png',
+						console.log("con: "+congest+"  1");
+					}
+					else if( congest >= 50) {
+						imageSrc = '/resources/images/yellow_color.png',
+						console.log("con: "+congest+"  2");
+					}
+					 else{
+						imageSrc = '/resources/images/green_color.png',
+						console.log("con: "+congest+"  3");
+					}
+					marke1(sto_gps_x, sto_gps,y);
+				};
+			</script>
 			<input type="button" id="btnAround" name="btnAround" value="GPS" />
 			<c:forEach items="${view}" var="view">
 			 	<div class="contents">
@@ -94,27 +115,8 @@
 		                    <li>${view.sto_comment}</li>
 		                    <li>평균가격: ${view.average_price}</li> 
 		                    <li>${view.tag}</li>
-						  	<li>
-						  		<script>
-									if("${view.congest}" == "100") {
-										var imageSrc = '/resources/images/red_color.png',
-											imageSize = new kakao.maps.Size(15, 15),
-											imageOption = {offset: new kakao.maps.Point(15, 9)};
-									}
-									if( "${view.congest}" >= "50" && "${view.congest}" < "100") {
-										var imageSrc = '/resources/images/yellow_color.png',
-										imageSize = new kakao.maps.Size(15, 15),
-										imageOption = {offset: new kakao.maps.Point(15, 9)};
-									}
-									if( "${view.congest}" >= "0" && "${view.congest}" < "50") {
-										var imageSrc = '/resources/images/green_color.png',
-											imageSize = new kakao.maps.Size(15, 15),
-											imageOption = {offset: new kakao.maps.Point(15, 9)};
-									}
-						  			geocoder.addressSearch('${view.sto_loc}', callback);
-						  		</script>
-						  	</li>
 					 	</ul>
+					 	<script>marke('${view.congest}','${view.sto_gps_x}','${view.sto_gps_y}')</script>
 					 </div>
 					 <div class="contents_img_box">
 				   			<img src="${view.sto_photo}" class="Img" />
