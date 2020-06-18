@@ -41,12 +41,17 @@ public class foodListController {
 		view = service.foodView(vo);
 		for(int i=0; i<view.size(); i++) {
 			List<String> tag = service.tag(view.get(i).getSto_no());
+			int congest = service.congest(view.get(i).getSto_no());
+			
 			String tag_name = new String();
 			for(int j=0; j < tag.size(); j++) {
 				tag_name = tag_name + "#" + tag.get(j) + " "; 
 			}
+			
 			view.get(i).setTag(tag_name);
+			view.get(i).setCongest(congest);
 		}
+		
 		model.addAttribute("view", view);
 		model.addAttribute("gps_x", vo.getGps_x());
 		model.addAttribute("gps_y", vo.getGps_y());
