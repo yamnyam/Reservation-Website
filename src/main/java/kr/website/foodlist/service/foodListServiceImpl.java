@@ -10,6 +10,7 @@ import kr.website.foodlist.dao.foodListDAO;
 import kr.website.foodlist.vo.foodListVO;
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
+import kr.website.review.vo.ReviewVO;
 
 @Service
 public class foodListServiceImpl implements foodListService {
@@ -35,5 +36,10 @@ public class foodListServiceImpl implements foodListService {
 	@Override
 	public ReserveVO resCheck(int no) throws Exception{
 		return dao.resCheck(no);
+	}
+	
+	@Override
+	public List<ReviewVO> review(int no) throws Exception {
+		return dao.review(no);
 	}
 }

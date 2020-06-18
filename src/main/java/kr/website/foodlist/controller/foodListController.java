@@ -81,6 +81,8 @@ public class foodListController {
 		} catch (Exception e) {
 		}
 		
+		List<ReviewVO> review = service.review(no);
+		
 		model.addAttribute("detail", detail);
 		model.addAttribute("menu", menu);
 		session.setAttribute("cur_store_no", no);

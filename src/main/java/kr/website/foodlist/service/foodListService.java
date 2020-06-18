@@ -5,6 +5,7 @@ import java.util.List;
 import kr.website.foodlist.vo.foodListVO;
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
+import kr.website.review.vo.ReviewVO;
 
 public interface foodListService {
 	
@@ -16,6 +17,8 @@ public interface foodListService {
 	
 	public List<InformationVO> menu(int no) throws Exception;
 	
-	public ReserveVO resCheck(int no) throws Exception; 
+	public ReserveVO resCheck(int no) throws Exception;
+	
+	public List<ReviewVO> review(int no) throws Exception;
 	
 }

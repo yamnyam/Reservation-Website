@@ -60,7 +60,6 @@ public class ReviewController {
 			
 		}
 		
-		
 		JSONArray array = new JSONArray();
 		
 		return array.toJSONString();
