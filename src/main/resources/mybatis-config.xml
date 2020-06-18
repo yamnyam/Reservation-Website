@@ -9,5 +9,6 @@
 		<typeAlias type="kr.website.notice.vo.NoticeVO" alias="noticeVO"/>
 		<typeAlias type="kr.website.information.vo.InformationVO" alias="informationVO"/>
 		<typeAlias type="kr.website.reserve.vo.ReserveVO" alias="reserveVO"/>
+		<typeAlias type="kr.website.review.vo.ReviewVO" alias="reviewVO"/>
 	</typeAliases>
 </configuration>
