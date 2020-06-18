@@ -66,19 +66,21 @@ public class foodListController {
 		int no = vo.getSto_no();
 		
 		foodListVO detail = service.foodDetail(no);
+		
 		List <InformationVO> menu = null;
 		menu = service.menu(no);
-
+		
 		ReserveVO res = null;
-		res = service.resCheck(vo.getSto_no());
+		try {
+			res = service.resCheck(vo.getSto_no());
+			if(res.getTb_maxTable()==res.getTb_curTable())
+				model.addAttribute("res", "1");
+			model.addAttribute("res", "2");
+		} catch (Exception e) {
+		}
 		
-		if(res.getTb_maxTable()==res.getTb_curTable())
-			model.addAttribute("res", "1");
-		model.addAttribute("res", "2");
-		
-		
-		model.addAttribute("menu", menu);
 		model.addAttribute("detail", detail);
+		model.addAttribute("menu", menu);
 		
 		return "/foodlist/foodDetail";
 	}
