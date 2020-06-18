@@ -1,5 +1,6 @@
 package kr.website.foodlist.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,6 +25,8 @@ import kr.website.review.vo.ReviewVO;
 @SuppressWarnings("unchecked")
 public class foodListController {
 	
+	
+	
 	private static final Logger Logger =  LoggerFactory.getLogger(foodListController.class);
 	
 	@Inject
@@ -38,10 +41,11 @@ public class foodListController {
 		view = service.foodView(vo);
 		for(int i=0; i<view.size(); i++) {
 			List<String> tag = service.tag(view.get(i).getSto_no());
-			for(String e:tag) {
-				e="#"+e;
+			String tag_name = new String();
+			for(int j=0; j < tag.size(); j++) {
+				tag_name = tag_name + "#" + tag.get(j) + " "; 
 			}
-			view.get(i).setTag(tag.toString());
+			view.get(i).setTag(tag_name);
 		}
 		model.addAttribute("view", view);
 		model.addAttribute("gps_x", vo.getGps_x());
