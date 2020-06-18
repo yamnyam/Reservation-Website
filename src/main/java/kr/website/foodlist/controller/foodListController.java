@@ -3,6 +3,7 @@ package kr.website.foodlist.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import kr.website.foodlist.service.foodListService;
 import kr.website.foodlist.vo.foodListVO;
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
+import kr.website.review.vo.ReviewVO;
 
 @Controller
 @RequestMapping(value = "/foodlist/*")
@@ -61,7 +63,7 @@ public class foodListController {
 //	}
 	
 	@RequestMapping(value = "/foodDetail", method=RequestMethod.POST)
-	public String foodDetail(Model model, foodListVO vo) throws Exception {
+	public String foodDetail(Model model, foodListVO vo, HttpSession session) throws Exception {
 		
 		int no = vo.getSto_no();
 		
@@ -81,6 +83,7 @@ public class foodListController {
 		
 		model.addAttribute("detail", detail);
 		model.addAttribute("menu", menu);
+		session.setAttribute("cur_store_no", no);
 		
 		return "/foodlist/foodDetail";
 	}
