@@ -67,9 +67,9 @@
 				});
 				var map = new kakao.maps.Map(container, options);
 				
-				var imageSrc = '/resources/images/green_color.jpg',
-					imageSize = new kakao.maps.Size(10, 10),
-					imageOption = {offset: new kakao.maps.Point(27, 69)};
+				var imageSrc = '/resources/images/green_color.png',
+					imageSize = new kakao.maps.Size(25, 25),
+					imageOption = {offset: new kakao.maps.Point(15, 9)};
 				
 				
 				var geocoder = new kakao.maps.services.Geocoder();
