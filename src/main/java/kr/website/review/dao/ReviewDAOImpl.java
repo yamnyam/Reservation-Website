@@ -5,9 +5,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 
 import kr.website.review.vo.ReviewVO;
 
+
+@Service
 public class ReviewDAOImpl implements ReviewDAO {
 	
 	// MY-BATIS
@@ -28,5 +31,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public int count(ReviewVO vo) throws Exception {
 		return sql.selectOne("review.count", vo);
+	}
+
+	@Override
+	public void enroll(ReviewVO vo) throws Exception {
+		sql.insert("review.enroll", vo);
+		
 	}
 }

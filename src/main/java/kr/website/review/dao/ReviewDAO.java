@@ -12,4 +12,6 @@ public interface ReviewDAO {
 	public List<String> check(ReviewVO vo) throws Exception;
 	
 	public int count(ReviewVO vo) throws Exception;
+	
+	public void enroll(ReviewVO vo) throws Exception;
 }

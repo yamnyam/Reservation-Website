@@ -31,4 +31,9 @@ public class ReviewServiceImpl implements ReviewService{
 		return dao.count(vo);
 	}
 	
+	@Override
+	public void enroll(ReviewVO vo) throws Exception {
+		dao.enroll(vo);
+	}
+	
 }

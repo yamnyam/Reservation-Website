@@ -18,4 +18,29 @@
 		   AND review_no_sto = #{review_no_sto}
 
 	</select>
+	
+	<insert id="enroll">
+		INSERT 
+    	  INTO REVIEW
+    		   (
+    			review_no_sto
+    			, review_no_acc
+    			, review_level_acc
+    			, review_content
+    			, review_star
+    			, review_date
+    			, review_tag
+    			, review_like
+    		   )
+        VALUES (
+        		#{review_no_sto}
+        		, #{review_no_acc}
+        		, #{review_level_acc}
+        		, #{review_content}
+        		, #{review_star}
+        		, now()
+        		, #{review_tag}
+        		, #{review_like}
+    		   )
+	</insert>
 </mapper>
