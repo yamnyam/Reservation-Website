@@ -1,5 +1,6 @@
 package kr.website.foodlist.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.website.foodlist.service.foodListService;
 import kr.website.foodlist.vo.foodListVO;
+import kr.website.hashtag.vo.HashtagVO;
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
 import kr.website.review.vo.ReviewVO;
@@ -22,6 +24,8 @@ import kr.website.review.vo.ReviewVO;
 @RequestMapping(value = "/foodlist/*")
 @SuppressWarnings("unchecked")
 public class foodListController {
+	
+	
 	
 	private static final Logger Logger =  LoggerFactory.getLogger(foodListController.class);
 	
@@ -35,7 +39,14 @@ public class foodListController {
 		
 		List<foodListVO> view = null;
 		view = service.foodView(vo);
-		
+		for(int i=0; i<view.size(); i++) {
+			List<String> tag = service.tag(view.get(i).getSto_no());
+			String tag_name = new String();
+			for(int j=0; j < tag.size(); j++) {
+				tag_name = tag_name + "#" + tag.get(j) + " "; 
+			}
+			view.get(i).setTag(tag_name);
+		}
 		model.addAttribute("view", view);
 		model.addAttribute("gps_x", vo.getGps_x());
 		model.addAttribute("gps_y", vo.getGps_y());
