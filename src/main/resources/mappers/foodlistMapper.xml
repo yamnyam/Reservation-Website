@@ -12,6 +12,8 @@
 			   , sto_comment
 			   , average_price
 			   , sto_thumbPhoto
+			   , sto_gps_x
+			   , sto_gps_y
 		  FROM STORE
 		 WHERE sto_gps_x between #{gps_x} - 0.01 AND #{gps_x} + 0.01
 		   AND sto_gps_y between #{gps_y} - 0.01 and #{gps_y} + 0.01
