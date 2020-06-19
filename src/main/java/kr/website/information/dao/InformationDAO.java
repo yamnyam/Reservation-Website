@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
+import kr.website.review.vo.ReviewVO;
 
 public interface InformationDAO {
 	
@@ -36,4 +37,6 @@ public interface InformationDAO {
 	public void tbInsert(int no) throws Exception;
 	
 	public void maxUpdate(ReserveVO vo)throws Exception;
+	
+	public List<ReviewVO> myReview(int no) throws Exception;
 }

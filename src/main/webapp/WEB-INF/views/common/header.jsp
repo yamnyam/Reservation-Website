@@ -82,7 +82,11 @@
 			<% } %>
 		</div>
 		<div>내정보 수정</div>
-		<div>내가 쓴 리뷰</div>
+		<div>
+			<% if (level == 2) { %>
+				<a href="/information/myReview">내가쓴리뷰</a>
+			<% } %>	
+		</div>
 		<div>
 			<% if (level == 2) { %>
 				<a href="/information/resInfo">예약확인</a>	

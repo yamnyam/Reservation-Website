@@ -162,9 +162,22 @@
 		  FROM TB
 		 WHERE sto_no_tb = #{res_no_sto};
 	</select>
+	
 	<update id="maxUpdate">
 		UPDATE TB
 		   SET tb_maxTable = #{tb_maxTable}
 		 WHERE tb.sto_no_tb = #{res_no_sto};   
 	</update>
+	
+	<select id="myReview" resultType="reviewVO">
+		SELECT review_content
+			   , review_star
+			   , review_date
+			   , review_tag
+			   , sto_name
+		  FROM review
+		  	   , store
+		 WHERE review_no_sto = sto_no
+		   AND review_no_acc = #{review_no_acc} 
+	</select>
 </mapper>

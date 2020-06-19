@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import kr.website.information.dao.InformationDAO;
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
+import kr.website.review.vo.ReviewVO;
 
 @Service
 public class InformationServiceImpl implements InformationService {
@@ -86,5 +87,10 @@ public class InformationServiceImpl implements InformationService {
 	public void maxUpdate(ReserveVO vo) throws Exception {
 		// TODO Auto-generated method stub
 		dao.maxUpdate(vo);
+	}
+
+	@Override
+	public List<ReviewVO> myReview(int no) throws Exception {
+		return dao.myReview(no);
 	}
 }

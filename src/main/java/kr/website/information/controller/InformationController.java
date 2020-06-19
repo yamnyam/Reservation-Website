@@ -22,6 +22,7 @@ import kr.website.foodlist.service.foodListService;
 import kr.website.information.service.InformationService;
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
+import kr.website.review.vo.ReviewVO;
 import kr.website.utils.UploadFileUtils;
 
 @Controller
@@ -233,5 +234,18 @@ public class InformationController {
 		array.add("/information/resManage");
 		
 		return array.toJSONString();
+	}
+
+	@RequestMapping(value = "/myReview")
+	public String myReview(HttpSession session, Model model) throws Exception {
+		
+		int acc_no = (int) session.getAttribute("acc_no");
+		
+		
+		List<ReviewVO> vo = service.myReview(acc_no);
+		
+		model.addAttribute("review", vo);
+		
+		return "/information/myReview";
 	}
 }

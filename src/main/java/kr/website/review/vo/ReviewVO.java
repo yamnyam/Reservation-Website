@@ -15,6 +15,7 @@ public class ReviewVO {
 	private int review_like;
 	private int review_his_no;
 	private String acc_name;
+	private String sto_name;
 	
 	public int getReview_no() {
 		return review_no;
@@ -88,6 +89,12 @@ public class ReviewVO {
 	}
 	public void setAcc_name(String acc_name) {
 		this.acc_name = acc_name;
+	}
+	public String getSto_name() {
+		return sto_name;
+	}
+	public void setSto_name(String sto_name) {
+		this.sto_name = sto_name;
 	}
 	
 }
