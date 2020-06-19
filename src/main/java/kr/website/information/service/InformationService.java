@@ -32,4 +32,9 @@ public interface InformationService {
 	public void resCheck (ReserveVO vo) throws Exception;
 	
 	public void tbUpdate (ReserveVO vo) throws Exception;
+	
+	public void tbInsert (int no) throws Exception;
+	
+	public void maxUpdate (ReserveVO vo) throws Exception;
+	
 }

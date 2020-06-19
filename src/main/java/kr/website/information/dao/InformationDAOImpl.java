@@ -83,4 +83,14 @@ public class InformationDAOImpl implements InformationDAO {
 		sql.update("information.tbUpdate", vo);
 	}
 	
+	@Override
+	public void tbInsert(int no) throws Exception{
+		sql.insert("information.tbInsert", no);
+	}
+	
+	@Override
+	public void maxUpdate(ReserveVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sql.update("information.maxUpdate", vo);
+	}
 }

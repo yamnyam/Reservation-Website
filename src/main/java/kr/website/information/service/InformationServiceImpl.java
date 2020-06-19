@@ -76,4 +76,15 @@ public class InformationServiceImpl implements InformationService {
 	public void tbUpdate (ReserveVO vo) throws Exception {
 		dao.tbUpdate(vo);
 	}
+	
+	@Override
+	public void tbInsert (int no) throws Exception{
+		dao.tbInsert(no);
+	}
+	
+	@Override
+	public void maxUpdate(ReserveVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.maxUpdate(vo);
+	}
 }
