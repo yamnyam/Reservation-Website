@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import kr.website.information.dao.InformationDAO;
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
+import kr.website.review.vo.ReviewVO;
 
 @Service
 public class InformationServiceImpl implements InformationService {
@@ -75,5 +76,10 @@ public class InformationServiceImpl implements InformationService {
 	@Override
 	public void tbUpdate (ReserveVO vo) throws Exception {
 		dao.tbUpdate(vo);
+	}
+	
+	@Override
+	public List<ReviewVO> myReview(int no) throws Exception {
+		return dao.myReview(no);
 	}
 }

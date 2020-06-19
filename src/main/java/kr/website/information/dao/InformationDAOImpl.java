@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.website.information.vo.InformationVO;
 import kr.website.reserve.vo.ReserveVO;
+import kr.website.review.vo.ReviewVO;
 
 @Repository
 public class InformationDAOImpl implements InformationDAO {
@@ -83,4 +84,8 @@ public class InformationDAOImpl implements InformationDAO {
 		sql.update("information.tbUpdate", vo);
 	}
 	
+	@Override
+	public List<ReviewVO> myReview(int no) throws Exception {
+		return sql.selectList("information.myReview", no);
+	}
 }
